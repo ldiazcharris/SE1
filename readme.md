@@ -2,11 +2,11 @@
 
 ## Índice general
 
-[Unidad 1 - Introducción a los Sistemas Embebidos](Unidad_1/readme.md)
-[Unidad 1 - Programación básica de Microcontroladores](Unidad_2/readme.md)
-[Unidad 1 - Desarrollo de aplicaciones con microcontroladores](Unidad_3/readme.md)
-[Bienvenida](#bienvenida-al-curso-de-sistemas-embebidos-i)
-[Materiales](#materiales)
+1. [Unidad 1 - Introducción a los Sistemas Embebidos](Unidad_1/readme.md)
+2. [Unidad 1 - Programación básica de Microcontroladores](Unidad_2/readme.md)
+3. [Unidad 1 - Desarrollo de aplicaciones con microcontroladores](Unidad_3/readme.md)
+4. [Bienvenida](#bienvenida-al-curso-de-sistemas-embebidos-i)
+5. [Materiales](#materiales)
 
 ## Bienvenida
 
