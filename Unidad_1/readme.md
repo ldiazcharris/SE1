@@ -208,13 +208,35 @@ Figura 14. Arquitectura Harvard. Fuente: [[3]](#referencias).
 
 En la arquitectura Harvard los buses de datos y programa son totalmente independientes y pueden ser de distintos anchos. Esto permite que la CPU pueda acceder de forma independiente y simultánea a la memoria de datos y a la de instrucciones, consiguiendo que las instrucciones se ejecuten en menos ciclos de reloj [[4]](#referencias). 
 
-### **
-
-
 ## 1.5. Tipos de set de instrucciones: RISC y CISC
 
-1. CISC (Complex Instruction Set Computer). Son procesadores con un juego de instrucciones complejo. Su repertorio de instrucciones es elevado y algunas de ellas son muy sofisticadas y potentes. Su problema es que requieren de muchos ciclos de reloj para ejecutar las instrucciones complejas. 
-2. RISC (Reduced Instruction Set Computer). Son microprocesadores con un repertorio de instrucciones reducido. Las instrucciones son muy simples y suelen ejecutarse en un ciclo máquina. Los procesadores RISC suelen tener una estructura Pipeline y ejecutar casi todas las instrucciones en el mismo tiempo.
+**¿Qué es un set de insturcciones?**
+
+El *instruction set architecture* o en españo set de instrucciones de la arquitectura es una especificación que define las instrucciones que "reconoce" y es capaz de ejecutar un microprocesador específico. Cada microprocesador, según su fabricante y según su arquitectura, tiene distintos tipos de instrucciones. Incluso, microprocesadores de las mismas familias pueden contener distintos sets de instrucciones. Estos sets de instrucciones, a menudo, especifican lo siguiente:
+- Las instrucciones.
+- Los registros especiales y de propósito general
+- Tipos de datos o rangos de los registros.
+- La arquitectura de memoria.
+- Las interrupciones.
+
+1. CISC (Complex Instruction Set Computer). Son procesadores con un juego de instrucciones complejo. Su repertorio de instrucciones es elevado y algunas de ellas son muy sofisticadas y potentes. Su problema es que requieren de muchos ciclos de reloj para ejecutar las instrucciones complejas [[4]](#referencias). Un ejemplo de este set de instrucciones es el de la arquitectura x86 [La cual puede consultar en este link de referencia](https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/x86-architecture)
+2. RISC (Reduced Instruction Set Computer). Son microprocesadores con un repertorio de instrucciones reducido. Las instrucciones son muy simples y suelen ejecutarse en un ciclo máquina. Los procesadores RISC suelen tener una estructura Pipeline y ejecutar casi todas las instrucciones en el mismo tiempo [[4]](#referencias). En las Figuras 15 y 16 se pueden ver ejemplos de set de instrucciones reducidos.
+3. SISC (Specific Instruction Set Computer). Estos procesadores poseen un juego de instrucciones específico para cada aplicación. Están destinados a aplicaciones muy concretas [[4]](#referencias). En la Figura 17 se puede ver parte del set de instrucciones del CPU TMS320C28x, de Texas Instrument.
+
+![Figura 15](imagenes/1.5_instruction_set_PIC_16F84.png)
+
+*Figura 15. Set de instrucciones de un PIC16F84A. [Fuente: Microchip](https://ww1.microchip.com/downloads/en/devicedoc/35007b.pdf)*
+
+
+![Figura 16](imagenes/1.5_instruction_set_PIC_16F84.png)
+
+*Figura 16. Set de instrucciones de los ARM Cortex M0, Cortex M3 y Cortex M4. [5](#referencias)*
+
+![Figura 17](imagenes/1.5_instruction_set_PIC_16F84.png)
+
+*Figura 17. Set de instrucciones del CPU TMS320C28x, de Texas Instrument. [Fuente: Texas Instrument](https://www.ti.com/lit/ug/spru430f/spru430f.pdf?ts=1690959208588&ref_url=https%253A%252F%252Fwww.google.com%252F)*
+
+Los microprocesadores basados en arquitecturas SISC o RISC no han logrado mayor popularidad para emplearse en los ordenadores personales. Por el contrario, ha predominado los CISC, debido al aumento constante en la capacidad de procesamiento de estos. Es así que, el uso de microprocesadores basados en RISC y SISC se siguen limitado a necesidades muy específicas de procesamiento, como en los procesadores DSP.
 
 ## 1.6. El concepto de Hardware Abstraction Layer
 
@@ -249,6 +271,6 @@ En la arquitectura Harvard los buses de datos y programa son totalmente independ
 - [2] TOCCI, RONALD J., NEAL S. WIDMER, GREGORY L. MOSS. *Sistemas digitales. Principios y aplicaciones*. Décima edición. Pearson Educación, México, 2007. ISBN: 978-970-26-0970-4. 
 - [3] Jorge R. Osio, Walter J. Aróztegui, José A. Rapallini. Sistemas digitales basados en microcontroladores. Facultad de Ingeniería Universidad Nacional de la Plata. EDULP. 
 - [4] Enrique Palacios Municio, Fernando Remiro Domínguez y Lucas J. López Pérez. *Microcontrolador PIC16f84. Desarrollo de Proyectos*. 3ª Edición. Editorial RA-MA. ISBN 978-84-9964-917-2. 2014.
-- [5] 
+- [5] ARIEL LUTENBERG, PABLO GOMEZ, ERIC PERNIA. *A Beginner’s Guide to Designing Embedded System Applications on Arm® Cortex®-M Microcontrollers*. ARM Education Media. ISBN: 978-1-911531-42-5 (ePDF)
 - [6] 
 - [7] 
