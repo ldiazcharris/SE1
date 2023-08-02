@@ -232,7 +232,7 @@ El *instruction set architecture* o en españo set de instrucciones de la arquit
 
 *Figura 16. Set de instrucciones de los ARM Cortex M0, Cortex M3 y Cortex M4. [Fuente: [5]](#referencias)*
 
-![Figura 17](imagenes/1.5_instruction_set_of_.png.png)
+![Figura 17](imagenes/1.5_instruction_set_of_TMS320C28x.png)
 
 *Figura 17. Set de instrucciones del CPU TMS320C28x, de Texas Instrument. [Fuente: Texas Instrument](https://www.ti.com/lit/ug/spru430f/spru430f.pdf?ts=1690959208588&ref_url=https%253A%252F%252Fwww.google.com%252F)*
 
