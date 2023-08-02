@@ -31,19 +31,19 @@ En las últimas décadas, la informática se ha convertido omnipresente en todo 
 
 ![Figura 1](imagenes/1.1_control_vehiculo.jpg)
 
-Figura 1. Sistema de control de abordo de un vehículo. [Fuente: aa1car.com](https://www.aa1car.com/library/bywire2.jpg)
+*Figura 1. Sistema de control de abordo de un vehículo. [Fuente: aa1car.com](https://www.aa1car.com/library/bywire2.jpg)*
 
 ![Figura 2](imagenes/1.1_ECU_Automotriz.jpg)
 
-Figura 2. ECU Automotriz [Fuente: autosoporte.com](https://autosoporte.com/conociendo-los-circuitos-de-procesamiento-de-datos-de-una-ecu/)
+*Figura 2. ECU Automotriz [Fuente: autosoporte.com](https://autosoporte.com/conociendo-los-circuitos-de-procesamiento-de-datos-de-una-ecu/)*
 
 ![Figura 3](imagenes/1.1_FMC_Avion.jpg)
 
-Figura 3. FMC de un Avion. [Fuente: Hispaviacion.es](https://www.hispaviacion.es/el-fms-2/#:~:text=El%20FMC%20o%20Flight%20Management,sistema%20de%20gesti%C3%B3n%20de%20vuelo.)
+*Figura 3. FMC de un Avion. [Fuente: Hispaviacion.es](https://www.hispaviacion.es/el-fms-2/#:~:text=El%20FMC%20o%20Flight%20Management,sistema%20de%20gesti%C3%B3n%20de%20vuelo.)*
 
 ![Figura 4](imagenes/1.1_OPS_SAT_Politecnica.jpg)
 
-Figura 4. Sistema de abordo del satélite OPS-SAT de la Agencia Espacial Europea (ESA).  [Fuente: Telemadrid.es ](https://www.telemadrid.es/noticias/sociedad/La-Politecnica-desarrolla-un-software-para-mejorar-el-control-de-los-satelites-espaciales-0-2444755562--20220425070952.html)
+*Figura 4. Sistema de abordo del satélite OPS-SAT de la Agencia Espacial Europea (ESA).  [Fuente: Telemadrid.es ](https://www.telemadrid.es/noticias/sociedad/La-Politecnica-desarrolla-un-software-para-mejorar-el-control-de-los-satelites-espaciales-0-2444755562--20220425070952.html)*
 
 
 ### 1.1.1. Características de los sistemas embebidos
@@ -95,11 +95,11 @@ Los PLDs se pueden clasificar según los siguientes tipos:
 
 ![Figura 5](imagenes/1.2_CPLD.jpg)
 
-Figura 5. CPLD Marca Altera. [Fuente: Wikipedia](https://es.wikipedia.org/wiki/CPLD#/media/Archivo:Altera_MAX_7128_2500_gate_CPLD.jpg).
+*Figura 5. CPLD Marca Altera. [Fuente: Wikipedia](https://es.wikipedia.org/wiki/CPLD#/media/Archivo:Altera_MAX_7128_2500_gate_CPLD.jpg).*
 
 ![Figura 6](imagenes/1.2_FPGA.png)
 
-Figura 6. FPGA. [Fuente: Mouser Electronics](https://co.mouser.com/new/xilinx/xilinx-virtex-ultrascale-vcu128-eval-kit/).
+*Figura 6. FPGA. [Fuente: Mouser Electronics](https://co.mouser.com/new/xilinx/xilinx-virtex-ultrascale-vcu128-eval-kit/).*
 
 **Microprocesador**
 
@@ -109,7 +109,7 @@ Sin embargo, para que el microprocesador realice sus funciones, es necesario con
 
 ![Figura 7](imagenes/1.2_Microprocesador.jpg)
 
-Figura 7. Microprocesador. [Fuente: Wikipedia](https://es.wikipedia.org/wiki/Microprocesador#/media/Archivo:AMD_X2_3600.jpg).
+*Figura 7. Microprocesador. [Fuente: Wikipedia](https://es.wikipedia.org/wiki/Microprocesador#/media/Archivo:AMD_X2_3600.jpg).*
 
 **Microcontrolador**
 
@@ -119,7 +119,7 @@ A diferencia del *microprocesador*, el micrcontrolador ya incluye en un solo cir
 
 ![Figra 8](imagenes/1.2_Microcontrolador_PIC.jpg)
 
-Figura 8. Microcontrolador PIC 18F8720. [Fuente: Wikipedia](https://es.wikipedia.org/wiki/Microcontrolador#/media/Archivo:PIC18F8720.jpg)
+*Figura 8. Microcontrolador PIC 18F8720. [Fuente: Wikipedia](https://es.wikipedia.org/wiki/Microcontrolador#/media/Archivo:PIC18F8720.jpg)*
 
 **Sistema en un chip (SoC)**
 
@@ -161,15 +161,15 @@ En la Figura 9 se puede apreciar un ejemplo de una arquitectura básica. Se ilus
 
 ![Figura 9](imagenes/1.3_arquitectura_basica_computacional.png)
 
-Figura 9. Arquitectura básica computacional. Fuente: [[1]](#referencias).
+*Figura 9. Arquitectura básica computacional. Fuente: [[1]](#referencias).*
 
-### ***1.3.2. Arquitectura de un microporcesador**
+### **1.3.2. Arquitectura de un microporcesador**
 
 A continuación, se muestra la arquitectura básica de un microprocesador: 
 
 ![Figura 10](imagenes/1.3_arquitectura_basica__microporcesador.png)
 
-Figura 10. Arquitectura básica de un Microprocesador. Fuente: [[3]](#referencias).
+*Figura 10. Arquitectura básica de un Microprocesador. Fuente: [[3]](#referencias).*
 
 La CPU es la Unidad Central de Procesos y está formada por la Unidad de Control, Registros y la Unidad de Procesos [[3]](#referencias).
 
@@ -186,11 +186,11 @@ En este modelo la unidad central de proceso o CPU está conectada a una memoria 
 
 ![Figura 11](imagenes/1.4_arquitectura_Von_Neumann.png)
 
-Figura 11. Arquitectura Von Neumann, Simplificado. Fuente: [[4]](#referencias).
+*Figura 11. Arquitectura Von Neumann, Simplificado. Fuente: [[4]](#referencias).*
 
 ![Figura 12](imagenes/1.4_arquitectura_Von_Neumann_2.png)
 
-Figura 11. Arquitectura Von Neumann. Fuente: [[3]](#referencias).
+*Figura 11. Arquitectura Von Neumann. Fuente: [[3]](#referencias).*
 
 El tamaño de la unidad de datos o instrucciones está fijado por el ancho del bus de datos de la memoria exterior utilizada. Por ejemplo, dado el caso de un microprocesador con un bus de 8 bits, deberá manejar datos e instrucciones de una o más unidades de 8 bits (1 byte) de longitud. Cuando deba acceder a una instrucción o dato de más de un byte de longitud, deberá realizar más de un acceso a la memoria. Por otro lado este bus único limita la velocidad de operación del microprocesador, ya que no se puede buscar en la memoria una nueva instrucción antes de que finalicen las transferencias de datos que pudieran resultar de la instrucción anterior [[4]](#referencias). 
 
@@ -200,11 +200,11 @@ La arquitectura Harvard dispone de dos memorias independientes a las que se cone
 
 ![Figura 13](imagenes/1.4_arquitectura_Harvard.png)
 
-Figura 13. Arquitectura Harvard, Simplificado. Fuente: [[4]](#referencias).
+*Figura 13. Arquitectura Harvard, Simplificado. Fuente: [[4]](#referencias)*.
 
 ![Figura 14](imagenes/1.4_arquitectura_Harvard_2.png)
 
-Figura 14. Arquitectura Harvard. Fuente: [[3]](#referencias).
+*Figura 14. Arquitectura Harvard. Fuente: [Fuente: [3]](#referencias)*.
 
 En la arquitectura Harvard los buses de datos y programa son totalmente independientes y pueden ser de distintos anchos. Esto permite que la CPU pueda acceder de forma independiente y simultánea a la memoria de datos y a la de instrucciones, consiguiendo que las instrucciones se ejecuten en menos ciclos de reloj [[4]](#referencias). 
 
@@ -230,7 +230,7 @@ El *instruction set architecture* o en españo set de instrucciones de la arquit
 
 ![Figura 16](imagenes/1.5_instruction_set_PIC_16F84.png)
 
-*Figura 16. Set de instrucciones de los ARM Cortex M0, Cortex M3 y Cortex M4. [5](#referencias)*
+*Figura 16. Set de instrucciones de los ARM Cortex M0, Cortex M3 y Cortex M4. [Fuente: [5]](#referencias)*
 
 ![Figura 17](imagenes/1.5_instruction_set_PIC_16F84.png)
 
