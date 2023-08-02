@@ -154,7 +154,7 @@ Todo sistema de computación básico se compone de los siguientes elementos.
 - Interfaces:
     - Interfaz humano/máquina.
     - Interfaz de comunicación.
-    - Interfaz de programaciones.
+    - Interfaz de programación.
     - Interfaz de entrada/salida de propósito general. 
 
 En la Figura 9 se puede apreciar un ejemplo de una arquitectura básica. Se ilustran tres ejemplos de interfaz para dispositivos de visualización o diferentes sensores/accionadores de datos, una interfaz de red (por ejemplo, Ethernet) y el control de un motor.
