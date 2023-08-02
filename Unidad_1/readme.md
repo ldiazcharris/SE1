@@ -228,11 +228,11 @@ El *instruction set architecture* o en españo set de instrucciones de la arquit
 *Figura 15. Set de instrucciones de un PIC16F84A. [Fuente: Microchip](https://ww1.microchip.com/downloads/en/devicedoc/35007b.pdf)*
 
 
-![Figura 16](imagenes/1.5_instruction_set_PIC_16F84.png)
+![Figura 16](imagenes/1.5_cortex_M0_M3_M4_ISA.png)
 
 *Figura 16. Set de instrucciones de los ARM Cortex M0, Cortex M3 y Cortex M4. [Fuente: [5]](#referencias)*
 
-![Figura 17](imagenes/1.5_instruction_set_PIC_16F84.png)
+![Figura 17](imagenes/1.5_instruction_set_of_.png.png)
 
 *Figura 17. Set de instrucciones del CPU TMS320C28x, de Texas Instrument. [Fuente: Texas Instrument](https://www.ti.com/lit/ug/spru430f/spru430f.pdf?ts=1690959208588&ref_url=https%253A%252F%252Fwww.google.com%252F)*
 
