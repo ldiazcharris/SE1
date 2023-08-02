@@ -43,7 +43,7 @@ En las últimas décadas, la informática se ha convertido omnipresente en todo 
 
 ![Figura 4](imagenes/1.1_OPS_SAT_Politecnica.jpg)
 
-*Figura 4. Sistema de abordo del satélite OPS-SAT de la Agencia Espacial Europea (ESA).  [Fuente: Telemadrid.es ](https://www.telemadrid.es/noticias/sociedad/La-Politecnica-desarrolla-un-software-para-mejorar-el-control-de-los-satelites-espaciales-0-2444755562--20220425070952.html)*
+*Figura 4. Sistema de a bordo del satélite OPS-SAT de la Agencia Espacial Europea (ESA).  [Fuente: Telemadrid.es ](https://www.telemadrid.es/noticias/sociedad/La-Politecnica-desarrolla-un-software-para-mejorar-el-control-de-los-satelites-espaciales-0-2444755562--20220425070952.html)*
 
 
 ### 1.1.1. Características de los sistemas embebidos
