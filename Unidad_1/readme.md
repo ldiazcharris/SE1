@@ -322,7 +322,7 @@ A continuación, se muestra un diagrama del proceso y sus archivos producto.
 
 *Figura 20. Diagrama UML del proceso de compilación. Fuente: Elaboración propia.*
 
-![idea|5](imagenes/idea.png) *Nota terminológica*. Al programa o software escrito para dispositivos electrónicos (como microprocesadores o microcontroladores) se le denomina *firmware*.
+![idea](imagenes/idea.png) *Nota terminológica*. Al programa o software escrito para dispositivos electrónicos (como microprocesadores o microcontroladores) se le denomina *firmware*.
 
 ## 1.9. Introducción al lenguaje C/C++ para microcontroladores con programas tipo bare metal
 
