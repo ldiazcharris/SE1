@@ -254,7 +254,7 @@ A continuación, se muestran las capas en las que se puede dividir un sistema em
 
 ## 1.7. El concepto del lenguaje ensamblador
 
-Antes de definir el lenguaje ensamblador, debemos definir qué es el lenguaje máquina, ya que ambos están estrechamente relacionados.
+Antes de definir el lenguaje ensamblador, debemos definir qué es el lenguaje máquina, ya que ambos están estrechamente relacionados. Pero mucho antes, debemos recordar qué es un lenguaje.
 
 ### **¿Qué es un lenguaje?**
 
@@ -320,22 +320,25 @@ A continuación, se muestra un diagrama del proceso y sus archivos producto.
 
 ![Figura 20](imagenes/1.8_Compilacion_generico.png)
 
-*Figura 20. Diagrama UML del proceso de compilación. Fuente: Elaboración propia.
+*Figura 20. Diagrama UML del proceso de compilación. Fuente: Elaboración propia.*
 
+![idea|50](imagenes/idea.png) *Nota terminológica*. Al programa o software escrito para dispositivos electrónicos (como microprocesadores o microcontroladores) se le denomina *firmware*.
 
-## 1.9. Introducción al lenguaje C/C++ para microcontroladores con programas tipo bare metal. 
+## 1.9. Introducción al lenguaje C/C++ para microcontroladores con programas tipo bare metal
+
+Para el desarrollo del curso se hará uso del lenguaje C, implementando el *toolchain* de la empresa ESPRESSIF
 
 ### [1.9.1. Introducción al lenguaje C/C++ Práctica 1](1.9_Practica1.md)
 
-### 1.9.2. [Introducción al lenguaje C/C++ Práctica 2](1.9_Practica2.md)
+### [1.9.2. Introducción al lenguaje C/C++ Práctica 2](1.9_Practica2.md)
 
-## 1.10. Algoritmos y ejercicios de programación tipo bare metal con el lenguaje C/C++ para microcontroladores. 
+## 1.10. Algoritmos y ejercicios de programación tipo bare metal con el lenguaje C/C++ para microcontroladores
 
-### 1.10.1. [Algoritmos y ejercicios Práctica 1](1.10_Practica1.md)
+### [1.10.1. Algoritmos y ejercicios Práctica 1](1.10_Practica1.md)
 
-### 1.10.2 [Algoritmos y ejercicios Práctica 2](1.10_Practica2.md)
+### [1.10.2 Algoritmos y ejercicios Práctica 2](1.10_Practica2.md)
 
-### 1.10.3 [Algoritmos y ejercicios Práctica 3](1.10_Practica3.md)
+### [1.10.3 Algoritmos y ejercicios Práctica 3](1.10_Practica3.md)
 
 
 ## Enlaces de interés
