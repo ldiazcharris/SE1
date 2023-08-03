@@ -240,23 +240,102 @@ Los microprocesadores basados en arquitecturas SISC o RISC no han logrado mayor 
 
 ## 1.6. El concepto de Hardware Abstraction Layer
 
+Uno de los problemas más básicos al desarrollar software para un sistem-on_chip (SoC) está relacionado con la portabilidad del código. Esto último se refiere a la capacidad de un software para ejecutarse en distintas plataformas, en este caso, SoCs diferentes (o de distintos fabricantes). Esta es una cuestión fundamental para cualquier organización que desee invertir en el desarrollo de un sistema operativo (OS, *operating system*), que probablemente solo tenga alguna posibilidad comercial si puede ejecutarse en varias plataformas SoC, sin un esfuerzo y un gasto de desarrollo significativos. En tal escenario, el objetivo es hacer que el OS sea lo más abstracto posible con respecto al hardware subyacente. Para ello, de manera general en todos los sistemas operativos, se ha desarrollado el concepto de "Capa de Abstracción de Hardware (*HAL, Hardware Abstraction Layer*), que consiste en una serie de métodos (funciones, clases, estructuras, etc.) que permiten la virtualización del entorno de ejecución, lo que permite que el sistema operativo sea compatible con múltiples plataformas destino [[1]](#referencias).
+
+De acuerdo con lo anterior, es posible decir el concepto de capa de abstracción de hardwareo HAL (del inglés: hardware abstraction layer), es una especificación e implementación de software que define e implementa todas las funciones requeridas para acceder al hardware de un microcontrolador/microprocesador o conjunto de microcontroladores, típicamente del mismo fabricante. La HAL proporciona funciones de alto nivel al programador, de manera que éste no se preocupa por cómo debe acceder a memoria o los periféricos del hardware, sino que le proporciona una *interfaz* para que lo pueda hacer. 
+
+No hay que confundir el concepto de HAL con el de kernel de un OS. El kernel por su parte, abstrae la administración de la CPU o *scheduling*, realiza la asignación de memoria, el sistema de archivos, entre otras funciones, que es lo mismo en diferentes tipos de CPU y hardware. Por otro lado, una HAL encapsula la lógica del controlador de diferentes CPU y hardware.
+
+A continuación, se muestran las capas en las que se puede dividir un sistema embebido. Típicamente, todas las capas ya están dadas, y el usuario o programador hace uso de todas ellas en la capa de aplicación. 
+
+![Figura 18](imagenes/1.6_capas_en_sistemas_embebidos.png)
+
+*Figura 18. Capas de un sistema embebido. Fuente: Elaboración propia.*
+
 ## 1.7. El concepto del lenguaje ensamblador
+
+Antes de definir el lenguaje ensamblador, debemos definir qué es el lenguaje máquina, ya que ambos están estrechamente relacionados.
+
+### **¿Qué es un lenguaje?**
+
+La definición de lenguaje puede variar dependiendo del contexto en que se analice. Por lo tanto, se tratará de ser lo más superior posible en cuanto a esta definición. Así pues, se definirá lenguaje como un conjunto limitado o código de signos, con reglas de sintaxis y estructuras definidas, cuyo objetivo es permitir una comunicación efectiva entre dos o más entes o sujetos. 
+
+Los lenguajes pueden abarcar distintos tipos de signos, tales como, visuales (gráficos, luces, gestos, etc.), auditivos o táctiles u otros relacionados con los sentidos o el pensamiento. De este modo, los lenguajes se pueden clasificar en: humano, animal y formal. Éste último es el que nos ocupará.
+
+Por lo tanto, para efectos de ubicar el concepto de lenguaje en el contexto de los sistemas embebidos, se considerará que lenguaje es una construcción artificial humana que se usan en matemáticas y otras disciplinas formales, incluyendo la informática.
+
+### **Lenguaje maquina:** 
+
+También llamado código máquina. Es el sistema de codificación o lenguaje (si se quiere) que es directamente ejecutado por un microprocesador; de ahí viene la denominación "lenguaje máquina". Su composición se basa en los estados eléctricos de “encendido o apagado”, lo que en términos binarios se conoce como “unos y ceros”. Cualquier instrucción que deba ser ejecutada por el microprocesador debe estar expresada en binario.
+
+### **Lenguaje ensamblador:** 
+
+(Assembly languaje o assembler, del inglés), Es un lenguaje de programación de bajo nivel, que se usa para la programación de microprocesadores. Es un lenguaje muy cercano al código máquina, ya que cada instrucción se corresponde con un código máquina directamente (casi). 
+
+Este lenguaje está basado en “mnemónicos” ya que sustituye una instrucción en código máquina por palabras o símbolos alfanuméricos más fáciles de recordar por el programador.
+
+![Figura 19](imagenes/1.7_Codigo_de_maquina.png)
+
+*Figura 19. Ejemplo de código máquina. [Fuente: Wikipedia](https://es.wikipedia.org/wiki/Lenguaje_de_m%C3%A1quina#/media/Archivo:Codigo_de_maquina.png)*
+
+Lenguaje de máquina del Intel 8088. El código de máquina en hexadecimal en rojo, el equivalente en lenguaje ensamblador en magenta, y las direcciones de memoria donde se encuentra el código, en azul. Abajo se ve un texto en hexadecimal y ASCII [Fuente: Wikipedia](https://es.wikipedia.org/wiki/Lenguaje_de_m%C3%A1quina#/media/Archivo:Codigo_de_maquina.png).
+
+Un programa escrito en Assembler típicamente tiene la extensión *.asm o *.s. Éste programa se denomina código fuente y es dependiente de la arquitectura de microprocesador que se esté usando.
+Algunas de las arquitecturas comunes en microprocesadores son:
+- X86-64
+- ARM
+- PowerPC
+- DEC Alpha
+- MIPS
+- PA-RISC
+
+### **El programa ensamblador**
+
+Es un software que se encarga de traducir el lenguaje ensamblador a lenguaje máquina. "Traduce" los **mnemónicos** y los convierte en *“opcode”* (código de operación). El Opcode saliente varía según el conjunto de instrucciones del microprocesador. Las operaciones pueden ser: aritméticas, lógicas, escritura o lectura de memoria y control del programa.
 
 ## 1.8. Proceso de compilación de lenguajes de alto nivel
 
+**Compilar:** es el proceso de transformar un programa informático escrito en un lenguaje (llamado código fuente) en un conjunto de instrucciones en otro formato o lenguaje (llamado código objeto).
+
+El resultado final de la compilación serán los archivos en código binario o "ejecutables" que serán cargados en la memoria de programa del microprocesador y que éste podrá ejecutar. 
+
+De manera general, el proceso de compilación que se lleva a cabo como sigue:
+
+- Preprocesamiento (Preprocesador) 
+    - Análisis léxico: bien escrito
+    - Análisis sintáctico: coherencia
+    - Análisis semántico: verificación de tipos de datos
+- Compilación (Compilador)
+    - Generación de código intermedio
+    - Optimización de código
+
+- Ensamble (Ensamblador)
+    - Generación de código máquina
+
+- Enlazado (Linker)
+    - Genara coherencia y cohesión en las instrucciones.
+    - Generación de ejecutables.
+
+A continuación, se muestra un diagrama del proceso y sus archivos producto. 
+
+![Figura 20](imagenes/1.8_Compilacion_generico.png)
+
+*Figura 20. Diagrama UML del proceso de compilación. Fuente: Elaboración propia.
+
+
 ## 1.9. Introducción al lenguaje C/C++ para microcontroladores con programas tipo bare metal. 
 
-## 1.9. Introducción al lenguaje C/C++ Práctica 1
+### [1.9.1. Introducción al lenguaje C/C++ Práctica 1](1.9_Practica1.md)
 
-## 1.9. Introducción al lenguaje C/C++ Práctica 2
+### 1.9.2. [Introducción al lenguaje C/C++ Práctica 2](1.9_Practica2.md)
 
 ## 1.10. Algoritmos y ejercicios de programación tipo bare metal con el lenguaje C/C++ para microcontroladores. 
 
-## 1.10. Algoritmos y ejercicios Práctica 1
+### 1.10.1. [Algoritmos y ejercicios Práctica 1](1.10_Practica1.md)
 
-## 1.10. Algoritmos y ejercicios Práctica 2
+### 1.10.2 [Algoritmos y ejercicios Práctica 2](1.10_Practica2.md)
 
-## 1.10. Algoritmos y ejercicios Práctica 3
+### 1.10.3 [Algoritmos y ejercicios Práctica 3](1.10_Practica3.md)
 
 
 ## Enlaces de interés
