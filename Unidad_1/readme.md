@@ -326,7 +326,10 @@ A continuación, se muestra un diagrama del proceso y sus archivos producto.
 
 ## 1.9. Introducción al lenguaje C/C++ para microcontroladores con programas tipo bare metal
 
-Para el desarrollo del curso se hará uso del lenguaje C, implementando el *toolchain* de la empresa ESPRESSIF
+Para el desarrollo del curso se hará uso del lenguaje C, a través del uso del *toolchain* de la empresa ESPRESSIF, denominado ESP-IDF. Toda la información y documentación sobre esta herramienta la puede encontrar en la [página oficial de ESPRESSIF](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/windows-setup.html). 
+
+Para facilitar el proceso de enseñanza aprendizaje se hará uso de entorno de desarrollo Visual Studio Code, con la extensión PlatformIO. Por favor revise la [guía de instalación de las herramientas del curso](1.9_guia_instal_tools.md).
+
 
 ### [1.9.1. Introducción al lenguaje C/C++ Práctica 1](1.9_Practica1.md)
 
@@ -343,9 +346,11 @@ Para el desarrollo del curso se hará uso del lenguaje C, implementando el *tool
 
 ## Enlaces de interés
 
-- [Índice general](/readme.md)
-- [Bienvenida al curso](#bienvenida-al-curso-de-sistemas-embebidos-i)
-- [Materiales](#materiales)
+- [Índice general del curso](/readme.md)
+- [Índice de la Unidad 1](#índice)
+- [guía de instalación de las herramientas del curso](1.9_guia_instal_tools.md)
+- [Unidad 2](/Unidad_2/readme.md)
+- [Unidad 3](/Unidad_3/readme.md)
 
 # Referencias
 
