@@ -319,9 +319,10 @@ De manera general, el proceso de compilación que se lleva a cabo como sigue:
 
 A continuación, se muestra un diagrama del proceso y sus archivos producto. 
 
-![Figura 20](imagenes/1.8_Compilacion_generico.png)
+<img src="imagenes/1.8_Compilacion_generico.png" width="500">
 
 *Figura 20. Diagrama de componentes (UML) del proceso de compilación. Fuente: Elaboración propia.*
+
 <img src="imagenes/idea.png" width="50"> *Nota terminológica*. Al programa o software escrito para dispositivos electrónicos (como microprocesadores o microcontroladores) se le denomina *firmware*.
 
 ## 1.9. Introducción al lenguaje C/C++
