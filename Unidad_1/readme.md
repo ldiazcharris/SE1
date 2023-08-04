@@ -10,10 +10,10 @@
 - [1.6. El concepto de Hardware Abstraction Layer](#16-el-concepto-de-hardware-abstraction-layer)
 - [1.7. El concepto del lenguaje ensamblador](#17-el-concepto-del-lenguaje-ensamblador)
 - [1.8. Proceso de compilación de lenguajes de alto nivel](#18-proceso-de-compilación-de-lenguajes-de-alto-nivel)
-- [1.9. Introducción al lenguaje C/C++ para microcontroladores con programas tipo bare metal](#19-introducción-al-lenguaje-cc-para-microcontroladores-con-programas-tipo-bare-metal)
+- [1.9. Introducción al lenguaje C/C++](#19-introducción-al-lenguaje-cc)
 - [1.9. Introducción al lenguaje C/C++ Práctica 1](#191-introducción-al-lenguaje-cc-práctica-1)
 - [1.9. Introducción al lenguaje C/C++ Práctica 2](#192-introducción-al-lenguaje-cc-práctica-2)
-- [1.10. Algoritmos y ejercicios de programación tipo bare metal con el lenguaje C/C++ para microcontroladores](#110-algoritmos-y-ejercicios-de-programación-tipo-bare-metal-con-el-lenguaje-cc-para-microcontroladores)
+- [1.10. Algoritmos y ejercicios de programación tipo bare metal con el lenguaje C/C++ para microcontroladores](#110-algoritmos-y-ejercicios-de-programación)
 - [1.10. Algoritmos y ejercicios Práctica 1](#1101-algoritmos-y-ejercicios-práctica-1)
 - [1.10. Algoritmos y ejercicios Práctica 2](#1102-algoritmos-y-ejercicios-práctica-2)
 - [1.10. Algoritmos y ejercicios Práctica 3](#1103-algoritmos-y-ejercicios-práctica-3)
@@ -321,22 +321,29 @@ A continuación, se muestra un diagrama del proceso y sus archivos producto.
 
 ![Figura 20](imagenes/1.8_Compilacion_generico.png)
 
-*Figura 20. Diagrama UML del proceso de compilación. Fuente: Elaboración propia.*
+*Figura 20. Diagrama de componentes (UML) del proceso de compilación. Fuente: Elaboración propia.*
 
 ![idea](imagenes/idea.png) *Nota terminológica*. Al programa o software escrito para dispositivos electrónicos (como microprocesadores o microcontroladores) se le denomina *firmware*.
 
-## 1.9. Introducción al lenguaje C/C++ para microcontroladores con programas tipo bare metal
+## 1.9. Introducción al lenguaje C/C++
 
-Para el desarrollo del curso se hará uso del lenguaje C, a través del uso del *toolchain* de la empresa ESPRESSIF, denominado ESP-IDF. Toda la información y documentación sobre esta herramienta la puede encontrar en la [página oficial de ESPRESSIF](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/windows-setup.html). 
+![Icono de C](imagenes/1.10_C_languaje_icon.png)
 
-Para facilitar el proceso de enseñanza aprendizaje se hará uso de entorno de desarrollo Visual Studio Code, con la extensión PlatformIO. Por favor revise la [guía de instalación de las herramientas del curso](1.9_guia_instal_tools.md).
+El lenguaje de programación C o simplemente lenguaje C, es un lenguaje de programación desarrollado en 1972 por Dennis Ritchie y Brian Kernighan. Ambos escribieron el libro denominado *"The C Programming Language"* o en español *"El lenguaje de programación C"* [6](#referencias), el cual es el estandar de C persé. 
+
+![Dennis R.](imagenes/1.10_Dennis_Ritchie.png)  ![Brian K.](imagenes/1.10_Brian_kernighan.png)
+
 
 
 ### [1.9.1. Introducción al lenguaje C/C++ Práctica 1](1.9_Practica1.md)
 
 ### [1.9.2. Introducción al lenguaje C/C++ Práctica 2](1.9_Practica2.md)
 
-## 1.10. Algoritmos y ejercicios de programación tipo bare metal con el lenguaje C/C++ para microcontroladores
+## 1.10. Algoritmos y ejercicios de programación
+
+Para el desarrollo del curso se hará uso del lenguaje C, a través del uso del *toolchain* de la empresa ESPRESSIF, denominado ESP-IDF. Toda la información y documentación sobre esta herramienta la puede encontrar en la [página oficial de ESPRESSIF](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/windows-setup.html). 
+
+Para facilitar el proceso de enseñanza aprendizaje se hará uso de entorno de desarrollo Visual Studio Code, con la extensión PlatformIO. Por favor revise la [guía de instalación de las herramientas del curso](1.9_guia_instal_tools.md).
 
 ### [1.10.1. Algoritmos y ejercicios Práctica 1](1.10_Practica1.md)
 
@@ -360,3 +367,4 @@ Para facilitar el proceso de enseñanza aprendizaje se hará uso de entorno de d
 - [3] Jorge R. Osio, Walter J. Aróztegui, José A. Rapallini. Sistemas digitales basados en microcontroladores. Facultad de Ingeniería Universidad Nacional de la Plata. EDULP. 
 - [4] Enrique Palacios Municio, Fernando Remiro Domínguez y Lucas J. López Pérez. *Microcontrolador PIC16f84. Desarrollo de Proyectos*. 3ª Edición. Editorial RA-MA. ISBN 978-84-9964-917-2. 2014.
 - [5] ARIEL LUTENBERG, PABLO GOMEZ, ERIC PERNIA. *A Beginner’s Guide to Designing Embedded System Applications on Arm® Cortex®-M Microcontrollers*. ARM Education Media. ISBN: 978-1-911531-42-5 (ePDF)
+- [6] BRIAN W. KERNIGHAN y DENNIS M. RITCHIE. *El lenguaje de programación C*. 2da Edición. Pearson Education. 1991. Prentice-Hall Hispanoamericana. 
