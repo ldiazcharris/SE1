@@ -330,7 +330,7 @@ A continuación, se muestra un diagrama del proceso y sus archivos producto.
 
 <img src="imagenes/1.10_C_languaje_icon.png" width="100">
 
-El lenguaje de programación C o simplemente lenguaje C, es un lenguaje de programación desarrollado en 1972 por Dennis Ritchie y Brian Kernighan. Ambos escribieron el libro denominado *"The C Programming Language"* o en español *"El lenguaje de programación C"* [6](#referencias), el cual es el estandar de C persé. 
+El lenguaje de programación C o simplemente lenguaje C, es un lenguaje de programación desarrollado en 1972 por Dennis Ritchie y Brian Kernighan. Ambos escribieron el libro denominado *"The C Programming Language"* o en español *"El lenguaje de programación C"* [6](#referencias), el cual es una introducción general al lenguaje C. 
 
 <img src="imagenes/1.10_Dennis_Ritchie.png" width="200"> <img src="imagenes/1.10_Brian_kernighan.png" width="200">
 
@@ -344,7 +344,90 @@ A continuación, algunas características del lenguaje C:
 
 ### **Fundamentos de la sintaxis de C**
 
-Se puede decir que en el lenguaje C existen 4 grandes grupos de estructuras en la sintaxis de C 
+Un program a en C consta de funciones y variables. Una función contiene sentencias o proposiciones que especifican las operaciones de cálculo que se van a realizar, y las variables almacenan los valores utilizados durante los cálculos. La función llamada ***"main"*** es especial, debido a que el program a comienza a ejecutarse al principio de main. Esto significa que todo program a debe tener una función main en algún sitio. Por general main llamará a otras funciones que ayuden a realizar su trabajo, algunas que usted ya escribió, y otras de bibliotecas escritas previamente [6](#referencias). 
+
+**Resumiendo...** Todo programa escrito en C consta de una función principal llamada ***"main"*** y otras funciones. La función main es la primera que se ejecuta cuando el programa se ejecuta, a partir de ésta es posible "llamar" al resto de funciones que compongan el programa.
+
+Se puede decir que en en la sintaxis de C existen 5 grandes grupos de elementos:
+
+1. **Comentarios:** Permiten generar documentación del código sobre el propio código fuente. Los comentarios inician después de repetir dos veces el símbolo --slash--, que es este: **//**. Los comentarios son ignorados por el preprocesador, por lo tanto sólo tendrá validez para el programador en cuanto a guía u orientación. Ejemplo. 
+    ~~~
+        // Esto es un comentario en el lenguaje C.
+        int a = 3;  // Esto es otro comentario. 
+    ~~~
+
+1. **Directivas del preprocesador:** Son indicaciones concretas al compilador para la generación de código máquina. Algunas de las directivas del preprocesador de C son las siguientes. (Haga clic sobre cada directiva para encontrar una descripción relacionada)
+    
+    1. [#define](https://learn.microsoft.com/es-es/cpp/preprocessor/hash-define-directive-c-cpp?view=msvc-170)
+    2. [#elif](https://learn.microsoft.com/es-es/cpp/preprocessor/hash-if-hash-elif-hash-else-and-hash-endif-directives-c-cpp?view=msvc-170)
+    3. [#else](https://learn.microsoft.com/es-es/cpp/preprocessor/hash-if-hash-elif-hash-else-and-hash-endif-directives-c-cpp?view=msvc-170)
+    4. [#endif](https://learn.microsoft.com/es-es/cpp/preprocessor/hash-if-hash-elif-hash-else-and-hash-endif-directives-c-cpp?view=msvc-170)
+    1. [#error](https://learn.microsoft.com/es-es/cpp/preprocessor/hash-error-directive-c-cpp?view=msvc-170)
+    1. [#if](https://learn.microsoft.com/es-es/cpp/preprocessor/hash-if-hash-elif-hash-else-and-hash-endif-directives-c-cpp?view=msvc-170)
+    1. [#ifdef](https://learn.microsoft.com/es-es/cpp/preprocessor/hash-ifdef-and-hash-ifndef-directives-c-cpp?view=msvc-170)
+    1. [#ifndef](https://learn.microsoft.com/es-es/cpp/preprocessor/hash-ifdef-and-hash-ifndef-directives-c-cpp?view=msvc-170)
+    1. [#include](https://learn.microsoft.com/es-es/cpp/preprocessor/hash-include-directive-c-cpp?view=msvc-170)
+    1. [#line](https://learn.microsoft.com/es-es/cpp/preprocessor/hash-line-directive-c-cpp?view=msvc-170)
+    1. [#pragma](https://learn.microsoft.com/es-es/cpp/preprocessor/pragma-directives-and-the-pragma-keyword?view=msvc-170)
+    1. [#undef](https://learn.microsoft.com/es-es/cpp/preprocessor/hash-undef-directive-c-cpp?view=msvc-170)
+
+    Por ejemplo, una línea que aparece al principio de muchos archivos fuente de C, usa la directiva 
+    ~~~
+    #include <stdio.h> 
+    ~~~
+    indica al compilador que debe incluir información acerca de la biblioteca estándar de entrada/salida [6](#referencias).
+
+2. **Sentencias:** Son las instrucciones que el programador define y son las que indican la funcionalidad de un programa. Existen tres tipos de sentencias en C:
+    1. **Sentencias de expresión:** Consiste en una expresión acabada con un punto y coma (;), la ejecución de esta hace que se evalúe la expresión [7](#referencias).
+        Ejemplo:
+        ~~~
+        int a;                  // Declaración de variable a
+        a = 3;                    // Asignación de un valor a la variable a
+        c = x + y;                  // Operación suma x + y, asigna el resultado a c
+        printf("Suma=%d", c);    // Imprime por consola el resultado.
+        ~~~
+    1. **Sentencias compuestas:** Están formadas por varias sentencias individuales encerradas entre dos llaves({...}). Las sentencias individuales pueden ser a su vez sentencias de expresión, sentencias compuestas o sentencias de control. A diferencia de una sentencia de expresión, las compuestas no acaban con un punto y coma. Las sentencias compuestas hacen posible incluir unas sentencias dentro de otras [7](#referencias). Ejemplo:
+        ~~~
+        {
+            pi = 3.14;
+            c = x + y;
+            ++i;
+        }
+        ~~~
+    1. **Sentencias de control:** se utilizan cuando deseamos conseguir ciertas acciones especiales en los programas, comprobaciones lógicas (como if-else), bucles (como while o for) y ramificaciones (como switch-case). Muchas sentencias de control necesitan que las otras modalidades de sentencias que tenemos, estén presentes dentro de ellas [7](#referencias).
+
+3. **Funciones:** Son secciones de código que se ejecutan para una tarea determinada. Las proposiciones de una función están encerradas entre llaves { }. Ejemplo:
+    ~~~
+    #include <stdio.h>
+    void main()
+    {
+        printf("hola, mundo\n");
+    }
+    ~~~
+
+1. **Palabras reservadas:** Según el standard ANSI-C, el lenguaje C posee 32 palabras reservadas, a parte de las directivas del preprocesador. Estas son:
+
+    |  |  |  |  |  |  |  |
+    | --- | --- | --- | --- | --- | --- | --- |
+    auto | break | case | char | const | continue | default |
+    do | double | else | enum | extern | float | for |
+    goto | if | int | long | register | return | short |
+    signed | sizeof | static | struct | switch | typedef | union |
+    unsigned | void | volatile | while |  |  |  |
+
+### **El primer programa en C"**
+
+En C, el program a para escribir "hola, mundo" es [6](#referencias):
+
+~~~
+#include <stdio.h>
+void main()
+{
+    printf("hola, mundo\n");
+}
+~~~
+La forma de ejecutar este program a epende del sistema operativo que se esté utilizando. Sin embargo, para simplificar el proceso de aprendizaje de la sintaxis de C, usaremos el compilador online [OnlineGDB](https://www.onlinegdb.com/online_c_compiler).
+
 
 
 ### [1.9.1. Introducción al lenguaje C/C++ Práctica 1](1.9_Practica1.md)
@@ -380,3 +463,4 @@ Para facilitar el proceso de enseñanza aprendizaje se hará uso de entorno de d
 - [4] Enrique Palacios Municio, Fernando Remiro Domínguez y Lucas J. López Pérez. *Microcontrolador PIC16f84. Desarrollo de Proyectos*. 3ª Edición. Editorial RA-MA. ISBN 978-84-9964-917-2. 2014.
 - [5] ARIEL LUTENBERG, PABLO GOMEZ, ERIC PERNIA. *A Beginner’s Guide to Designing Embedded System Applications on Arm® Cortex®-M Microcontrollers*. ARM Education Media. ISBN: 978-1-911531-42-5 (ePDF)
 - [6] BRIAN W. KERNIGHAN y DENNIS M. RITCHIE. *El lenguaje de programación C*. 2da Edición. Pearson Education. 1991. Prentice-Hall Hispanoamericana. 
+- [7] UGR. https://ccia.ugr.es/~jfv/ed1/c/cdrom/cap2/cap28.htm#ej_c
