@@ -346,8 +346,8 @@ Para facilitar el proceso de enseñanza aprendizaje se hará uso de entorno de d
 
 ## Enlaces de interés
 
+- [Ir al principio de este documento (Unidad 1)](#índice)
 - [Índice general del curso](/readme.md)
-- [Índice de la Unidad 1](#índice)
 - [guía de instalación de las herramientas del curso](1.9_guia_instal_tools.md)
 - [Unidad 2](/Unidad_2/readme.md)
 - [Unidad 3](/Unidad_3/readme.md)
@@ -359,5 +359,3 @@ Para facilitar el proceso de enseñanza aprendizaje se hará uso de entorno de d
 - [3] Jorge R. Osio, Walter J. Aróztegui, José A. Rapallini. Sistemas digitales basados en microcontroladores. Facultad de Ingeniería Universidad Nacional de la Plata. EDULP. 
 - [4] Enrique Palacios Municio, Fernando Remiro Domínguez y Lucas J. López Pérez. *Microcontrolador PIC16f84. Desarrollo de Proyectos*. 3ª Edición. Editorial RA-MA. ISBN 978-84-9964-917-2. 2014.
 - [5] ARIEL LUTENBERG, PABLO GOMEZ, ERIC PERNIA. *A Beginner’s Guide to Designing Embedded System Applications on Arm® Cortex®-M Microcontrollers*. ARM Education Media. ISBN: 978-1-911531-42-5 (ePDF)
-- [6] 
-- [7] 
