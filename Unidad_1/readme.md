@@ -398,7 +398,6 @@ Se puede decir que en en la sintaxis de C existen 5 grandes grupos de elementos:
 
 3. **Funciones:** Son secciones de código que se ejecutan para una tarea determinada. Las proposiciones de una función están encerradas entre llaves { }. Ejemplo:
     ~~~
-    #include <stdio.h>
     void main()
     {
         printf("hola, mundo\n");
@@ -415,7 +414,7 @@ Se puede decir que en en la sintaxis de C existen 5 grandes grupos de elementos:
     signed | sizeof | static | struct | switch | typedef | union |
     unsigned | void | volatile | while |  |  |  |
 
-### **El primer programa en C"**
+### **El primer programa en C**
 
 En C, el program a para escribir "hola, mundo" es [6](#referencias):
 
@@ -426,6 +425,7 @@ void main()
     printf("hola, mundo\n");
 }
 ~~~
+
 La forma de ejecutar este program a epende del sistema operativo que se esté utilizando. Sin embargo, para simplificar el proceso de aprendizaje de la sintaxis de C, usaremos el compilador online [OnlineGDB](https://www.onlinegdb.com/online_c_compiler).
 
 
