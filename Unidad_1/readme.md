@@ -42,7 +42,7 @@ En las últimas décadas, la informática se ha convertido omnipresente en todo 
 
 *Figura 3. FMC de un Avion. [Fuente: Hispaviacion.es](https://www.hispaviacion.es/el-fms-2/#:~:text=El%20FMC%20o%20Flight%20Management,sistema%20de%20gesti%C3%B3n%20de%20vuelo.)*
 
-![Figura 4](imagenes/1.1_OPS_SAT_Politecnica.jpg)
+<img src="1.1_OPS_SAT_Politecnica.jpg" width=500>
 
 *Figura 4. Sistema de a bordo del satélite OPS-SAT de la Agencia Espacial Europea (ESA).  [Fuente: Telemadrid.es ](https://www.telemadrid.es/noticias/sociedad/La-Politecnica-desarrolla-un-software-para-mejorar-el-control-de-los-satelites-espaciales-0-2444755562--20220425070952.html)*
 
@@ -98,7 +98,7 @@ Los PLDs se pueden clasificar según los siguientes tipos:
 
 *Figura 5. CPLD Marca Altera. [Fuente: Wikipedia](https://es.wikipedia.org/wiki/CPLD#/media/Archivo:Altera_MAX_7128_2500_gate_CPLD.jpg).*
 
-![Figura 6](imagenes/1.2_FPGA.png)
+<img src="imagenes/1.2_FPGA.png" width=500>
 
 *Figura 6. FPGA. [Fuente: Mouser Electronics](https://co.mouser.com/new/xilinx/xilinx-virtex-ultrascale-vcu128-eval-kit/).*
 
@@ -108,7 +108,7 @@ El microprocesador es un circuito integrado que tiene la capacidad de realizar o
 
 Sin embargo, para que el microprocesador realice sus funciones, es necesario conectarlo con más elementos, como memoria volátil, memoria no volátil (SSD o HHDD), circuitos de entrada/salida, reloj entre otros. 
 
-![Figura 7](imagenes/1.2_Microprocesador.jpg)
+<img src="imagenes/1.2_Microprocesador.jpg" width=500>
 
 *Figura 7. Microprocesador. [Fuente: Wikipedia](https://es.wikipedia.org/wiki/Microprocesador#/media/Archivo:AMD_X2_3600.jpg).*
 
@@ -249,7 +249,7 @@ No hay que confundir el concepto de HAL con el de kernel de un OS. El kernel por
 
 A continuación, se muestran las capas en las que se puede dividir un sistema embebido. Típicamente, todas las capas ya están dadas, y el usuario o programador hace uso de todas ellas en la capa de aplicación. 
 
-![Figura 18](imagenes/1.6_capas_en_sistemas_embebidos.png)
+<img src="imagenes/1.6_capas_en_sistemas_embebidos.png" width="500">
 
 *Figura 18. Capas de un sistema embebido. Fuente: Elaboración propia.*
 
