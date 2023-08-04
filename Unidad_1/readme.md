@@ -17,6 +17,7 @@
 - [1.10. Algoritmos y ejercicios Práctica 1](#1101-algoritmos-y-ejercicios-práctica-1)
 - [1.10. Algoritmos y ejercicios Práctica 2](#1102-algoritmos-y-ejercicios-práctica-2)
 - [1.10. Algoritmos y ejercicios Práctica 3](#1103-algoritmos-y-ejercicios-práctica-3)
+- [Referencias](#referencias)
 
 
 ## 1.1. Definición y Propiedades de los Sistemas Embebidos
