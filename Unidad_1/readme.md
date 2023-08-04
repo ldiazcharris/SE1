@@ -322,20 +322,28 @@ A continuación, se muestra un diagrama del proceso y sus archivos producto.
 ![Figura 20](imagenes/1.8_Compilacion_generico.png)
 
 *Figura 20. Diagrama de componentes (UML) del proceso de compilación. Fuente: Elaboración propia.*
-
-![idea](imagenes/idea.png) *Nota terminológica*. Al programa o software escrito para dispositivos electrónicos (como microprocesadores o microcontroladores) se le denomina *firmware*.
+<img src="imagenes/idea.png" width="50"> *Nota terminológica*. Al programa o software escrito para dispositivos electrónicos (como microprocesadores o microcontroladores) se le denomina *firmware*.
 
 ## 1.9. Introducción al lenguaje C/C++
 
-<center>
+
 <img src="imagenes/1.10_C_languaje_icon.png" width="100">
-</center>
 
 El lenguaje de programación C o simplemente lenguaje C, es un lenguaje de programación desarrollado en 1972 por Dennis Ritchie y Brian Kernighan. Ambos escribieron el libro denominado *"The C Programming Language"* o en español *"El lenguaje de programación C"* [6](#referencias), el cual es el estandar de C persé. 
 
-<center>
 <img src="imagenes/1.10_Dennis_Ritchie.png" width="200"> <img src="imagenes/1.10_Brian_kernighan.png" width="200">
-</center>
+
+A continuación, algunas características del lenguaje C:
+
+- Es un lenguaje de Alto nivel
+- Es de Propósito general
+- Débilmente tipado
+- Estructurado
+- Es sensible a mayúsculas
+
+### **Fundamentos de la sintaxis de C**
+
+Se puede decir que en el lenguaje C existen 4 grandes grupos de estructuras en la sintaxis de C 
 
 
 ### [1.9.1. Introducción al lenguaje C/C++ Práctica 1](1.9_Practica1.md)
