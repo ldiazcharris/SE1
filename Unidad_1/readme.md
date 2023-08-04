@@ -319,7 +319,7 @@ De manera general, el proceso de compilación que se lleva a cabo como sigue:
 
 A continuación, se muestra un diagrama del proceso y sus archivos producto. 
 
-<img src="imagenes/1.8_Compilacion_generico.png" width="800">
+<img src="imagenes/1.8_Compilacion_generico.png" width="600">
 
 *Figura 20. Diagrama de componentes (UML) del proceso de compilación. Fuente: Elaboración propia.*
 
