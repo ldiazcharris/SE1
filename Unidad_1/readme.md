@@ -327,12 +327,15 @@ A continuación, se muestra un diagrama del proceso y sus archivos producto.
 
 ## 1.9. Introducción al lenguaje C/C++
 
+<center>
 <img src="imagenes/1.10_C_languaje_icon.png" width="100">
+</center>
 
 El lenguaje de programación C o simplemente lenguaje C, es un lenguaje de programación desarrollado en 1972 por Dennis Ritchie y Brian Kernighan. Ambos escribieron el libro denominado *"The C Programming Language"* o en español *"El lenguaje de programación C"* [6](#referencias), el cual es el estandar de C persé. 
 
-
+<center>
 <img src="imagenes/1.10_Dennis_Ritchie.png" width="200"> <img src="imagenes/1.10_Brian_kernighan.png" width="200">
+</center>
 
 
 ### [1.9.1. Introducción al lenguaje C/C++ Práctica 1](1.9_Practica1.md)
