@@ -3,8 +3,8 @@
 ## Índice general
 
 1. [Unidad 1 - Introducción a los Sistemas Embebidos](Unidad_1/readme.md)
-2. [Unidad 1 - Programación básica de Microcontroladores](Unidad_2/readme.md)
-3. [Unidad 1 - Desarrollo de aplicaciones con microcontroladores](Unidad_3/readme.md)
+2. [Unidad 2 - Programación básica de Microcontroladores](Unidad_2/readme.md)
+3. [Unidad 3 - Desarrollo de aplicaciones con microcontroladores](Unidad_3/readme.md)
 4. [Bienvenida](#bienvenida-al-curso-de-sistemas-embebidos-i)
 5. [Materiales](#materiales)
 
@@ -42,6 +42,8 @@ Para organizarnos adecuadamente, se necesitará que se agrupen en parejas, estas
 - 1 Display LCD de 16x2 (con módulo I2C integrado)
 - 1 Servomotor SG90
 - 1 Módulo USB-UART CP210x
+- 1 módulo de Relé con 5 V 
+- 2 optoacoplador PC8817C o equivalente
 
 ### Herramientas (por pareja):
 

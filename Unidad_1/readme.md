@@ -26,9 +26,9 @@
 
 Es un dispositivo electrónico con capacidad de computación que está diseñado para cumplir una labor especifica en un producto. Comúnmente, un sistema embebido hace parte de un sistema más grande y complejo, por ejemplo vehículos (carros, motocicletas, aviones o naves espaciales), o incluso sistemas de la vida cotidiana, como lo son los electrodomésticos (lavadora, nevera o incluso la licuadora). 
 
-El papel que desempeña un sistema embebido dentro del sistema mayor que lo contiene, comúnmente corresponde a la el control automático de todas o de una partede las funciones del sistema afitrión. Tales funciones pueden incluir el preprocesamiento de señales provenientes de sensores, control de actuadores y las comounicaciones inalámbricas. 
+El papel que desempeña un sistema embebido dentro del sistema mayor que lo contiene, comúnmente corresponde a la el control automático de todas o de una parte de las funciones del sistema afitrión. Tales funciones pueden incluir el preprocesamiento de señales provenientes de sensores, control de actuadores y las comunicaciones inalámbricas. 
 
-En las últimas décadas, la informática se ha convertido omnipresente en todo el mundo. Esta omnipresencia se puede palpar con la presencia de internet, la computación en la nube, los servidores globales, las computadoras portátiles, tabletas, teléfonos inteligentes y una inmensa varidad de dispositivos con capacidad de computación en todas partes [[1]](#referencias).
+En las últimas décadas, la informática se ha convertido omnipresente en todo el mundo. Esta omnipresencia se puede palpar con la presencia de internet, la computación en la nube, los servidores globales, las computadoras portátiles, tabletas, teléfonos inteligentes y una inmensa variedad de dispositivos con capacidad de computación en todas partes [[1]](#referencias).
 
 ![Figura 1](imagenes/1.1_control_vehiculo.jpg)
 
@@ -40,7 +40,7 @@ En las últimas décadas, la informática se ha convertido omnipresente en todo 
 
 ![Figura 3](imagenes/1.1_FMC_Avion.jpg)
 
-*Figura 3. FMC de un Avion. [Fuente: Hispaviacion.es](https://www.hispaviacion.es/el-fms-2/#:~:text=El%20FMC%20o%20Flight%20Management,sistema%20de%20gesti%C3%B3n%20de%20vuelo.)*
+*Figura 3. FMC de un Avión. [Fuente: Hispaviacion.es](https://www.hispaviacion.es/el-fms-2/#:~:text=El%20FMC%20o%20Flight%20Management,sistema%20de%20gesti%C3%B3n%20de%20vuelo.)*
 
 <img src="imagenes/1.1_OPS_SAT_Politecnica.jpg" width=500>
 
@@ -51,7 +51,7 @@ En las últimas décadas, la informática se ha convertido omnipresente en todo 
 
 La principal característica de los sistemas embebidos es que emplean diversos tipos de procesadores digitales o dispositivos electrónicos capces de ejercer una función de procesamiento. A continuación, se presentan las principales características de los sistemas embebidos:
 
-1. Tienen un nucleo, que es el encargado de procesar los datos y/o controlar el sistema para el cual fue diseñado. Este núcleo puede estar basado en diversas tecnologías de sistemas digitales tales como:
+1. Tienen un núcleo, que es el encargado de procesar los datos y/o controlar el sistema para el cual fue diseñado. Este núcleo puede estar basado en diversas tecnologías de sistemas digitales tales como:
     - Microprocesador
     - Microcontrolador
     - Procesador de Señales Digitales (DSP, Digital Signal Processor)
@@ -66,7 +66,7 @@ La principal característica de los sistemas embebidos es que emplean diversos t
 6. Son flexibles, debido a que se pueden diseñar para aplicaciones específicas. Sin embargo, también pueden ser diseñados para aplicaciones de consumo masivo. 
 7. Son de tamaño reducido. Existen algunos estándares que permiten determinar el tamaño de la placa de circuito impreso, pero esta va a depender en todos los casos de las características de la aplicación específica. 
 8. Tienen bajo consumo de energía. 
-9. Dependiendo del tipo de dispositivo de procesamiento, se peuden usar lenguajes de programación de software de alto nivel o lenguajes de descripción de hardware. 
+9. Dependiendo del tipo de dispositivo de procesamiento, se pueden usar lenguajes de programación de software de alto nivel o lenguajes de descripción de hardware. 
 
 ## 1.2. Aplicaciones y diferencias entre Circuitos lógicos programables (PLDs), microprocesadores y microcontroladores
 
@@ -104,7 +104,7 @@ Los PLDs se pueden clasificar según los siguientes tipos:
 
 **Microprocesador**
 
-El microprocesador es un circuito integrado que tiene la capacidad de realizar operaciones lógicas y matemáticas, ejecutar programas, procesar datos de entrada-salida, y controlar el funcionamiento de un sistema electónico [[3]](#referencias).. 
+El microprocesador es un circuito integrado que tiene la capacidad de realizar operaciones lógicas y matemáticas, ejecutar programas, procesar datos de entrada-salida, y controlar el funcionamiento de un sistema electrónico [[3]](#referencias).. 
 
 Sin embargo, para que el microprocesador realice sus funciones, es necesario conectarlo con más elementos, como memoria volátil, memoria no volátil (SSD o HHDD), circuitos de entrada/salida, reloj entre otros. 
 
@@ -114,9 +114,9 @@ Sin embargo, para que el microprocesador realice sus funciones, es necesario con
 
 **Microcontrolador**
 
-Es un dispositivo electrónico que tiene la capacidad de realizar operaciones lógicas y matemáticas, ejecutar programas, procesar datos de entrada-salida, y controlar el funcionamiento de un sistema electónico [[3]](#referencias). 
+Es un dispositivo electrónico que tiene la capacidad de realizar operaciones lógicas y matemáticas, ejecutar programas, procesar datos de entrada-salida, y controlar el funcionamiento de un sistema electrónico [[3]](#referencias). 
 
-A diferencia del *microprocesador*, el micrcontrolador ya incluye en un solo circuito integrado todos los elementos necesarios para ejecutar sus funciones: CPU, memoria, reloj oscilador y módulos I/O [[3]](#referencias).
+A diferencia del *microprocesador*, el microcontrolador ya incluye en un solo circuito integrado todos los elementos necesarios para ejecutar sus funciones: CPU, memoria, reloj oscilador y módulos I/O [[3]](#referencias).
 
 ![Figra 8](imagenes/1.2_Microcontrolador_PIC.jpg)
 
@@ -135,18 +135,18 @@ Las aplicaciones de los sistemas embebidos hoy en día se encuentran en muchos c
 - Equipos de comunicaciones.
 - Bioingeniería y electromedicina.
 - Vehículos para transporte terrestre, marítimo y aéreo.
-- Vehículos y aplicaciones para el sector aerospacial.
+- Vehículos y aplicaciones para el sector aeroespacial.
 - Dipositivos para el sector de consumo: electrodomésticos, juguetes, electrónica de consumo.
 - Educación. 
 
-El presente curso se enfocará en el estudio y diseño de sistemas embebidos basados en microcontrolador. Esto, debido a su gran felixibilidad, bajo costo y demanda en diversas aplicaciones como el Internet de las Cosas (IoT), la domótica y el Edge Computing. 
+El presente curso se enfocará en el estudio y diseño de sistemas embebidos basados en microcontrolador. Esto, debido a su gran flexibilidad, bajo costo y demanda en diversas aplicaciones como el Internet de las Cosas (IoT), la domótica y el Edge Computing. 
 
 ## 1.3. Introducción a la Arquitectura de microprocesadores
 
 ### **1.3.1. Arquitectura básica computacional**
 
 Todo sistema de computación básico se compone de los siguientes elementos.
-- Procesador o microcprocesador.
+- Procesador o microprocesador.
 - Memoria no volátil.
 - Memoria volátil.
 - Bus de datos.
@@ -177,7 +177,7 @@ La CPU es la Unidad Central de Procesos y está formada por la Unidad de Control
 La memoria se divide en memoria de programa y memoria de datos, en donde se almacenan las instrucciones de programa y los datos respectivamente [[3]](#referencias).
 
 Los módulos de entrada/salida permiten intercambiar información con el mundo exterior.
-Se requiere de un clock (reloj del sistema) debidos que para funcionar, todo el dispositivo debe estar sincronizado, esto posibilita que todos los módulos interactúen entre sí [[3]](#referencias). Los tres bloques principales deben estar vinculados mediante buses de comunicación, (bus de datos, bus de direcciones y bus de control), por donde viajan los datos digitales [[3]](#referencias).
+Se requiere de un *clock* (reloj del sistema) debidos que para funcionar, todo el dispositivo debe estar sincronizado, esto posibilita que todos los módulos interactúen entre sí [[3]](#referencias). Los tres bloques principales deben estar vinculados mediante buses de comunicación, (bus de datos, bus de direcciones y bus de control), por donde viajan los datos digitales [[3]](#referencias).
 
 ## 1.4. Modelos de Arquitectura Harvard y Von Neumann
 
@@ -213,7 +213,7 @@ En la arquitectura Harvard los buses de datos y programa son totalmente independ
 
 **¿Qué es un set de insturcciones?**
 
-El *instruction set architecture* o en españo set de instrucciones de la arquitectura es una especificación que define las instrucciones que "reconoce" y es capaz de ejecutar un microprocesador específico. Cada microprocesador, según su fabricante y según su arquitectura, tiene distintos tipos de instrucciones. Incluso, microprocesadores de las mismas familias pueden contener distintos sets de instrucciones. Estos sets de instrucciones, a menudo, especifican lo siguiente:
+El *instruction set architecture* o en español set de instrucciones de la arquitectura es una especificación que define las instrucciones que "reconoce" y es capaz de ejecutar un microprocesador específico. Cada microprocesador, según su fabricante y según su arquitectura, tiene distintos tipos de instrucciones. Incluso, microprocesadores de las mismas familias pueden contener distintos sets de instrucciones. Estos sets de instrucciones, a menudo, especifican lo siguiente:
 - Las instrucciones.
 - Los registros especiales y de propósito general
 - Tipos de datos o rangos de los registros.
@@ -330,7 +330,7 @@ A continuación, se muestra un diagrama del proceso y sus archivos producto.
 
 <img src="imagenes/1.10_C_languaje_icon.png" width="100">
 
-El lenguaje de programación C o simplemente lenguaje C, es un lenguaje de programación desarrollado en 1972 por Dennis Ritchie y Brian Kernighan. Ambos escribieron el libro denominado *"The C Programming Language"* o en español *"El lenguaje de programación C"* [6](#referencias), el cual es una introducción general al lenguaje C. 
+El lenguaje de programación C o simplemente lenguaje C, es un lenguaje de programación desarrollado en 1972 por Dennis Ritchie y Brian Kernighan. Ambos escribieron el libro denominado *"The C Programming Language"* o en español *"El lenguaje de programación C"* [[6]](#referencias), el cual es una introducción general al lenguaje C. 
 
 <img src="imagenes/1.10_Dennis_Ritchie.png" width="200"> <img src="imagenes/1.10_Brian_kernighan.png" width="200">
 
@@ -344,13 +344,13 @@ A continuación, algunas características del lenguaje C:
 
 ### **Fundamentos de la sintaxis de C**
 
-Un program a en C consta de funciones y variables. Una función contiene sentencias o proposiciones que especifican las operaciones de cálculo que se van a realizar, y las variables almacenan los valores utilizados durante los cálculos. La función llamada ***"main"*** es especial, debido a que el program a comienza a ejecutarse al principio de main. Esto significa que todo program a debe tener una función main en algún sitio. Por general main llamará a otras funciones que ayuden a realizar su trabajo, algunas que usted ya escribió, y otras de bibliotecas escritas previamente [6](#referencias). 
+Un programa en C consta de funciones y variables. Una función contiene sentencias o proposiciones que especifican las operaciones de cálculo que se van a realizar, y las variables almacenan los valores utilizados durante los cálculos. La función llamada ***"main"*** es especial, debido a que el programa comienza a ejecutarse al principio de main. Esto significa que todo programa debe tener una función main en algún sitio. Por general main llamará a otras funciones que ayuden a realizar su trabajo, algunas que usted ya escribió, y otras de bibliotecas escritas previamente [[6]](#referencias). 
 
 **Resumiendo...** Todo programa escrito en C consta de una función principal llamada ***"main"*** y otras funciones. La función main es la primera que se ejecuta cuando el programa se ejecuta, a partir de ésta es posible "llamar" al resto de funciones que compongan el programa.
 
 Se puede decir que en en la sintaxis de C existen 5 grandes grupos de elementos:
 
-1. **Comentarios:** Permiten generar documentación del código sobre el propio código fuente. Los comentarios inician después de repetir dos veces el símbolo --slash--, que es este: **//**. Los comentarios son ignorados por el preprocesador, por lo tanto sólo tendrá validez para el programador en cuanto a guía u orientación. Ejemplo. 
+1. **Comentarios:** Permiten generar documentación del código sobre el propio código fuente. Los comentarios inician después de repetir dos veces el símbolo *--slash--*, que es este: **//**. Los comentarios son ignorados por el preprocesador, por lo tanto sólo tendrá validez para el programador en cuanto a guía u orientación. Ejemplo. 
     ~~~
         // Esto es un comentario en el lenguaje C.
         int a = 3;  // Esto es otro comentario. 
@@ -375,10 +375,10 @@ Se puede decir que en en la sintaxis de C existen 5 grandes grupos de elementos:
     ~~~
     #include <stdio.h> 
     ~~~
-    indica al compilador que debe incluir información acerca de la biblioteca estándar de entrada/salida [6](#referencias).
+    indica al compilador que debe incluir información acerca de la biblioteca estándar de entrada/salida [[6]](#referencias).
 
 2. **Sentencias:** Son las instrucciones que el programador define y son las que indican la funcionalidad de un programa. Existen tres tipos de sentencias en C:
-    1. **Sentencias de expresión:** Consiste en una expresión acabada con un punto y coma (;), la ejecución de esta hace que se evalúe la expresión [7](#referencias).
+    1. **Sentencias de expresión:** Consiste en una expresión acabada con un punto y coma (;), la ejecución de esta hace que se evalúe la expresión [[7]](#referencias).
         Ejemplo:
         ~~~
         int a;                  // Declaración de variable a
@@ -386,7 +386,7 @@ Se puede decir que en en la sintaxis de C existen 5 grandes grupos de elementos:
         c = x + y;                  // Operación suma x + y, asigna el resultado a c
         printf("Suma=%d", c);    // Imprime por consola el resultado.
         ~~~
-    1. **Sentencias compuestas:** Están formadas por varias sentencias individuales encerradas entre dos llaves({...}). Las sentencias individuales pueden ser a su vez sentencias de expresión, sentencias compuestas o sentencias de control. A diferencia de una sentencia de expresión, las compuestas no acaban con un punto y coma. Las sentencias compuestas hacen posible incluir unas sentencias dentro de otras [7](#referencias). Ejemplo:
+    1. **Sentencias compuestas:** Están formadas por varias sentencias individuales encerradas entre dos llaves({...}). Las sentencias individuales pueden ser a su vez sentencias de expresión, sentencias compuestas o sentencias de control. A diferencia de una sentencia de expresión, las compuestas no acaban con un punto y coma. Las sentencias compuestas hacen posible incluir unas sentencias dentro de otras [[7]](#referencias). Ejemplo:
         ~~~
         {
             pi = 3.14;
@@ -394,7 +394,7 @@ Se puede decir que en en la sintaxis de C existen 5 grandes grupos de elementos:
             ++i;
         }
         ~~~
-    1. **Sentencias de control:** se utilizan cuando deseamos conseguir ciertas acciones especiales en los programas, comprobaciones lógicas (como if-else), bucles (como while o for) y ramificaciones (como switch-case). Muchas sentencias de control necesitan que las otras modalidades de sentencias que tenemos, estén presentes dentro de ellas [7](#referencias).
+    1. **Sentencias de control:** se utilizan cuando deseamos conseguir ciertas acciones especiales en los programas, comprobaciones lógicas (como if-else), bucles (como while o for) y ramificaciones (como switch-case). Muchas sentencias de control necesitan que las otras modalidades de sentencias que tenemos, estén presentes dentro de ellas [[7]](#referencias).
 
 3. **Funciones:** Son secciones de código que se ejecutan para una tarea determinada. Las proposiciones de una función están encerradas entre llaves { }. Ejemplo:
     ~~~
