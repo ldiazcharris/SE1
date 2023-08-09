@@ -834,7 +834,7 @@ void main()
 
 ### ***Bucles infinitos*** 
 
-Un bucle infinito es un bucle que se repite "infinitas" veces:
+Un bucle infinito es un bucle que se repite "infinitas" veces, sin control alguno. Para parar estos bucles, se necesita que exista algún condicional que induzca a la instrucción *break*, para poder romper el bucle, de lo contrario, todo el código dentro del bucle se ejecutará constantemente hasta que se bloquee el procesador u ocurra algún evento externo al dispositivo, como un reinicio o la pérdida de energía de alimentación.
 
 ~~~
 for (;;) /*bucle infinito*/
