@@ -24,9 +24,9 @@
 
 ### Sistema Embebido
 
-Es un dispositivo electrónico con capacidad de computación que está diseñado para cumplir una labor especifica en un producto. Comúnmente, un sistema embebido hace parte de un sistema más grande y complejo, por ejemplo vehículos (carros, motocicletas, aviones o naves espaciales), o incluso sistemas de la vida cotidiana, como lo son los electrodomésticos (lavadora, nevera o incluso la licuadora). 
+Es un dispositivo electrónico con capacidad de computación que está diseñado para cumplir una labor específica en un producto. Comúnmente, un sistema embebido hace parte de un sistema más grande y complejo, por ejemplo vehículos (carros, motocicletas, aviones o naves espaciales), o incluso sistemas de la vida cotidiana, como lo son los electrodomésticos (lavadora, nevera o incluso la licuadora). 
 
-El papel que desempeña un sistema embebido dentro del sistema mayor que lo contiene, comúnmente corresponde a la el control automático de todas o de una parte de las funciones del sistema afitrión. Tales funciones pueden incluir el preprocesamiento de señales provenientes de sensores, control de actuadores y las comunicaciones inalámbricas. 
+El papel que desempeña un sistema embebido dentro del sistema mayor que lo contiene, comúnmente corresponde a la el control automático de todas o de una parte de las funciones del sistema anfitrión. Tales funciones pueden incluir el preprocesamiento de señales provenientes de sensores, control de actuadores y las comunicaciones inalámbricas. 
 
 En las últimas décadas, la informática se ha convertido omnipresente en todo el mundo. Esta omnipresencia se puede palpar con la presencia de internet, la computación en la nube, los servidores globales, las computadoras portátiles, tabletas, teléfonos inteligentes y una inmensa variedad de dispositivos con capacidad de computación en todas partes [[1]](#referencias).
 
@@ -241,7 +241,7 @@ Los microprocesadores basados en arquitecturas SISC o RISC no han logrado mayor 
 
 ## 1.6. El concepto de Hardware Abstraction Layer
 
-Uno de los problemas más básicos al desarrollar software para un sistem-on_chip (SoC) está relacionado con la portabilidad del código. Esto último se refiere a la capacidad de un software para ejecutarse en distintas plataformas, en este caso, SoCs diferentes (o de distintos fabricantes). Esta es una cuestión fundamental para cualquier organización que desee invertir en el desarrollo de un sistema operativo (OS, *operating system*), que probablemente solo tenga alguna posibilidad comercial si puede ejecutarse en varias plataformas SoC, sin un esfuerzo y un gasto de desarrollo significativos. En tal escenario, el objetivo es hacer que el OS sea lo más abstracto posible con respecto al hardware subyacente. Para ello, los fabricantes de SoCs, desarrollan la "Capa de Abstracción de Hardware (*HAL, Hardware Abstraction Layer*), que consiste en un programa que implementa una serie de métodos (funciones, clases, estructuras, etc.) que permiten la virtualización del entorno de ejecución, lo que permite que un sistema operativo sea compatible con múltiples plataformas de SoC [[1]](#referencias).
+Uno de los problemas más básicos al desarrollar software para un sistem-on_chip (SoC) está relacionado con la portabilidad del código. Esto último se refiere a la capacidad de un software para ejecutarse en distintas plataformas, en este caso, SoCs diferentes (o de distintos fabricantes). Esta es una cuestión fundamental para cualquier organización que desee invertir en el desarrollo de un sistema operativo (OS, *operating system*), que probablemente solo tenga alguna posibilidad comercial si puede ejecutarse en varias plataformas SoC, sin un esfuerzo y un gasto de desarrollo significativos. En tal escenario, el objetivo es hacer que el OS sea lo más abstracto posible con respecto al hardware subyacente. Para ello, los fabricantes de SoC's, desarrollan la "Capa de Abstracción de Hardware (*HAL, Hardware Abstraction Layer*), que consiste en un programa que implementa una serie de métodos (funciones, clases, estructuras, etc.) que permiten la virtualización del entorno de ejecución, lo que permite que un sistema operativo sea compatible con múltiples plataformas de SoC [[1]](#referencias).
 
 De acuerdo con lo anterior, es posible decir el concepto de capa de abstracción de hardware o HAL, es un software que define e implementa todas las funciones requeridas para acceder al hardware de un microprocesador/microcontrolador o conjunto de ellos, típicamente del mismo fabricante. La HAL proporciona funciones de alto nivel al programador, de manera que éste no se preocupa por cómo debe acceder a memoria o los periféricos del hardware, sino que le proporciona una *interfaz* para que lo pueda hacer. 
 
@@ -281,7 +281,7 @@ Este lenguaje está basado en “mnemónicos” ya que sustituye una instrucció
 
 Lenguaje de máquina del Intel 8088. El código de máquina en hexadecimal en rojo, el equivalente en lenguaje ensamblador en magenta, y las direcciones de memoria donde se encuentra el código, en azul. Abajo se ve un texto en hexadecimal y ASCII [Fuente: Wikipedia](https://es.wikipedia.org/wiki/Lenguaje_de_m%C3%A1quina#/media/Archivo:Codigo_de_maquina.png).
 
-Un programa escrito en Assembler típicamente tiene la extensión *.asm o *.s. Éste programa se denomina código fuente y es dependiente de la arquitectura de microprocesador que se esté usando.
+Un programa escrito en Assembler típicamente tiene la extensión *.asm o *.s. Este programa se denomina código fuente y es dependiente de la arquitectura de microprocesador que se esté usando.
 Algunas de las arquitecturas comunes en microprocesadores son:
 - X86-64
 - ARM
@@ -314,7 +314,7 @@ De manera general, el proceso de compilación que se lleva a cabo como sigue:
     - Generación de código máquina
 
 - Enlazado (Linker)
-    - Genara coherencia y cohesión en las instrucciones.
+    - Genera coherencia y cohesión en las instrucciones.
     - Generación de ejecutables.
 
 A continuación, se muestra un diagrama del proceso y sus archivos producto. 
@@ -394,7 +394,7 @@ Se puede decir que en en la sintaxis de C existen 5 grandes grupos de elementos:
             ++i;
         }
         ~~~
-    1. **Sentencias de control:** se utilizan cuando deseamos conseguir ciertas acciones especiales en los programas, comprobaciones lógicas (como if-else), bucles (como while o for) y ramificaciones (como switch-case). Muchas sentencias de control necesitan que las otras modalidades de sentencias que tenemos, estén presentes dentro de ellas [[7]](#referencias).
+    1. **Sentencias de control:** se utilizan cuando deseamos conseguir ciertas acciones especiales en los programas, comprobaciones lógicas (como if-else), bucles (como while o for) y ramificaciones (como switch-case). Muchas sentencias de control necesitan que las otras modalidades de sentencias que tenemos, estén presentes dentro de ellas [[7]](#referencias). Para ampliar, diríjase a la sección [Sentencias de control](#sentencias-de-control))
 
 3. **Funciones:** Son secciones de código que se ejecutan para una tarea determinada. Las proposiciones de una función están encerradas entre llaves { }. Ejemplo:
     ~~~
@@ -404,7 +404,7 @@ Se puede decir que en en la sintaxis de C existen 5 grandes grupos de elementos:
     }
     ~~~
 
-1. **Palabras reservadas:** Según el standard ANSI-C, el lenguaje C posee 32 palabras reservadas, a parte de las directivas del preprocesador. Estas son:
+4. **Palabras reservadas:** Según el standard ANSI-C, el lenguaje C posee 32 palabras reservadas, a parte de las directivas del preprocesador. Estas son:
 
     |  |  |  |  |  |  |  |
     | --- | --- | --- | --- | --- | --- | --- |
@@ -416,10 +416,11 @@ Se puede decir que en en la sintaxis de C existen 5 grandes grupos de elementos:
 
 ### **El primer programa en C**
 
-En C, el program a para escribir "hola, mundo" es [6](#referencias):
+En C, el program a para escribir "hola, mundo" es [[6]](#referencias):
 
 ~~~
 #include <stdio.h>
+
 void main()
 {
     printf("hola, mundo\n");
@@ -428,7 +429,417 @@ void main()
 
 La forma de ejecutar este program a epende del sistema operativo que se esté utilizando. Sin embargo, para simplificar el proceso de aprendizaje de la sintaxis de C, usaremos el compilador online [OnlineGDB](https://www.onlinegdb.com/online_c_compiler).
 
+### **Variables**
 
+Una variable es un espacio de memoria RAM (u otra), separado y etiquetado con un nombre. Las variables pueden ser globales o locales. 
+
+Una **variable global** es aquella que es "reconocida" en todo el programa, es decir aquella que es posible usar dentro de todo el programa. Como buena práctica, las variables globales deberían declararse antes de la función main. De esta forma, la variable será reconocida en todo el programa. Así mismo, par que todas las funciones reconozcan la existencia de una variable local, también debería declararse dicha variable antes de la función. 
+
+En el ejemplo de a continuación, se declaran como globales las variables *a* y *b*.
+
+~~~
+#include <stdio.h>
+
+int a = 1;
+int b = 3;
+
+int suma(int x, int y)
+{
+	return x + y;
+}
+
+void main()
+{
+	printf("Programa que suma dos números\n");
+    printf("Suma = %d", suma(a, b));
+}
+
+~~~
+
+Una **variable local** son aquellas que sólo son reconocidas en el ámbito de una función. En el ejemplo anterior, los parámetros *x* e *y* de la función *suma()*, son variables que sólo "existen" para esta función. Sin embargo, para ser más explícitos pero menos eficientes, se podría escribir el siguiente código, el cual tiene el mis comportamiento que el anterior.
+
+~~~
+#include <stdio.h>
+
+int a = 1;
+int b = 3;
+
+int suma(int x, int y)
+{
+	int z = 0; // Se declara una variable local z y se define su valor, en este caso 0. 
+	z = x + y; // Se asigna a la variable z el resultado de la suma de x e y.
+	return z;  // Se retorna el valor de z al terminar la función. 
+}
+
+void main()
+{
+	printf("Programa que suma dos números\n");
+    printf("Suma = %d", suma(a, b));
+}
+
+~~~
+
+Si se intentara llamar a las variables x, y o z desde la función main, el compilador de C nos devolvería el siguiente error: 
+~~~ 
+main.c:22:25: error: ‘x’ undeclared (first use in this function) 
+~~~
+
+### **Sentencias de control**
+
+### **Condicionales**
+
+Es una estructura de control condicionales o selectivas permiten decidir qué ejecutar y qué no en un programa [[8]](#referencias).
+
+### ***if***
+
+<img src="imagenes/1.9_if.png" width="200">
+
+*Figura 21. Diagrama de flujos del condicional if.*
+
+La sentencia *if* nos permite elegir si se ejecuta o no un bloque de instrucciones. La sintaxis es la siguiente:
+
+**Sintaxis:**
+
+Forma 1:
+~~~
+if (condición)
+	sentencia;
+~~~
+
+Forma 2:
+~~~
+if (condición) {
+	bloque
+}
+~~~
+
+**Consideraciones:** [[8]](#referencias)
+
+- Olvidar los paréntesis al poner la condición del if es un error sintáctico (los paréntesis son necesarios)
+- Confundir el operador de comparación == con el operador de asignación = puede producir errores inesperados
+- Los operadores de comparación ==, !=, <= y >= han de escribirse sin espacios.
+- => y =< no son operadores válidos en C.
+- El fragmento de código afectado por la condición del if debe sangrarse para que visualmente se interprete correctamente el ámbito de la sentencia if.
+
+Ejemplo: Decir si un número es positivo [[8]](#referencias).
+~~~
+#include <stdio.h>
+void main()
+{
+	int x;
+	printf("Digite un numero");
+	scanf("%d", &x);
+	if (x > 0) 
+	{
+		printf("El numero %d es positivo",x);
+	}
+}
+~~~
+
+
+
+### ***if-else***
+
+<img src="imagenes/1.9_if_else.png" width="400">
+
+*Figura 22. Diagrama de flujo de la estructura if-else.*
+
+Una sentencia *if*, cuando incluye la cláusula *else*, permite ejecutar un bloque de código si se cumple la condición y otro bloque de código diferente si la condición no se cumple [[8]](#referencias).
+
+**Sintaxis:**
+
+Forma 1:
+
+~~~
+if (condición)
+	sentencia1;
+else
+	sentencia2;
+~~~
+
+Forma 2:
+
+~~~
+if (condición) 
+{
+	bloque1
+} 
+else 
+{
+	bloque2
+}
+~~~
+
+Ejemplo: Decir si un número es positivo o negativo [[8]](#referencias).
+
+~~~
+#include <stdio.h>
+void main()
+{
+	int x;
+	printf("Digite un numero: ");
+	scanf("%d",&x);
+	if (x>=0) 
+	{
+		printf("El numero %d es positivo", x);
+	} 
+	else 
+	{
+		printf("El numero %d es negativo", x);
+	}
+}
+~~~
+
+**Encadenamiento:** Las sentencias if se suelen encadenar [[8]](#referencias).
+
+~~~
+#include <stdio.h>
+void main()
+{
+	float nota;
+	printf("Digite una nota: ");
+	scanf("%f",&nota);
+	if (nota>=9) 
+	{
+		printf("Sobresaliente");
+	} 
+	else if (nota>=7) 
+	{
+		printf("Notable");
+	} 
+	else if (nota>=5) 
+	{
+		printf("Aprobado");
+	} 
+	else 
+	{
+		printf("Suspenso");
+	}
+}
+~~~
+
+**Anidamiento:** Las sentencias if se suelen anidar [[8]](#referencias).
+
+Ejemplo:
+Resolución de una ecuación de primer grado ax+b = 0.
+
+~~~
+#include <stdio.h>
+void main()
+{
+	float a,b;
+	printf("Coeficientes de la ecuación ax+b=0:");
+	scanf ("%f %f", &a, &b);
+	if (a!=0) 
+	{
+		printf("La solución es %f", -b/a);
+	} 
+	else 
+	{
+		if (b!=0) 
+		{
+			printf("La ecuación no tiene solución.");
+		} 
+		else 
+		{
+			printf("Solución indeterminada.");
+		}
+	}
+}
+~~~
+
+### ***Switch-case***
+
+Permite seleccionar entre varias alternativas posibles [[8]](#referencias).
+
+<img src="imagenes/1.9_switch.png" width="400">
+
+*Figura 23. Diagrama de flujo de la estructura switch-case.*
+
+**Consideraciones:** [[8]](#referencias)
+
+- Se selecciona a partir de la evaluación de una única expresión.
+- La expresión del *switch* ha de ser de tipo entero.
+- Los valores de cada caso del *switch* han de ser constantes.
+- La etiqueta default marca el bloque de código que se ejecuta por defecto (cuando al evaluar la expresión se obtiene un valor no especificado por los casos del *switch*).
+- En C, se ejecutan todas las sentencias incluidas a partir del caso correspondiente, salvo que explícitamente usemos *break*:
+
+**Sintaxis:**
+~~~
+switch(expresión) 
+{
+	case expr_cte1:
+		sentencia1;
+	case expr_cte2:
+		sentencia2;
+	...
+	case expr_cteN:
+		sentenciaN;
+	default:
+		sentencia;
+}
+~~~
+
+Ejemplo [[8]](#referencias):
+
+~~~
+#include <stdio.h>
+void main()
+{
+int nota;
+printf(“Calificación: ”);
+scanf(“%d”, &nota);
+	switch(nota)
+	{
+		case 0:
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+			printf(“Suspenso”);
+			break;
+		case 5:
+		case 6:
+			printf(“Aprobado”);
+			break;
+		case 7:
+		case 8:
+			printf(“Notable”);
+			break;
+		case 9:
+			printf(“Sobresaliente”);
+			break;
+		case 10:
+			printf(“Matrícula”);
+			break;
+		default:
+			printf(“Error”);
+	}
+}
+~~~
+
+### **Bucles**
+
+Son estructuras de control repetitivas o iterativas, que se usan cuando es necesario ejecutar
+una instrucción o un bloque de instrucciones más de una vez. Por ejemplo, cuando se necesite implementar un programa que calcule la suma de N números leídos desde teclado [[8]](#referencias), se podría escribir un programa en el que apareciese repetido el código que resuelve esto, y que se ejecute varias veces, pero:
+- El programa sería muy largo.
+- Gran parte del código del programa estaría duplicado.
+- El código no sería reutilizable [[8]](#referencias).
+
+Las estructuras repetitivas se pueden usar cuando se conoce el número de veces que deben repetirse las operaciones o cuando se necesite repetir un conjunto de operaciones mientras se cumpla una condición. 
+
+Entiéndase Iteración como cada repetición de las instrucciones de un bucle.
+
+### ***while***
+
+El bucle *while* permite repetir un conjunto de operaciones mientras se cumpla una condición.
+
+**Sintaxis:**
+
+Forma 1:
+~~~
+while(condición)
+	sentencia;
+~~~
+
+Forma 2:
+~~~	
+while(condición) 
+{
+	bloque
+}
+~~~
+
+En el cuerpo del bucle debe existir algo que haga variar el valor asociado a la condición que gobierna la ejecución del bucle [[8]](#referencias).
+
+<img src="imagenes/1.9_while.png" width="300">
+
+*Figura 24. Diagrama de flujo de la estructura del bucle while.*
+
+Ejemplo 1: Tabla de multiplicar de un número.
+
+~~~
+#include <stdio.h>
+void main()
+{
+	int n, i;
+	printf ("Introduzca un número: ");
+	scanf ("%d", &n);
+	i=0; // Inicialización del contador
+	while(i<=10) 
+	{
+		printf ("%d x %d = %d\n", n, i, n*i);
+		i++;
+	}
+}
+~~~
+
+Ejemplo 2: Divisores de un número [[8]](#referencias).
+
+~~~
+#include <stdio.h>
+void main ()
+{
+	int n;
+	int divisor;
+	printf ("Introduzca un número: ");
+	scanf ("%d", &n);
+	printf ("Los divisores del número son:\n");
+	divisor = n;
+	while(divisor>0) 
+	{
+		if ((n%divisor) == 0)
+		printf ("%d\n", divisor);
+		divisor--;
+	}
+}
+~~~
+
+### **for**
+
+Se usa cuando se conoce el número de iteraciones que hay que realizar [[8]](#referencias).
+
+<img src="imagenes/1.9_for.png" width="300">
+
+*Figura 25. Diagrama de flujo de la estructura del bucle for.*
+
+**Sintaxis:**
+
+~~~
+for (exp1; exp2; exp3) 
+{
+	bloque;
+}
+~~~
+
+La primera expresión, *expr1*, suele contener inicializaciones de variables separadas por comas.  En especial, siempre aparecerá la inicialización de la variable que hace de contador. Las instrucciones que se encuentran en esta parte del *for* sólo se ejecutarán una vez antes de la primera ejecución del cuerpo del bucle (bloque). La segunda expresión, *expr2*, es la que contiene una expresión booleana. La tercera expresión, *expr3*, contiene las instrucciones, separadas por comas, que se deben ejecutar al finalizar cada iteración del bucle (p.ej. el incremento/decremento de la variable contador). El bloque de instrucciones bloque es el ámbito del bucle (el bloque de instrucciones que se ejecuta en cada iteración) [[8]](#referencias).
+
+Ejemplo: Cálculo del factorial de un número [[8]](#referencias).
+
+~~~
+#include <stdio.h>
+void main()
+{
+	long i, n, factorial;
+	printf ("Introduzca un número: ");
+	scanf ("%ld", &n);
+	factorial = 1;
+	for(i=1; i<=n; i++) 
+	{
+		factorial *= i;
+	}
+	printf ("factorial(%ld) = %ld", n, factorial);
+}
+~~~
+
+### ***Bucles infinitos*** 
+
+Un bucle infinito es un bucle que se repite "infinitas" veces:
+
+~~~
+for (;;) /*bucle infinito*/
+while (1) /*bucle infinito*/
+~~~
 
 ### [1.9.1. Introducción al lenguaje C/C++ Práctica 1](1.9_Practica1.md)
 
@@ -464,3 +875,4 @@ Para facilitar el proceso de enseñanza aprendizaje se hará uso de entorno de d
 - [5] ARIEL LUTENBERG, PABLO GOMEZ, ERIC PERNIA. *A Beginner’s Guide to Designing Embedded System Applications on Arm® Cortex®-M Microcontrollers*. ARM Education Media. ISBN: 978-1-911531-42-5 (ePDF)
 - [6] BRIAN W. KERNIGHAN y DENNIS M. RITCHIE. *El lenguaje de programación C*. 2da Edición. Pearson Education. 1991. Prentice-Hall Hispanoamericana. 
 - [7] UGR. https://ccia.ugr.es/~jfv/ed1/c/cdrom/cap2/cap28.htm#ej_c
+- [8] UGR. https://elvex.ugr.es/decsai/c/apuntes/control.pdf
