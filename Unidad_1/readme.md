@@ -921,6 +921,153 @@ int main(void)
 
 *Código tomado de: [[10]](#referencias).*
 
+### **Operadores básicos de C**
+
+| Símbolo | Descripción
+| --- | --- |
+| * | Multiplicación |
+| / | División |
+| %	| Módulo |
+| + | Suma |
+| -	| Resta |
+| --- | Operadores de desplazamiento bit a bit |
+| << | Desplazamiento a la izquierda |
+| >> | Desplazamiento a la derecha |
+| --- | Operadores relacionales |
+| < | Menor que |
+| > | Mayor que |
+| <= | Menor o igual que |
+| >= | Mayor o igual que |
+| == | Igual que |
+| != | Diferente de |
+| --- | Operadores bit a bit |
+| & | Operador AND bit a bit |
+| ^	| Operador XOR bit a bit |
+| &#124; | Operador OR bit a bit |
+| --- | Operadores lógicos |
+| && | Operador AND lógico. Genera el valor 1 si ambos operandos tienen valores distintos de cero.
+| &#124;&#124; | El resultado es 0 si ambos operandos tienen valores 0. |
+
+### **Funciones en C**
+
+El código de un programa escrito en C se divide en funciones. Una función en C se distingue sólo por su nombre. Dos funciones con igual nombre y con diferente número y tipo de parámetros se considera una definición múltiple, y por tanto un error [[12]](#referencias). 
+
+Las funciones suelen encapsular una operación más o menos compleja de la que se deriva un resultado. Para ejecutar esta operación, las funciones pueden precisar la invocación de otras funciones (o incluso de ellas mismas como es el caso de las funciones recursivas) [[12]](#referencias).
+
+Las funciones en un programa son entidades que reciben parámetros (datos de entrada), realizan una tarea específica y se espera de ellas un resultado. Lo idóneo es dividir tareas complejas en porciones más simples que se implementan como funciones. La división y agrupación de tareas en funciones es uno de los aspectos más importantes en el diseño de un programa [[12]](#referencias).
+
+Las funciones en C tienen el siguiente formato:
+
+~~~
+tipo_del_resultado NOMBRE(tipo_param1 param1, tipo_param2 param2, ... ) 
+{
+    /* Cuerpo de la función */
+}
+~~~
+
+*Tomado de: [[12]](#referencias).*
+
+Cuando se invoca una función se asignan valores a sus parámetros y comienza a ejecutar el cuerpo hasta que se llega al final o se encuentra la instrucción *return*. Si la función devuelve un resultado, esta instrucción debe ir seguida del dato a devolver [[12]](#referencias). Por ejemplo:
+
+~~~
+int search(int table[], int size) 
+{
+    int i, j;
+    if (size == 0) 
+    {
+        return 0;
+    }
+    j = 0;
+    for (i = 0; i < size; i++) 
+    {
+        j += table[i];
+    }
+    return j;
+}
+~~~
+
+*Código tomado de: [[12]](#referencias).*
+
+La llamada a una función se codifica con su nombre seguido de los valores de los parámetros separados por comas y rodeados por paréntesis. Si la función devuelve un resultado, la llamada se reemplaza por su resultado en la expresión en la que se incluye. Por ejemplo:
+
+~~~
+int addition(int a, int b) 
+{
+    return (a + b);
+}
+int main() 
+{
+    int c;
+    c = c * addition(12, 32);
+}
+~~~
+
+*Código tomado de: [[12]](#referencias).*
+
+### **Tipos de datos básicos en C**
+
+En el lenguaje C existen tres tipos de datos básicos [[13]](#referencias).:
+
+- Números enteros definidos con la palabra clave *int*.
+- Letras o caracteres definidos con la palabra clave *char*.
+- Números reales o en coma flotante definidos con las palabras claves *float* o *double*.
+
+### **Tamaño de los tipos de datos**
+
+En C, el tamaño de los tipos de datos básicos puede variar de una plataforma a otra. Esta característica está detrás de buena parte de las críticas que recibe este lenguaje, pues de ella se derivan problemas de compatibilidad (una aplicación se comporta de forma diferente cuando se ejecuta en plataformas diferentes) [[13]](#referencias)..
+
+A modo de ejemplo, en la siguiente tabla se incluyen los tamaños de los tipos de datos para las plataformas Linux/Intel i686 [[13]](#referencias)..
+
+| Tipo | Tamaño (en bytes) | 
+| --- | :---: |
+| char, unsigned char | 1 |
+| short int, unsigned short int | 2 |
+| int, unsigned int, long int, unsigned long int | 4 |
+| float	| 4 |
+| double | 8 |
+| long double | 12 |
+
+*Tabla tomada de: [[13]](#referencias).*
+
+### **Conversión de tipos de datos en C**
+
+La conversión de un tipo de datos en otro se conoce como conversión de tipos o conversión de tipos (type casting). Por ejemplo, si desea almacenar un valor *'long'* en un número entero simple, se puede escribir *cast 'long' a 'int'¨*. Puede convertir los valores de un tipo a otro explícitamente usando el operador de conversión de la siguiente manera [[14]](#referencias):
+
+~~~
+(nombre_del_tipo) expresión
+~~~
+
+Considere el siguiente ejemplo donde el operador de conversión hace que la división de una variable entera por otra se realice como una operación de punto flotante [[14]](#referencias):
+
+~~~
+#include <stdio.h>
+
+main() {
+
+   int sum = 17, count = 5;
+   double mean;
+
+   mean = (double) sum / count;
+   printf("Value of mean : %f\n", mean );
+}
+~~~
+
+*Código tomado de: [[14]](#referencias)*+
+
+### **Macros**
+
+La directiva *#define* crea una macro, que es la asociación de un identificador o identificador con parámetros con una cadena de token. Una vez definida la macro, el compilador puede sustituir la cadena de token para cada aparición del identificador del archivo de código fuente.
+
+***Sintaxis***
+~~~
+#defineidentifiertoken-stringopt
+#defineidentifier(identifieropt, ... ,identifieropt)token-stringopt
+~~~
+
+Es una plantilla o meta-expresión que define un patrón de sustitución. El patrón define unas variables libres y unas expresiones textuales. Cuando usamos la macro, le damos un valor a las variables libres. La macro se expande, aplicando el patrón a los variables y generando código en el lenguaje de programación de la macro.
+
+Es una técnica de generación de código. En el caso de lenguajes compilados la expansión de la macro se realiza en la fase de preprocesamiento, antes de la compilación. En el caso de lenguajes interpretados, la expansión de la macro se realiza al antes de llamar al evaluador. Primero se expande la macro y después se evalúa la expresión resultante.
+
 ### [1.9.1. Introducción al lenguaje C/C++ Práctica 1](1.9_Practica1.md)
 
 ### [1.9.2. Introducción al lenguaje C/C++ Práctica 2](1.9_Practica2.md)
@@ -958,4 +1105,7 @@ Para facilitar el proceso de enseñanza aprendizaje se hará uso de entorno de d
 - [8] UGR. https://elvex.ugr.es/decsai/c/apuntes/control.pdf
 - [9] UC3M. https://www.it.uc3m.es/pbasanta/asng/course_notes/input_output_printf_es.html
 - [10] UC3. https://www.it.uc3m.es/pbasanta/asng/course_notes/input_output_function_scanf_es.html 
-- [11] https://www.it.uc3m.es/pbasanta/asng/course_notes/pointers_es.html
+- [11] UC3M. https://www.it.uc3m.es/pbasanta/asng/course_notes/pointers_es.html
+- [12] UC3M. https://www.it.uc3m.es/pbasanta/asng/course_notes/functions_es.html 
+- [13] UC3M. https://www.it.uc3m.es/pbasanta/asng/course_notes/data_types_es.html
+- [14] https://www.tutorialspoint.com/cprogramming/c_type_casting.htm
