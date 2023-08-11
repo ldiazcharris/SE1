@@ -267,13 +267,13 @@ Por lo tanto, para efectos de ubicar el concepto de lenguaje en el contexto de l
 
 ### **Lenguaje maquina:** 
 
-También llamado código máquina. Es el sistema de codificación o lenguaje (si se quiere) que es directamente ejecutado por un microprocesador; de ahí viene la denominación "lenguaje máquina". Su composición se basa en los estados eléctricos de “encendido o apagado”, lo que en términos binarios se conoce como “unos y ceros”. Cualquier instrucción que deba ser ejecutada por el microprocesador debe estar expresada en binario.
+También llamado código máquina. Es el sistema de codificación o lenguaje (si se quiere) que es directamente ejecutado por un microprocesador; de ahí viene la denominación "lenguaje máquina". Su composición se basa en los estados eléctricos de "encendido o apagado", lo que en términos binarios se conoce como "unos y ceros". Cualquier instrucción que deba ser ejecutada por el microprocesador debe estar expresada en binario.
 
 ### **Lenguaje ensamblador:** 
 
 (Assembly languaje o assembler, del inglés), Es un lenguaje de programación de bajo nivel, que se usa para la programación de microprocesadores. Es un lenguaje muy cercano al código máquina, ya que cada instrucción se corresponde con un código máquina directamente (casi). 
 
-Este lenguaje está basado en “mnemónicos” ya que sustituye una instrucción en código máquina por palabras o símbolos alfanuméricos más fáciles de recordar por el programador.
+Este lenguaje está basado en "mnemónicos" ya que sustituye una instrucción en código máquina por palabras o símbolos alfanuméricos más fáciles de recordar por el programador.
 
 ![Figura 19](imagenes/1.7_Codigo_de_maquina.png)
 
@@ -292,7 +292,7 @@ Algunas de las arquitecturas comunes en microprocesadores son:
 
 ### **El programa ensamblador**
 
-Es un software que se encarga de traducir el lenguaje ensamblador a lenguaje máquina. "Traduce" los **mnemónicos** y los convierte en *“opcode”* (código de operación). El Opcode saliente varía según el conjunto de instrucciones del microprocesador. Las operaciones pueden ser: aritméticas, lógicas, escritura o lectura de memoria y control del programa.
+Es un software que se encarga de traducir el lenguaje ensamblador a lenguaje máquina. "Traduce" los **mnemónicos** y los convierte en *"opcode"* (código de operación). El Opcode saliente varía según el conjunto de instrucciones del microprocesador. Las operaciones pueden ser: aritméticas, lógicas, escritura o lectura de memoria y control del programa.
 
 ## 1.8. Proceso de compilación de lenguajes de alto nivel
 
@@ -323,7 +323,7 @@ A continuación, se muestra un diagrama del proceso y sus archivos producto.
 
 *Figura 20. Diagrama de componentes (UML) del proceso de compilación. Fuente: Elaboración propia.*
 
-<img src="imagenes/idea.png" width="50"> *Nota terminológica*. Al programa o software escrito para dispositivos electrónicos (como microprocesadores o microcontroladores) se le denomina *firmware*.
+<img src="imagenes/idea.png" width="50"> ***Nota terminológica***. Al programa o software escrito para dispositivos electrónicos (como microprocesadores o microcontroladores) se le denomina *firmware*.
 
 ## 1.9. Introducción al lenguaje C/C++
 
@@ -687,8 +687,8 @@ Ejemplo [[8]](#referencias):
 void main()
 {
 int nota;
-printf(“Calificación: ”);
-scanf(“%d”, &nota);
+printf("Calificación: ");
+scanf("%d", &nota);
 	switch(nota)
 	{
 		case 0:
@@ -696,24 +696,24 @@ scanf(“%d”, &nota);
 		case 2:
 		case 3:
 		case 4:
-			printf(“Suspenso”);
+			printf("Suspenso");
 			break;
 		case 5:
 		case 6:
-			printf(“Aprobado”);
+			printf("Aprobado");
 			break;
 		case 7:
 		case 8:
-			printf(“Notable”);
+			printf("Notable");
 			break;
 		case 9:
-			printf(“Sobresaliente”);
+			printf("Sobresaliente");
 			break;
 		case 10:
-			printf(“Matrícula”);
+			printf("Matrícula");
 			break;
 		default:
-			printf(“Error”);
+			printf("Error");
 	}
 }
 ~~~
@@ -841,6 +841,86 @@ for (;;) /*bucle infinito*/
 while (1) /*bucle infinito*/
 ~~~
 
+### **Algunas funciones útiles**
+
+Algunas funciones básicas que se usarán para comprender la sintaxis de C y algunos algoritmos básicos. 
+
+### ***printf()***
+
+La función printf (que deriva su nombre de "print formatted") imprime un mensaje por pantalla utilizando una "cadena de formato" que incluye las instrucciones para mezclar múltiples cadenas en la cadena final a mostrar por pantalla [[9]](#referencias).
+
+*printf()* recibe varios parámetros parámetros. El primer parámetro es fijo y corresponde a la cadena de formato. Esta cadena es el texto a imprimir literalmente y marcas (formaters) que permiten reemplazarse por texto que se obtiene de los parámetros adicionales de la función. Por tanto, *printf()* se llama con tantos parámetros como marcas haya en la cadena de formato más uno (la propia cadena de formato). El siguiente ejemplo muestra cómo se imprime el valor de la variable contador [[9]](#referencias).
+
+~~~
+printf("El valor es %d.\n", contador);
+~~~
+
+El símbolo "%" denota el comienzo de la marca de formato. La marca "%d" se reemplaza por el valor de la variable contador y se imprime la cadena resultante. El símbolo "\n" representa un salto de línea. La salida, por defecto, se justifica a la derecha del ancho total que le hallamos dado al campo, que por defecto tiene como longitud la longitud de la cadena [[9]](#referencias). Si en la cadena de formato aparecen varias marcas, los valores a incluir se toman en el mismo orden en el que aparecen [[9]](#referencias).
+
+<img src="imagenes/1.9_printf.png" width=500>
+
+*Figura 26. Parámetros de la función printf(). Fuente: [[9]](#referencias).*
+
+Algunos de los tipos de marcas que se pueden usar en la función *printf()* son:
+
+| Type | Descripción |
+| ---  | ---         |
+| %c | Imprime el carácter ASCII correspondiente |
+| %d, %i | Conversión decimal con signo de un entero |
+| %x, %X | Conversión hexadecimal sin signo |
+| %p |	Dirección de memoria (puntero) |
+| %e, %E | Conversión a coma flotante con signo en notación científica |
+| %f, %F | Conversión a coma flotante con signo, usando punto decimal |
+| %g, %G | Conversión a coma flotante, usando la notación que requiera menor espacio |
+| %o | Conversión octal sin signo de un entero |
+| %u | Conversión decimal sin signo de un entero |
+| %s | Cadena de caracteres (terminada en '\0') |
+| %% | Imprime el símbolo %  |
+
+*Tabla tomada de [[9]](#referencias).*
+
+### ***scanf()***
+
+La función *scanf()* permite leer varios tipos de datos de una sola vez, tales como enteros, números decimales o cadenas de caracteres [[10]](#referencias).
+
+~~~
+int scanf(const char *format,...);
+~~~
+
+Aquí se pueden indicar varios especificadores de formato en la variable de tipo puntero format, dependiendo del tipo que se quiere leer, como con *printf()*. Si todo va bien, devuelve el número de datos leídos. Si hay algún error, devuelve EOF [[10]](#referencias).
+
+Si usamos el especificador %s para leer una cadena, la función lee caracteres hasta encontrar un espacio, un intro, un tabulador, un tabulador vertical o un retorno de carro. Los caracteres que lee se guardan en un array que debe ser lo suficientemente grande como para almacenarlos. Añade el carácter nulo al final automáticamente [[10]](#referencias).
+
+<img src="imagenes/idea.png" width="50"> ***Nota***. Es muy peligroso usar *scanf()* para leer cadenas, pues no tiene en cuenta la longitud de lo leído y admitirá que el usuario escriba más caracteres que el tamaño del array definido en el programa. Como resultado, *scanf()* escribirá los caracteres excedentes en otras porciones de memoria, que pueden contener datos del programa en ejecución. Esto desembocará en comportamientos anómalos, en fugas de memoria, etc. [[10]](#referencias). 
+
+A diferencia de *printf*, para usar *scanf* hay que pasar punteros a los argumentos para que scanf pueda modificar sus valores. ([Si quiere saber sobre punteros puede revisar este enlace](https://www.it.uc3m.es/pbasanta/asng/course_notes/pointers_es.html) [[11]](#Referencias).
+
+El siguiente programa muestra el uso de scanf para distintos especificadores de formato.
+
+~~~
+#include <stdio.h>
+#define TAM_MAXIMO 80
+
+int main(void)
+{
+  char cadena[TAM_MAXIMO];
+  int entero1, entero2;
+  float decimal;
+
+  printf("Introduce dos enteros separados por un espacio: \n");
+  scanf("%d %d", &entero1, &entero2);
+  printf("Introduce un número decimal:\n");
+  scanf("%f", &decimal);
+  printf("Introduce una cadena:\n");
+  scanf("%s",cadena);
+  printf("Esto es todo lo que has escrito:\n");
+  printf("%d %d %f %s\n",entero1,entero2,decimal,cadena);
+  return 0;
+}
+~~~
+
+*Código tomado de: [[10]](#referencias).*
+
 ### [1.9.1. Introducción al lenguaje C/C++ Práctica 1](1.9_Practica1.md)
 
 ### [1.9.2. Introducción al lenguaje C/C++ Práctica 2](1.9_Practica2.md)
@@ -876,3 +956,6 @@ Para facilitar el proceso de enseñanza aprendizaje se hará uso de entorno de d
 - [6] BRIAN W. KERNIGHAN y DENNIS M. RITCHIE. *El lenguaje de programación C*. 2da Edición. Pearson Education. 1991. Prentice-Hall Hispanoamericana. 
 - [7] UGR. https://ccia.ugr.es/~jfv/ed1/c/cdrom/cap2/cap28.htm#ej_c
 - [8] UGR. https://elvex.ugr.es/decsai/c/apuntes/control.pdf
+- [9] UC3M. https://www.it.uc3m.es/pbasanta/asng/course_notes/input_output_printf_es.html
+- [10] UC3. https://www.it.uc3m.es/pbasanta/asng/course_notes/input_output_function_scanf_es.html 
+- [11] https://www.it.uc3m.es/pbasanta/asng/course_notes/pointers_es.html
