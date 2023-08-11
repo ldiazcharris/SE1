@@ -930,21 +930,29 @@ int main(void)
 | %	| Módulo |
 | + | Suma |
 | -	| Resta |
+
 | --- | Operadores de desplazamiento bit a bit |
+| --- | --- |
 | << | Desplazamiento a la izquierda |
 | >> | Desplazamiento a la derecha |
+
 | --- | Operadores relacionales |
+| --- | --- |
 | < | Menor que |
 | > | Mayor que |
 | <= | Menor o igual que |
 | >= | Mayor o igual que |
 | == | Igual que |
 | != | Diferente de |
+
 | --- | Operadores bit a bit |
+| --- | --- |
 | & | Operador AND bit a bit |
 | ^	| Operador XOR bit a bit |
 | &#124; | Operador OR bit a bit |
+
 | --- | Operadores lógicos |
+| --- | --- |
 | && | Operador AND lógico. Genera el valor 1 si ambos operandos tienen valores distintos de cero.
 | &#124;&#124; | El resultado es 0 si ambos operandos tienen valores 0. |
 
