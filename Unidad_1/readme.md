@@ -1105,10 +1105,6 @@ Donde:
 
 \<componentes\>: Número de elementos del vector. - Puede ser un literal o una constante de tipo entero. - Nunca será una variable.
 
-*Acceso*
-- En C, el índice de la primera componente de un vector es siempre 0.
-- El índice de la última componente es <compontentes>-1
-
 ***Matrices***
 
 Son un tipo de arreglo que es bidimensional o tridimensional, formado de un número "i, j" (bidimensional) o "i, j, k" (tridimensional) de _variables simples del mismo tipo_ que son denominadas componentes o elementos del vector. El número de componentes "i, j, k" es representan las dimensión del arreglo.
@@ -1146,6 +1142,61 @@ En C es posible declarar y definir un vector o matriz de la siguiente manera:
 	int vector[] = {1, 2, 3, 5, 7};
 	~~~
 
+***Acceso***
+
+Par los arreglos en C, hay que tener las siguientes consideraciones.
+ 
+- En C, el índice de la primera componente de un vector es siempre 0.
+- El índice de la última componente es <compontentes>-1
+
+Par acceder al valor guardado en una de las posiciones del vector, es posible hacerlo a través del índice. El índice indica la posición en el vector.  En vectores pequeños es fácil hacer el acceso a sus componentes porque es posible conocer fácilmente las posiciones de cada uno. Sin embargo, lo normal es usar bucles (como el *for*) para "recorrer" los vectores e identificar sus componentes. 
+
+Dado un vector:
+
+~~~
+char vector[3] = {'a', 'b', 'c'};
+~~~
+
+Se puede acceder al valor *'a'* del vector, de la siguiente manera:
+
+~~~
+vector[0];
+~~~
+
+Esto, debido a que el valor *'a'* se encuentra en la posición *0* del vector. 
+
+A continuación, programas de ejemplo del uso del vector:
+
+~~~
+#include <stdio.h>
+
+void main()
+{
+
+    char vector[3] = {'a', 'b', 'c'};
+    
+    printf("El valor del índice 1 del vector es: %c \n", vector[1]);
+
+
+}
+
+~~~
+
+Para el acceso a los valores de una matriz, se sigue la misma lógica. Sin embargo, en este caso hay que considerar que las matrices tienen más dimensiones, por lo tanto hay que acceder de acuerdo con esto:
+
+~~~
+#include <stdio.h>
+
+void main()
+{
+    
+    int matriz[2][3] = { {1,2,3}, {4,5,6} };
+    
+    printf("El valor de la celda con índices (1, 1) del vector es: %d \n", matriz[1][1]);
+
+}
+
+~~~
 
 
 ### [1.9.1. Introducción al lenguaje C/C++ Práctica 1](1.9_Practica1.md)
@@ -1191,3 +1242,4 @@ Para facilitar el proceso de enseñanza aprendizaje se hará uso de entorno de d
 - [14] https://www.tutorialspoint.com/cprogramming/c_type_casting.htm
 - [15] https://elvex.ugr.es/decsai/c/
 - [16] https://disenowebakus.net/matrices.php
+- [17] 
