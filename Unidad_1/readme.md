@@ -1076,6 +1076,78 @@ Es una plantilla o meta-expresión que define un patrón de sustitución. El pat
 
 Es una técnica de generación de código. En el caso de lenguajes compilados la expansión de la macro se realiza en la fase de preprocesamiento, antes de la compilación. En el caso de lenguajes interpretados, la expansión de la macro se realiza al antes de llamar al evaluador. Primero se expande la macro y después se evalúa la expresión resultante.
 
+### **Estructuras de datos en C**
+
+***Arreglos*** o ***Arrays***
+
+Son estructuras de datos que permiten almacenar otros datos. Es decir, es un contenedor que permite tener varios datos al mismo tiempo almacenados. Los arreglos también son conocidos por su nombre en inglés como "arrays". Los datos almacenados se almacenan en forma consecutiva en memoria.
+
+<img src="imagenes/1.9_array.png" width=300>
+
+*Figura 27. Representación de un arreglo.*
+
+***Vectores***
+
+Son un tipo de arreglo que es unidimensional, formado de un número "i" de _variables simples del mismo tipo_ que son denominadas componentes o elementos del vector. El número de componentes "i" es representa la dimensión del arreglo.
+
+Un vector tiene una cantidad fija de memoria asignada, aunque dependiendo del lenguaje de programación un vector podría tener una cantidad variable de datos.
+
+En C, la forma de declarar un vector es [[15]](#referencias):
+
+~~~
+<tipo> <identificador> [<componentes>];
+~~~
+Donde:
+
+\<tipo\>: Tipo de dato de los elementos del vector
+
+\<identificador\>: Identificador de la variable.
+
+\<componentes\>: Número de elementos del vector. - Puede ser un literal o una constante de tipo entero. - Nunca será una variable.
+
+*Acceso*
+- En C, el índice de la primera componente de un vector es siempre 0.
+- El índice de la última componente es <compontentes>-1
+
+***Matrices***
+
+Son un tipo de arreglo que es bidimensional o tridimensional, formado de un número "i, j" (bidimensional) o "i, j, k" (tridimensional) de _variables simples del mismo tipo_ que son denominadas componentes o elementos del vector. El número de componentes "i, j, k" es representan las dimensión del arreglo.
+
+Una matriz bidimensional se podría representar gráficamente como una tabla con filas y columnas [[16]](#referencias). 
+
+Al igual que los vectores, tienen una cantidad fija de memoria asignada. Pero dependiendo del lenguaje de programación, esto puede ser diferente. 
+
+En C, a forma de declarar un vector es [[15]](#referencias):
+
+~~~
+<identificador>[<índice1>][<índice2>]
+~~~
+
+***Inicialización de arreglos en C***
+
+En C es posible declarar un vector o matriz de la siguiente manera:
+
+Solamente asignando las dimensiones:
+~~~
+char vector[3];
+int matriz[2][3];
+~~~
+
+En C es posible declarar y definir un vector o matriz de la siguiente manera:
+
+1. Asignarle un valor inicial a los elementos:
+	~~~
+	char vector[3] = {'a', 'b', 'c'};
+	int matriz[2][3] = { {1,2,3}, {4,5,6} };
+	~~~
+
+1. El compilador puede deducir las dimensiones:
+	~~~
+	int vector[] = {1, 2, 3, 5, 7};
+	~~~
+
+
+
 ### [1.9.1. Introducción al lenguaje C/C++ Práctica 1](1.9_Practica1.md)
 
 ### [1.9.2. Introducción al lenguaje C/C++ Práctica 2](1.9_Practica2.md)
@@ -1117,3 +1189,5 @@ Para facilitar el proceso de enseñanza aprendizaje se hará uso de entorno de d
 - [12] UC3M. https://www.it.uc3m.es/pbasanta/asng/course_notes/functions_es.html 
 - [13] UC3M. https://www.it.uc3m.es/pbasanta/asng/course_notes/data_types_es.html
 - [14] https://www.tutorialspoint.com/cprogramming/c_type_casting.htm
+- [15] https://elvex.ugr.es/decsai/c/
+- [16] https://disenowebakus.net/matrices.php
