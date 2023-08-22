@@ -1205,9 +1205,304 @@ void main()
 
 ## 1.10. Algoritmos y ejercicios de programación
 
-Para el desarrollo del curso se hará uso del lenguaje C, a través del uso del *toolchain* de la empresa ESPRESSIF, denominado ESP-IDF. Toda la información y documentación sobre esta herramienta la puede encontrar en la [página oficial de ESPRESSIF](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/windows-setup.html). 
+Para el desarrollo del curso se hará uso de:
+
+1. SoC ESP32
+2. Lenguaje C, a través del uso del *toolchain* ESP-IDF.
+
+## **¿Qué es el ESP32?**
+
+Es una familia o serie de microcontroladores tipo SoC, desarrollado por la empresa Espressif.
+
+<img src="imagenes/1.10_logo_espressif.png" width=200>
+
+Toda la información y documentación sobre esta herramienta la puede encontrar en la [página oficial de ESPRESSIF](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/windows-setup.html). 
+
+### **Arquitectura del ESP32**
+
+El ESP32 es un sistema de doble núcleo con dos *CPU Harvard Architecture Xtensa LX6*. Toda la memoria integrada, la memoria externa y los periféricos se encuentran en el bus de datos y/o el bus de instrucciones de estas CPU.
+
+Las dos CPU se denominan "PRO_CPU" y "APP_CPU" (de "protocolo" y "aplicación"), sin embargo, para la mayoría de los propósitos, las dos CPU son intercambiables.
+
+-  Espacio de dirección
+	- Mapeo de direcciones simétricas
+	- Espacio de direcciones de 4 GB (32 bits) para el bus de datos y el bus de instrucciones
+	- Espacio de direcciones de memoria integrada de 1296 KB
+	- 19704 KB de espacio de direcciones de memoria externa
+	- Espacio de direcciones periférico de 512 KB
+	- Se puede acceder a algunas regiones de la memoria integrada y externa mediante el bus de datos o el bus de instrucciones
+	- Espacio de direcciones DMA de 328 KB
+- Memoria integrada
+	- ROM interna de 448 KB
+	- SRAM interna de 520 KB
+	- Memoria RTC RÁPIDA de 8 KB
+	- Memoria LENTA RTC de 8 KB
+- Memoria externa
+La memoria SPI fuera del chip se puede asignar al espacio de direcciones disponible como memoria externa. Partes de la memoria integrada se pueden utilizar como caché transparente para esta memoria externa.
+	- Admite hasta 16 MB de Flash SPI sin chip.
+	- Admite hasta 8 MB de SPI SRAM sin chip.
+- Periféricos
+	- 41 periféricos
+- DMA
+	- 13 módulos son capaces de operar con DMA
+
+
+<img src="imagenes/1.10_pinout_1.png" width=500>
+
+*Figura 30. Arquitectura del ESP32 [17](#referencias)*
+
+### **Familias del ESP32**
+
+- ESP32: Wi-Fi and BLE.
+- ESP32-S: Wi-Fi.
+- ESP32-C: Wi-Fi and BLE 5.
+- ESP32-H2: BLE5, IEEE 802.15.4 (Zigbee / Thread)
+- ESP32-C6: Wi-Fi, BLE5, IEEE 802.15.4 (Zigbee / Thread)
+- Subvariantes:
+	- Tamaño memoria.
+	- Número de núcleos.
+
+### **Ventajas del ESP32**
+
+- Bajo costo.
+- Bajo consumo energético (soporta deep sleep).
+- Conectarse a Wifi.
+- Crear red Wifi.
+- Bluetooth (Normal y BLE).
+
+### **Puertos disponibles en el ESP32**
+
+- Toque capacitivo (Touch-sensitive).
+- ADCs (Analog-to-Digital Converter).
+- DACs (Digital-to-Analog Converter).
+- UART (Universal Asynchronous Receiver/Transmitter).
+- SPI (Serial Peripheral Interface).
+- I²C (Inter-Integrated Circuit).
+- PWM (Pulse-Width Modulation).
+
+### **¿Cómo se programa el ESP32?**
+
+Se requiere contar con: 
+
+***Hardware***
+
+- 1 Computador.
+- 1 Placa de desarrollo basada en ESP32 (cualquiera que tenga a disposición).
+- 1 Cable de programación.
+
+***Software***
+
+- IDE *Visual Studio Code (VSCode)*, 
+- Extensión de VSCode *PlatformIO*. A través de esta extensión tiene acceso a:
+	- ESP-IDF que esencialmente contiene la API (bibliotecas de software y código fuente) para la ESP32 y scripts para operar la *Toolchain* para compilar código.
+	- Herramientas de compilación para crear una aplicación completa para ESP32.
+		- CMake, and 
+		- Ninja.
+
+Para realizar una instalación limpia de este software, por favor vlla a la [Guía de instalación](1.9_guia_instal_tools.md).
+
+Sin embargo, El ESP32 se puede programar con distintas herramientas de software: 
+
+- Espressif IDF (IoT Development Framework).
+- Arduino C/C++.
+- Micropython.
+- JavaScript.
+- LUA.
+- Mongoose OS.
+- Espruino.
+
+En las secciones 1.10.1, 1.10.2, y 1.10.3, podrá encontrar ejercicios de programación. 
+
+- [1.10.1 Algoritmos y ejercicios Práctica 1](#1101-algoritmos-y-ejercicios-práctica-1)
+- [1.10.2 Algoritmos y ejercicios Práctica 2](#1102-algoritmos-y-ejercicios-práctica-2)
+- [1.10.3 Algoritmos y ejercicios Práctica 3](#1103-algoritmos-y-ejercicios-práctica-3)
+
+### **Piouts disponibles de la ESP32-WROOM-32X**
+
+<img src="imagenes/1.10_pinout_1.png" width=500>
+
+<img src="imagenes/1.10_pinout_2.png" width=500>
+
+<img src="imagenes/1.10_pinout_3.png" width=500>
+
+### **Apuntes sobre el hardware**
+
+- Cada GPIO funciona igual en cada WROOM32.
+- No todas las placas permiten conexiones a todos los pines.
+- Cada GPIO funciona igual para cada placa de desarrollo.
+- Existen GPIO's que solo pueden ser usados como entrada y no tienen resistores pull-up o pull-down.
+	- GPIO 34
+	- GPIO 35
+	- GPIO 36
+	- GPIO 39
+- Entradas y salidas funcionan a 3.3 V
+- No conectar 5 V a las entradas o salidas del ESP32.
+- Los pines no toleran más de 3.3 V
+- El ESP-WROOM-32 tiene integrado una flash SPI.
+- Los pines GPIO que permiten acceder a SPI no se recomiendan para otros usos. Estos pines son  D0, D1, D2, D3, CMD y CLK se utilizan internamente para la comunicación entre ESP32 y la memoria flash SPI. Están agrupados a ambos lados cerca del conector USB. Evite el uso de estos pines, ya que pueden interrumpir el acceso a la memoria flash SPI/RAM SPI.
+- El ESP32 tiene 10 sensores táctiles capacitivos internos.
+- Pueden usarse para ‘despertar’ el ESP32 del modo de deep sleep.
+- El ESP32 tiene dos canales ADC. Son 18x12 bits.
+- Hay 2 canales DAC de 8 bits con los que se puede convertir una señal digital en un valor analógico.
+
+El chip ESP32 presenta 34 pines GPIO físicos (GPIO0 ~ GPIO19, GPIO21 ~ GPIO23, GPIO25 ~ GPIO27 y GPIO32 ~ GPIO39). Cada pin se puede usar como E/S de uso general o se puede conectar a una señal periférica interna. A través de IO MUX, RTC IO MUX y la matriz GPIO, las señales de entrada periféricas pueden ser desde cualquier pin de IO, y las señales de salida periféricas pueden enrutarse a cualquier pin de IO. Juntos, estos módulos proporcionan E/S altamente configurables. [1](#referencias).
+
+| GPIO   | Función analógica | RTC GPIO   | Comentarios            |   |
+|--------|-------------------|------------|------------------------|---|
+| GPIO0  | ADC2_CH1          | RTC_GPIO11 | Pasador de fleje       |   |
+| GPIO1  |                   |            | TXD                    |   |
+| GPIO2  | ADC2_CH2          | RTC_GPIO12 | Pasador de fleje       |   |
+| GPIO3  |                   |            | RXD                    |   |
+| GPIO4  | ADC2_CH0          | RTC_GPIO10 |                        |   |
+| GPIO5  |                   |            | Pasador de fleje       |   |
+| GPIO6  |                   |            | SPI0 / 1               |   |
+| GPIO7  |                   |            | SPI0 / 1               |   |
+| GPIO8  |                   |            | SPI0 / 1               |   |
+| GPIO9  |                   |            | SPI0 / 1               |   |
+| GPIO10 |                   |            | SPI0 / 1               |   |
+| GPIO11 |                   |            | SPI0 / 1               |   |
+| GPIO12 | ADC2_CH5          | RTC_GPIO15 | Pasador de fleje; JTAG |   |
+| GPIO13 | ADC2_CH4          | RTC_GPIO14 | JTAG                   |   |
+| GPIO14 | ADC2_CH6          | RTC_GPIO16 | JTAG                   |   |
+| GPIO15 | ADC2_CH3          | RTC_GPIO13 | Pasador de fleje; JTAG |   |
+| GPIO16 |                   |            | SPI0 / 1               |   |
+| GPIO17 |                   |            | SPI0 / 1               |   |
+| GPIO18 |                   |            |                        |   |
+| GPIO19 |                   |            |                        |   |
+| GPIO21 |                   |            |                        |   |
+| GPIO22 |                   |            |                        |   |
+| GPIO23 |                   |            |                        |   |
+| GPIO25 | ADC2_CH8          | RTC_GPIO6  |                        |   |
+| GPIO26 | ADC2_CH9          | RTC_GPIO7  |                        |   |
+| GPIO27 | ADC2_CH7          | RTC_GPIO17 |                        |   |
+| GPIO32 | ADC1_CH4          | RTC_GPIO9  |                        |   |
+| GPIO33 | ADC1_CH5          | RTC_GPIO8  |                        |   |
+| GPIO34 | ADC1_CH6          | RTC_GPIO4  | GPI                    |   |
+| GPIO35 | ADC1_CH7          | RTC_GPIO5  | GPI                    |   |
+| GPIO36 | ADC1_CH0          | RTC_GPIO0  | GPI                    |   |
+| GPIO37 | ADC1_CH1          | RTC_GPIO1  | GPI                    |   |
+| GPIO38 | ADC1_CH2          | RTC_GPIO2  | GPI                    |   |
+| GPIO39 | ADC1_CH3          | RTC_GPIO3  | GPI                    |   |
+
+### **Alimentación**
+
+| Parameter |  Description |  Min     	|  Typ 	|  Max 	|  Unit |
+|-----------|--------------|----------	|------	|------	|-------|
+| VDDA, VDD3P3_RTC note 1 , VDD3P3,   VDD_SDIO (3.3 V mode) note 2 	|  Voltage applied to power supply   pins per power domain 	|  2.3/3.0 	|  3.3 	|  3.6 	|  V    	|
+| VDD3P3_CPU                                                       	|  Voltage applied to power supply   pin                   	|  1.8     	|  3.3 	|  3.6 	|  V    	|
+| IV DD                                                            	|  Current delivered by external   power supply            	|  0.5     	|  —   	|  —   	|  A    	|
+| T                                                                	|  Operating temperature                                   	|  –40     	|  —   	| 125  	|  °C   	|
+|                                  |  –40     |  —   | 125  |  °C   |
+
+### **Algunas placas de desarrollo**
+
+- De Espressif [clic aquí](https://www.espressif.com/en/products/devkits).
+- Adafruit ESP32 Feather [clic aquí](https://www.adafruit.com/product/3405).
+- Sparkfun ESP32 Thing [clic aquí](https://www.sparkfun.com/products/13907).
+- TTGO T-Call ESP32 with SIM800L GSM/GPRS [clic aquí](https://makeradvisor.com/ttgo-t-call-esp32-with-sim800l-gsm-gprs/).
+- k3nzo. Esta es una placa de desarrollo desarrollada por estudiantes de Ingeniería Electrónica en el marco de su proyecto de grado. [Puede encontrar información sobre ella aquí](https://repositorio.cuc.edu.co/handle/11323/10165?show=full).
+
+<img src="imagenes/1.10_ESP_Hecha_a_medida.png" width=500>
+
+*Placa k3nzo.*
+
+Una de las más comunes placas de desarrollo que se pueden encontrar es la DevKit, la cual tiene las siguientes características:
+
+<img src="imagenes/10.1.1_ESP32_components.jpg" width=500>
+
+*Placa ESP32 DevKit V4. Fuente: [[17]](#referencias)*
+
+A continuación, una descripción de sus componentes principales [[17]](#referencias):
+
+| Componente 		 | Descripción |
+|------------------- |-----------  |
+| ESP32-WROOM-32 | Un módulo con ESP32 en su núcleo. |
+| ES | Botón de reinicio. |
+| Boot | Botón de descarga. Al mantener presionado Boot y luego presionar EN, se inicia el modo de descarga de firmware para descargar firmware a través del puerto serie. |
+| Puente USB a UART | Un único chip puente USB-UART proporciona velocidades de transferencia de hasta 3 Mbps. |
+| Puerto micro USB | Interfaz USB. Fuente de alimentación para la placa así como interfaz de comunicación entre un ordenador y el módulo ESP32-WROOM-32. |
+| LED indicador de 5 V | Se enciende cuando el USB o una fuente de alimentación externa de 5 V está conectada a la placa. |
+| I/O Connector | La mayoría de los pines del módulo ESP están conectados a los cabezales de pines de la placa. Puede programar ESP32 para habilitar múltiples funciones como PWM, ADC, DAC, I2C, I2S, SPI, etc. |
+
+
+### **Instalación de herramientas de software**
 
 Para facilitar el proceso de enseñanza aprendizaje se hará uso de entorno de desarrollo Visual Studio Code, con la extensión PlatformIO. Por favor revise la [guía de instalación de las herramientas del curso](1.9_guia_instal_tools.md).
+
+### **Primer programa**
+
+Abrir la extensión de PlatformIO y [crear un nuevo proyecto](/Unidad_1/0_nuevo_proyecto.md). 
+
+De lado izquierdo dentro de la carpeta ‘src’ está el archivo ‘main.c’ que es el archivo principal del proyecto.
+
+Se puede escribir el siguiente programa que es el *blink* de un led. Este primer programa se conoce como el *"Hola, Mundo"* de los sistemas embebidos.
+
+~~~
+// Librerías necesarias
+#include "driver/gpio.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+
+#define led 1
+
+void app_main(void)
+{
+
+    gpio_reset_pin(led);
+    gpio_set_direction(led, GPIO_MODE_OUTPUT);
+
+    while(1){
+        gpio_set_level(led, 0);
+        vTaskDelay( 1000 / portTICK_PERIOD_MS);
+        gpio_set_level(led, 1);
+        vTaskDelay( 1000 / portTICK_PERIOD_MS);
+    }
+}
+~~~
+
+En la parte inferior de Visual Studio Code hay una serie de botones, se describen los más relevantes:
+
+<img src="imagenes/1.10_barra_inferior_platformIO.png" width=500>
+
+*Figura 28. Barra de herramientas de PlatformIO.*
+
+1. *"Build"*. Compilar el proyecto.
+1. *"Upload"*. Cargar el proyecto a la placa.
+1. *"Serial monitor"*. Abrir un monitor serial.
+
+Para subir un proyecto a la placa, dar al botón *"Build"* (la primera vez puede ser demorado ya que crea todos los archivos del proyecto). Si todo es correcto, se obtiene un mensaje similar al siguiente:
+
+<img src="imagenes/1.10_pront_build_programa.png" width=500>
+
+*Figura 29. Salida de consola de un programa luego de compilar.*
+
+Luego dar clic en *"Upload"* para subir el programa a la placa Si todo es correcto, se obtiene un mensaje similar al siguiente:
+
+<img src="imagenes/1.10_pront_carga_programa.png" width=500>
+
+*Figura 30. Salida de consola de un programa luego de cargar el programa en la placa.*
+
+### **Errores comunes**
+
+***"Could not initialize project"***
+
+Si al crear un proyecto se obtiene el siguiente error:
+
+~~~
+PIO Core Call Error: "The current working directory /home/gary/Documents/PlatformIO/Projects/Cam will be used for the project.\n\nThe next files/directories have been created in /home/gary/Documents/PlatformIO/Projects/Cam\ninclude - Put project header files here\nlib - Put here project specific (private) libraries\nsrc - Put project source files here\nplatformio.ini - Project Configuration File\n\n\nError: Processing esp32cam (platform: espressif32; board: esp32cam; framework: arduino)\n--------------------------------------------------------------------------------\nVerbose mode can be enabled via -v, --verbose option\nError: Unknown board ID 'esp32cam'\n========================== [ERROR] Took 0.23 seconds =========================="
+~~~
+
+Ir a la ruta: PIO Home > Platforms > Updates. Aplicar todas las actualizaciones y reiniciar Visual Studio Code.
+
+***Nunca inicia el proyecto***
+
+Puede suceder cuando el nombre de usuario tiene espacios o caracteres especiales como Ñ o con una tilde y no se puede crear la carpeta de proyectos en la ruta por defecto.
+
+Ejemplo, si nombre de usuario del computador con Windows es ‘Andrés José’, PlatformIO intenta crear la carpeta de proyecto por defecto que es ‘C:\users\Andrés José\PlatformIO’.
+
+**Solución:** Al momento de crear un proyecto, no usar la carpeta por defecto, sino, crear una carpeta en un ruta que no tenga espacios ni caracteres especiales, como por ejemplo: ‘D:\PlaformIO’ o similar.
+
+Si la anterior solución no funciona, en Windows crear el directorio llamado ‘C:\.platformio’ y reiniciar *Visual Studio Code*, con esto, se reinstala PlatformIO en la carpeta creada anteriormente y no en una ruta con espacios.
 
 ### [1.10.1. Algoritmos y ejercicios Práctica 1](1.10_Practica1.md)
 
@@ -1242,4 +1537,4 @@ Para facilitar el proceso de enseñanza aprendizaje se hará uso de entorno de d
 - [14] https://www.tutorialspoint.com/cprogramming/c_type_casting.htm
 - [15] https://elvex.ugr.es/decsai/c/
 - [16] https://disenowebakus.net/matrices.php
-- [17] 
+- [17] https://docs.espressif.com/projects/esp-idf/en/latest/esp32/hw-reference/esp32/get-started-devkitc.html 
