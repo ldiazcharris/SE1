@@ -1386,13 +1386,13 @@ El chip ESP32 presenta 34 pines GPIO físicos (GPIO0 ~ GPIO19, GPIO21 ~ GPIO23, 
 
 ### **Alimentación**
 
-| Parameter |  Description |  Min     	|  Typ 	|  Max 	|  Unit |
-|-----------|--------------|----------	|------	|------	|-------|
-| VDDA, VDD3P3_RTC note 1 , VDD3P3,   VDD_SDIO (3.3 V mode) note 2 	|  Voltage applied to power supply   pins per power domain 	|  2.3/3.0 	|  3.3 	|  3.6 	|  V    	|
-| VDD3P3_CPU                                                       	|  Voltage applied to power supply   pin                   	|  1.8     	|  3.3 	|  3.6 	|  V    	|
-| IV DD                                                            	|  Current delivered by external   power supply            	|  0.5     	|  —   	|  —   	|  A    	|
-| T                                                                	|  Operating temperature                                   	|  –40     	|  —   	| 125  	|  °C   	|
-|                                  |  –40     |  —   | 125  |  °C   |
+| Parámetros |  Descripción |  Mínima 	|  Típica |  Máxima |  Unidad |
+|------------|--------------|----------	|-------- |------	|-------- |
+| VDDA, VDD3P3_RTC note 1 , VDD3P3,   VDD_SDIO (3.3 V mode) note 2 	|  Voltage applied to power supply   pins per power domain 	|  2.3/3.0 	|  3.3 	| 3.6 |  V  |
+| VDD3P3_CPU |  Voltage applied to power supply   pin |  1.8 | 3.3 | 3.6 |  V |
+| IV DD      |  Current delivered by external   power supply | 0.5 |  —  |  —  | A |
+| T          |  Operating temperature    | –40 | — | 125 |  °C  |
+
 
 ### **Algunas placas de desarrollo**
 
@@ -1415,7 +1415,7 @@ Una de las más comunes placas de desarrollo que se pueden encontrar es la DevKi
 A continuación, una descripción de sus componentes principales [[17]](#referencias):
 
 | Componente 		 | Descripción |
-|------------------- |-----------  |
+|------------------- | ----------- |
 | ESP32-WROOM-32 | Un módulo con ESP32 en su núcleo. |
 | ES | Botón de reinicio. |
 | Boot | Botón de descarga. Al mantener presionado Boot y luego presionar EN, se inicia el modo de descarga de firmware para descargar firmware a través del puerto serie. |
