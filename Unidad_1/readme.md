@@ -1416,7 +1416,7 @@ A continuación, una descripción de sus componentes principales [[17]](#referen
 | Componente 		 | Descripción |
 |------------------- | ----------- |
 | ESP32-WROOM-32 | Un módulo con ESP32 en su núcleo. |
-| ES | Botón de reinicio. |
+| EN | Botón de reinicio. |
 | Boot | Botón de descarga. Al mantener presionado Boot y luego presionar EN, se inicia el modo de descarga de firmware para descargar firmware a través del puerto serie. |
 | Puente USB a UART | Un único chip puente USB-UART proporciona velocidades de transferencia de hasta 3 Mbps. |
 | Puerto micro USB | Interfaz USB. Fuente de alimentación para la placa así como interfaz de comunicación entre un ordenador y el módulo ESP32-WROOM-32. |
