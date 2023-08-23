@@ -13,7 +13,7 @@
 - [1.9. Introducción al lenguaje C/C++](#19-introducción-al-lenguaje-cc)
 - [1.9. Introducción al lenguaje C/C++ Práctica 1](#191-introducción-al-lenguaje-cc-práctica-1)
 - [1.9. Introducción al lenguaje C/C++ Práctica 2](#192-introducción-al-lenguaje-cc-práctica-2)
-- [1.10. Algoritmos y ejercicios de programación tipo bare metal con el lenguaje C/C++ para microcontroladores](#110-algoritmos-y-ejercicios-de-programación)
+- [1.10. Algoritmos y ejercicios de programación](#110-algoritmos-y-ejercicios-de-programación)
 - [1.10. Algoritmos y ejercicios Práctica 1](#1101-algoritmos-y-ejercicios-práctica-1)
 - [1.10. Algoritmos y ejercicios Práctica 2](#1102-algoritmos-y-ejercicios-práctica-2)
 - [1.10. Algoritmos y ejercicios Práctica 3](#1103-algoritmos-y-ejercicios-práctica-3)
@@ -1299,7 +1299,7 @@ Se requiere contar con:
 		- CMake, and 
 		- Ninja.
 
-Para realizar una instalación limpia de este software, por favor vlla a la [Guía de instalación](1.9_guia_instal_tools.md).
+Para realizar una instalación limpia de este software, por favor valla a la [Guía de instalación](1.9_guia_instal_tools.md).
 
 Sin embargo, El ESP32 se puede programar con distintas herramientas de software: 
 
@@ -1329,7 +1329,6 @@ En las secciones 1.10.1, 1.10.2, y 1.10.3, podrá encontrar ejercicios de progra
 
 - Cada GPIO funciona igual en cada WROOM32.
 - No todas las placas permiten conexiones a todos los pines.
-- Cada GPIO funciona igual para cada placa de desarrollo.
 - Existen GPIO's que solo pueden ser usados como entrada y no tienen resistores pull-up o pull-down.
 	- GPIO 34
 	- GPIO 35
@@ -1342,7 +1341,7 @@ En las secciones 1.10.1, 1.10.2, y 1.10.3, podrá encontrar ejercicios de progra
 - Los pines GPIO que permiten acceder a SPI no se recomiendan para otros usos. Estos pines son  D0, D1, D2, D3, CMD y CLK se utilizan internamente para la comunicación entre ESP32 y la memoria flash SPI. Están agrupados a ambos lados cerca del conector USB. Evite el uso de estos pines, ya que pueden interrumpir el acceso a la memoria flash SPI/RAM SPI.
 - El ESP32 tiene 10 sensores táctiles capacitivos internos.
 - Pueden usarse para ‘despertar’ el ESP32 del modo de deep sleep.
-- El ESP32 tiene dos canales ADC. Son 18x12 bits.
+- El ESP32 tiene dos canales ADC, que son 18 pines con resolución de 12 bits.
 - Hay 2 canales DAC de 8 bits con los que se puede convertir una señal digital en un valor analógico.
 
 El chip ESP32 presenta 34 pines GPIO físicos (GPIO0 ~ GPIO19, GPIO21 ~ GPIO23, GPIO25 ~ GPIO27 y GPIO32 ~ GPIO39). Cada pin se puede usar como E/S de uso general o se puede conectar a una señal periférica interna. A través de IO MUX, RTC IO MUX y la matriz GPIO, las señales de entrada periféricas pueden ser desde cualquier pin de IO, y las señales de salida periféricas pueden enrutarse a cualquier pin de IO. Juntos, estos módulos proporcionan E/S altamente configurables. [1](#referencias).
@@ -1388,7 +1387,7 @@ El chip ESP32 presenta 34 pines GPIO físicos (GPIO0 ~ GPIO19, GPIO21 ~ GPIO23, 
 
 | Parámetros |  Descripción |  Mínima 	|  Típica |  Máxima |  Unidad |
 |------------|--------------|----------	|-------- |------	|-------- |
-| VDDA, VDD3P3_RTC note 1 , VDD3P3,   VDD_SDIO (3.3 V mode) note 2 	|  Voltage applied to power supply   pins per power domain 	|  2.3/3.0 	|  3.3 	| 3.6 |  V  |
+| VDDA, VDD3P3_RTC note 1 , VDD3P3,   VDD_SDIO (3.3 V mode) note 2 	|  Tensión aplicada a los pines de alimentación |  2.3/3.0 	|  3.3 	| 3.6 |  V  |
 | VDD3P3_CPU |  Voltage applied to power supply   pin |  1.8 | 3.3 | 3.6 |  V |
 | IV DD      |  Current delivered by external   power supply | 0.5 |  —  |  —  | A |
 | T          |  Operating temperature    | –40 | — | 125 |  °C  |
