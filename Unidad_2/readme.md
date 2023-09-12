@@ -132,9 +132,13 @@ El ADC debe configurarse antes de tomar la lectura. Para hacer uso de las funcio
 
 **Para ADC1**, configure la precisión y atenuación deseadas llamando a las funciones [[3]](#referencias)
 
+Esta función configura la resulución que se usará en todo el puerto ADC1.
+ 
 ~~~
 adc1_config_width([resolución en bits])
 ~~~ 
+
+Las opciones de resolución son:
 
 **Opciones de resolución en el ESP32-WROOM**
 
@@ -144,6 +148,8 @@ adc1_config_width([resolución en bits])
 | ADC_WIDTH_BIT_10 | ADC capture width is 10Bit. |
 | ADC_WIDTH_BIT_11 | ADC capture width is 11Bit. |
 | ADC_WIDTH_BIT_12 | ADC capture width is 12Bit. |
+
+Esta función permite configurar la atenuación que se usará para cada una de los canales ADC1.
 
 ~~~
 adc1_config_channel_atten([canal ADC], [Atenuación])
@@ -165,18 +171,19 @@ adc1_config_channel_atten([canal ADC], [Atenuación])
 **Opciones de atenuación en el ESP32-WROOM**
 
 
-|          | Atenuación  | Rango sugerido  |
-|    SoC   |     (dB)    |      (mV)       |
-| -------- | ----------- | --------------- |
-|   ESP32  |       0     |    100 ~  950   |
-|   ESP32  |       2.5   |    100 ~ 1250   |
-|   ESP32  |       6     |    150 ~ 1750   |
-|   ESP32  |      11     |    150 ~ 2450   |
-| -------- | ----------- | --------------- |
-| ESP32-S2 |       0     |      0 ~  750   |
-| ESP32-S2 |       2.5   |      0 ~ 1050   |
-| ESP32-S2 |       6     |      0 ~ 1300   |
-| ESP32-S2 |      11     |      0 ~ 2500   |
+|          | Atenuación  | Rango sugerido  | Macro De atenuación |
+| ------   | --------    | ---------       | ------------------- |
+|    SoC   |     (dB)    |      (mV)       | ------------------- |
+| -------- | ----------- | --------------- | ------------------  |
+|   ESP32  |       0     |    100 ~  950   | ADC_ATTEN_DB_0      |
+|   ESP32  |       2.5   |    100 ~ 1250   | ADC_ATTEN_DB_2_5    |
+|   ESP32  |       6     |    150 ~ 1750   | ADC_ATTEN_DB_6      |
+|   ESP32  |      11     |    150 ~ 2450   | ADC_ATTEN_DB_11     |
+| -------- | ----------- | --------------- | ------------------- |
+| ESP32-S2 |       0     |      0 ~  750   | ADC_ATTEN_DB_0      |
+| ESP32-S2 |       2.5   |      0 ~ 1050   | ADC_ATTEN_DB_2_5    |
+| ESP32-S2 |       6     |      0 ~ 1300   | ADC_ATTEN_DB_6      |
+| ESP32-S2 |      11     |      0 ~ 2500   | ADC_ATTEN_DB_11     |
 
 
 **Para ADC2**, configure la atenuación por [[3]](#referencias)
