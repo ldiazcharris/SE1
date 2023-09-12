@@ -132,11 +132,7 @@ El ADC debe configurarse antes de tomar la lectura. Para hacer uso de las funcio
 
 **Para ADC1**, configure la precisión y atenuación deseadas llamando a las funciones [[3]](#referencias)
 
-Esta función configura la resulución que se usará en todo el puerto ADC1.
- 
-~~~
-adc1_config_width([resolución en bits])
-~~~ 
+`adc1_config_width([resolución en bits])` Esta función configura la resulución que se usará en todo el puerto ADC1. 
 
 Las opciones de resolución son:
 
@@ -149,11 +145,8 @@ Las opciones de resolución son:
 | ADC_WIDTH_BIT_11 | ADC capture width is 11Bit. |
 | ADC_WIDTH_BIT_12 | ADC capture width is 12Bit. |
 
-Esta función permite configurar la atenuación que se usará para cada una de los canales ADC1.
+`adc1_config_channel_atten([canal ADC], [Atenuación])` Esta función permite configurar la atenuación que se usará para cada uno de los canales ADC1.
 
-~~~
-adc1_config_channel_atten([canal ADC], [Atenuación])
-~~~
 
 **Canales del ADC1**
 
@@ -167,6 +160,7 @@ adc1_config_channel_atten([canal ADC], [Atenuación])
 | ADC1_CHANNEL_5          | ADC1 channel 5 | GPIO33               |
 | ADC1_CHANNEL_6          | ADC1 channel 6 | GPIO34               | 
 | ADC1_CHANNEL_7          | ADC1 channel 7 | GPIO35               |
+
 
 **Opciones de atenuación en el ESP32-WROOM**
 
@@ -186,10 +180,8 @@ adc1_config_channel_atten([canal ADC], [Atenuación])
 | ESP32-S2 |      11     |      0 ~ 2500   | ADC_ATTEN_DB_11     |
 
 
-**Para ADC2**, configure la atenuación por [[3]](#referencias)
-~~~
-adc2_config_channel_atten([Canal ADC2], Atenuación)
-~~~
+**Para ADC2**, configure la atenuación con `adc2_config_channel_atten([Canal ADC2], [Atenuación])` [[3]](#referencias)
+
 
 | Macro de la biblioteca  | Canal ADC1     | GPIO ESP32 | GPIO ESP32-S2 | 
 | ----------------------- | -------------- | ---------- | ------------- |
@@ -204,21 +196,15 @@ adc2_config_channel_atten([Canal ADC2], Atenuación)
 | ADC2_CHANNEL_8          | ADC2 channel 8 | GPIO25     | GPIO19        |
 | ADC2_CHANNEL_9          | ADC2 channel 9 | GPIO26     | GPIO20        |
 
-El ancho de lectura de ADC2 se configura cada vez que toma la lectura [[3]](#referencias).
+La resolución de lectura en el ADC2 se configura cada vez que toma la lectura [[3]](#referencias).
 
 La configuración de atenuación se realiza por canal, según los tipos de dato [[3]](#referencias): `adc1_channel_t` y `adc2_channel_t` 
 
-
 Para leer el resultado de conversión de ADC se usa [[3]](#referencias):
 
-Para el ADC1
-~~~
-adc1_get_raw([Canal ADC1])
-~~~
-y Para el ADC2, 
-~~~
-adc2_get_raw([Canal ADC2], [Resolución en bits], [puntero a variable])
-~~~
+Para leer el ADC1, se usa la función `adc1_get_raw([Canal ADC1])`, la cual retorna el valor leído en el canal ADC1 elegido. 
+
+y Para el ADC2, se usa la función `adc2_get_raw([Canal ADC2], [Resolución en bits], [puntero a variable])`, que requiere además del canal ADC2 a leer, el valor de la resolución de lectura y un puntero a una variable para almacenar el valor leído y retorna `ESP_OK` si todo funcionó bien o `ESP_ERR_INVALID_ARG` como parámetro de error. 
 
 El ancho de lectura de ADC2 debe establecerse como un parámetro de la función  ~adc2_get_raw()~ en lugar de en las funciones de configuración [[3]](#referencias).
 
