@@ -137,6 +137,12 @@ adc1_config_width([resolución en bits])
 ~~~ 
 
 **Opciones de resolución en el ESP32-WROOM**
+| ---------------  | -----------------------  |
+| ---------------  | -----------------------  |
+| ADC_WIDTH_BIT_9  | DC capture width is 9Bit. |
+| ADC_WIDTH_BIT_10 | ADC capture width is 10Bit. |
+| ADC_WIDTH_BIT_11 | ADC capture width is 11Bit. |
+| ADC_WIDTH_BIT_12 | ADC capture width is 12Bit. |
 
 ~~~
 adc1_config_channel_atten([canal ADC], [Atenuación])
