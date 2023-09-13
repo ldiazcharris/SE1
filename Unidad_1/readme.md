@@ -1299,7 +1299,7 @@ Se requiere contar con:
 		- CMake, and 
 		- Ninja.
 
-Para realizar una instalación limpia de este software, por favor valla a la [Guía de instalación](1.9_guia_instal_tools.md).
+Para realizar una instalación limpia de este software, por favor vaya a la [Guía de instalación](1.9_guia_instal_tools.md).
 
 Sin embargo, El ESP32 se puede programar con distintas herramientas de software: 
 
