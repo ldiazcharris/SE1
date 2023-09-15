@@ -206,7 +206,7 @@ Para leer el ADC1, se usa la función `adc1_get_raw([Canal ADC1])`, la cual reto
 
 y Para el ADC2, se usa la función `adc2_get_raw([Canal ADC2], [Resolución en bits], [puntero a variable])`, que requiere además del canal ADC2 a leer, el valor de la resolución de lectura y un puntero a una variable para almacenar el valor leído y retorna `ESP_OK` si todo funcionó bien o `ESP_ERR_INVALID_ARG` como parámetro de error. 
 
-El ancho de lectura de ADC2 debe establecerse como un parámetro de la función  ~adc2_get_raw()~ en lugar de en las funciones de configuración [[3]](#referencias).
+El ancho de lectura de ADC2 debe establecerse como un parámetro de la función  `adc2_get_raw()` en lugar de en las funciones de configuración [[3]](#referencias).
 
 ### [Práctica 2.2. Integración de sensores analógicos](2.2_practica_2_2_Sensores_Analogicos.md)
 
