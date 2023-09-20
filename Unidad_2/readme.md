@@ -284,76 +284,82 @@ Inicialmente, se considerará la entrada del detector de gas. Si el detector de 
 A continuación, se presenta una implementación posible para el problema planteado. 
 
 ~~~
-	// Incluir bibliotecas standar de C 
-	#include <stdio.h>   
-	#include <string.h>  
+// Incluir bibliotecas standar de C 
+#include <stdio.h>   
+#include <string.h>  
 
-	// Incluir biblioteca de control de pines GPIO del ESP-IDF
-	#include "driver/gpio.h"        		
+// Incluir biblioteca de control de pines GPIO del ESP-IDF
+#include "driver/gpio.h"        		
 
-	// Incluir biblioteca del sistema operativo FreeRTOS
-	#include "freertos/FreeRTOS.h" 
-	  
-	// Incluir biblioteca para manejo de tareas del FreeRTOS
-	#include "freertos/task.h" 
-					  
+// Incluir biblioteca del sistema operativo FreeRTOS
+#include "freertos/FreeRTOS.h" 
+  
+// Incluir biblioteca para manejo de tareas del FreeRTOS
+#include "freertos/task.h" 
+                  
 
-	/* Crea macro con el número del pin donde está el detector de gas. 
-	 * Este detector de gas se activará con un pulso positivo.
-	 * Se debe hacer uso de la configuración Pull-Down de las entradas de la ESP32
-	 * Pra evitar errores de lectura y activaciones inesperadas. 
-	*/
-	#define DETECTOR_DE_GAS  4
-	 
-	/* Crea macro con el número del pin donde está la alarma. 
-	 * Esta alarma se activará con un pulso positivo.
-	 * Se debe hacer uso de la configuración Pull-Down de las entradas de la ESP32
-	 * Pra evitar errores de lectura y activaciones inesperadas. 
-	*/                           
-	#define ALARMA 2                  
+/* Crea macro con el número del pin donde está el detector de gas. 
+ * Este detector de gas se activará con un pulso positivo.
+ * Se debe hacer uso de la configuración Pull-Down de las entradas de la ESP32
+ * Pra evitar errores de lectura y activaciones inesperadas. 
+*/
+#define DETECTOR_DE_GAS  2
+ 
+/* Crea macro con el número del pin donde está la alarma. 
+ * Esta alarma se activará con un pulso positivo.
+ * Se debe hacer uso de la configuración Pull-Down de las entradas de la ESP32
+ * Pra evitar errores de lectura y activaciones inesperadas. 
+*/                           
+#define ALARMA 4                  
 
-	// Macros para representar estados encendido (ON) y apagado (OFF)
-	#define ON  1
-	#define OFF 0
+// Macros para representar estados encendido (ON) y apagado (OFF)
+#define ON  1
+#define OFF 0
 
-	// Función principal del programa
+// Función principal del programa
 
-	void app_main(void)
-	{
-		// Configuración de los pines
-		gpio_reset_pin(DETECTOR_DE_GAS);  // Reiniciar el pin del botón (GPIO4) para que esté en su estado predeterminado 
+void app_main(void)
+{
+    /* Reiniciar el pin del DETECTOR_DE_GAS para que 
+	 * esté en su estado predeterminado
+	 */
+	gpio_reset_pin(DETECTOR_DE_GAS);   
 		
-		// Configura el pin del botón (GPIO4) como entrada
-		gpio_set_direction(DETECTOR_DE_GAS, GPIO_MODE_INPUT);
+	// Configura el pin del DETECTOR_DE_GAS como entrada
+	gpio_set_direction(DETECTOR_DE_GAS, GPIO_MODE_INPUT);
 
-		// Habilita la configuración Pull-Downen el pin del detector de gas
-		gpio_pulldown_en(DETECTOR_DE_GAS);
+	// Habilita la configuración Pull-Down en el pin del DETECTOR_DE_GAS
+	gpio_pulldown_en(DETECTOR_DE_GAS);
 		
-		gpio_reset_pin(ALARMA);     // Reiniciar el pin del LED (GPIO2) para que esté en su estado predeterminado  
-		
-		// Configura el pin del LED (GPIO2) como salida
-		gpio_set_direction(ALARMA, GPIO_MODE_OUTPUT);
+	/* Reiniciar el pin de la ALARMA para que 
+	 * esté en su estado predeterminado
+	 */ 
+		gpio_reset_pin(ALARMA);
 
-		// Habilita la configuración Pull-Downen el pin de la alarma.
-		gpio_pulldown_en(ALARMA);
-		
-		// Bucle infinito que permite que el programa se ejecute indefinidamente.
-		while(1)
-		{
-			// Pregunta si el detector de gas está encendido
-			if(DETECTOR_DE_GAS == ON)
-			{
-				// Solo si es verdadero, entonces se enciende la alarma
-				gpio_set_level(ALARMA, ON);
-			}
-			// Pregunta si el detector de gas está apagado
-			if (DETECTOR_DE_GAS == OFF)
-			{
-				// Solo si es verdadero, entonces se apaga la alarma
-				gpio_set_level(ALARMA, OFF);
-			}
-		}
+	// Configura el pin de la ALARMA como salida
+	gpio_set_direction(ALARMA, GPIO_MODE_OUTPUT);
+
+    // Habilita la configuración Pull-Downen el pin de la alarma.
+    gpio_pulldown_en(ALARMA);
+	
+	// Bucle infinito que permite que el programa se ejecute indefinidamente.
+	while(1)
+    {
+        // Pregunta si el DETECTOR_DE_GAS está encendido
+        if(DETECTOR_DE_GAS == ON)
+        {
+            // Solo si es verdadero, entonces se enciende la ALARMA
+            gpio_set_level(ALARMA, ON);
+        }
+        // Pregunta si el DETECTOR_DE_GAS está apagado
+        if (DETECTOR_DE_GAS == OFF)
+        {
+            // Solo si es verdadero, entonces se apaga la ALARMA
+            gpio_set_level(ALARMA, OFF);
+        }
 	}
+}
+
 
 ~~~
 
