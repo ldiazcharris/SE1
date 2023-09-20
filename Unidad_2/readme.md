@@ -244,7 +244,7 @@ Ir a la guía:
 
 De acuerdo con las temáticas tratadas hasta este punto, a continuación se presenta un sistema embebido diseñado para el control de una casa inteligente. Puntualmente el encargado del sistema de alarma contra incendio. 
 
-<img src="imagenes/2.2_basic_fire_alarm_system.png" width=400>
+<img src="imagenes/2.4_basic_fire_alarm_system.png" width=400>
 
 *Figura. Sistema básico de control de alarma de incendio. [Tomado de: [4], Chapter 1, p. 6](#referencias)*
 
