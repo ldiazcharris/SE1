@@ -277,6 +277,8 @@ El sistema debe seguir la siguiente lógica:
 
 <img src="/Unidad_2/imagenes/2.4_d_flujo_.png" width=300>
 
+*Figura adaptada de [[4]](#referencias)*
+
 Inicialmente, se considerará la entrada del detector de gas. Si el detector de gas está activado, entonces se activará la alarma. Si no, la alarma estará desactivada. 
 
 A continuación, se presenta una implementación posible para el problema planteado. 
