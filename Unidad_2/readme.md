@@ -238,7 +238,7 @@ A partir de este sistema, se trabajarán los ejemplos en las guías de laborator
 
 Ir a la guía:
 
-### [2.4. Integración con sensores digitales.](2.3_practica_2_3_sensores_digitales)
+### [2.3. Integración con sensores digitales.](2.3_practica_2_3_sensores_digitales.md)
 
 ## Integración de diversos dispositivos de entrada/salida
 
@@ -377,6 +377,104 @@ Pruebe el código y vaya a la guía:
 
 ## 2.5. Manejo del tiempo
 
+El tiempo es un factor importante en todas las actividades humanas. Las máquinas no están exentas de considerar el parámetro tiempo. Es más, para las máquinas el tiempo es su parámetro más importante. 
+
+Es así que, en este apartado se realizará un análisis de cómo se mide y se usa el tiempo en los microcontroladores y se aprenderá por qué es tan importante. 
+
+### Timers
+
+En los microcontroladores el tiempo se mide a través de un módulo denominado en inglés como *"Timer"*, o lo mismo en español como *"Temporizador"*. Como su nombre lo indica, éste módulo se encarga de marcar o llevar el tiempo. 
+
+En el SoC ESP32, este módulo recibe el nombre de "GPTimer" o *"General Purpose Timer"* y tiene las siguientes funcionalidades:
+
+- Se puede usar como un reloj, ya que se puede obtener una marca de tiempo de alta resolución en cualquier momento. 
+- Se pueden generar alarmas periódicas.
+- Se puede generar una "alarma de un solo disparo" o "one-shot alarm".
+
+ESP32 utiliza dos temporizadores de hardware con el fin de mantener la hora del sistema, para lo cual se puede pueden utilizar uno o ambos temporizadores. Los dos temporizadores de hardware son [[6]](#referencias):
+
+- **Temporizador RTC:** este temporizador permite mantener el tiempo en varios modos de suspensión y también puede mantener el tiempo en cualquier reinicio (con la excepción de los reinicios de encendido que reinician el temporizador RTC). La desviación de frecuencia depende de las fuentes del reloj del temporizador RTC y afecta la precisión solo en los modos de suspensión, en cuyo caso el tiempo se medirá con una resolución de 6,6667 μs [[6]](#referencias).
+
+- **Temporizador de alta resolución:** este temporizador no está disponible en los modos de suspensión y no persistirá durante un reinicio, pero tiene mayor precisión. El temporizador utiliza la fuente de reloj **APB_CLK** (normalmente 80 MHz), que tiene una desviación de frecuencia inferior a ±10 ppm. El tiempo se medirá con una resolución de 1 μs [[6]](#referencias).
+
+Para crear un *Timer* con el *framework* ESP-IDF, es necesario realizar los siguientes pasos:
+
+1. Inicializar una instancia con el tipo de dato `gptimer_handle_t`. Esta instancia o (variable) contendrá la configuración y funcionalidades del *Timer*.
+
+2. Instalar el driver para el *Timer*. Se requieren dos pasos:
+	1. Inicializar la estructura del tipo `gptimer_config_t`, la cual contiene los siguientes tipos de datos:
+		- `.clk_src`: seleccionar la señal de reloj. Por defecto usar: `GPTIMER_CLK_SRC_APB`
+		- `.direction`: seleccionar la dirección de conteo. Ascendente (`GPTIMER_COUNT_DOWN`) o descendente (`GPTIMER_COUNT_UP`). 
+		- `.resolution_hz`: seleccionar  la resolución del contador (frecuencia de trabajo) en Hz, por lo tanto, el tamaño del paso de cada tic de conteo es igual a 1/resolución_hz segundos.
+	2. Configurar el *Timer* con la función `gptimer_new_timer()`, la cual recibe dos parámetros:
+		- `config` – [in]. Es la dirección de memoria de la estructura que se creó en el paso 2.1. anterior.
+		- `ret_timer` – [out]. Es la dirección de memoria del *Handler* o instancia que se creó en el paso 1.
+		
+Aplicando lo anterior, se traduce en código como:
+
+~~~
+
+// Paso 1.
+gptimer_handle_t gptimer = NULL;
+
+// Paso 2.1.
+gptimer_config_t timer_config = {
+
+    .clk_src = GPTIMER_CLK_SRC_APB,
+    .direction = GPTIMER_COUNT_UP,
+    .resolution_hz = 1000000, // 1MHz, 1 tick = 1us
+	
+};
+
+// Paso 2.2.
+ESP_ERROR_CHECK(gptimer_new_timer(&timer_config, &gptimer));
+~~~
+
+**Cambiar el valor de conteo de un temporizador**
+
+Cuando se crea el GPTimer, el contador interno se restablecerá a cero de forma predeterminada. El valor del contador se puede actualizar asincrónicamente por`gptimer_set_raw_count()`. Al actualizar el recuento bruto de un temporizador activo, este comenzará a contar inmediatamente a partir del nuevo valor, así:
+
+`gptimer_set_raw_count([dir_memoria_timer_handle], [valor_nuevo])`
+
+En este caso, se necesita proporcionar como parámetros el GPTimer a cambiar y un valor el cual se reemplazará como valor conteo. 
+
+
+**Conteo máximo de un temporizador**
+
+El valor de conteo máximo depende del ancho de bits del temporizador de hardware, que se refleja en la macro SOC SOC_TIMER_GROUP_COUNTER_BIT_WIDTH. Normalmente este valor es 64 bits. Por lo tanto, el valor máximo de conteo es `2^64 = 18.446.744.073.709.551.616`
+
+**Leer el valor de conteo de un temporizador**
+
+El valor de conteo puede ser leído por `gptimer_get_raw_count()` en cualquier momento. 
+
+`gptimer_get_raw_count([dir_memoria_timer_handle], uint64_t *[variable])`
+
+En este caso, se necesita proporcionar como parámetros el GPTimer a consultar y un puntero a una variable para almacenar el valor leído en el temporizador; esta bariable debe ser del tipo uint64_t . 
+
+**Habilitar o deshabilitar un temporizador**
+
+Antes de hacer operaciones con en el temporizador, primero debe habilitar, llamando a la función `gptimer_enable()`, así:
+
+`gptimer_enable([timer_handle])`
+
+Esta función permite:
+
+- Cambiar el estado del controlador del temporizador desde init a habilitar.
+
+- Habilite el servicio de interrupción si ha sido instalado de forma "débil" el `gptimer_register_event_callbacks()`.
+- Permite tomar un plan de energía según la fuente de reloj seleccionada.
+
+La función `gptimer_enable()` hace lo contrario. 
+
+`gptimer_enable([timer_handle])`
+
+Vaya a la práctica 2.5. 
+
+### [Práctica 2.5. Manejo del tiempo]()
+
+
+
+
 ## 2.6. Integración con visualizadores
 
 ## 2.7. Integración con actuadores de control On-Off
@@ -398,3 +496,5 @@ Pruebe el código y vaya a la guía:
 - [4] ARIEL LUTENBERG, PABLO GOMEZ, ERIC PERNIA. *A Beginner’s Guide to Designing Embedded System Applications on Arm® Cortex®-M Microcontrollers*. ARM Education Media. ISBN: 978-1-911531-42-5 (ePDF)
 
 - [5] https://github.com/espressif/esp-idf/tree/v4.2/examples/peripherals/adc
+
+- [6] https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/system_time.html
