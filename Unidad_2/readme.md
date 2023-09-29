@@ -381,7 +381,7 @@ El tiempo es un factor importante en todas las actividades humanas. Las máquina
 
 Es así que, en este apartado se realizará un análisis de cómo se mide y se usa el tiempo en los microcontroladores y se aprenderá por qué es tan importante. 
 
-### Timers
+### Temporizadores o *Timers*
 
 En los microcontroladores el tiempo se mide a través de un módulo denominado en inglés como *"Timer"*, o lo mismo en español como *"Temporizador"*. Como su nombre lo indica, éste módulo se encarga de marcar o llevar el tiempo. 
 
@@ -399,18 +399,19 @@ ESP32 utiliza dos temporizadores de hardware con el fin de mantener la hora del 
 
 Para crear un *Timer* con el *framework* ESP-IDF, es necesario realizar los siguientes pasos:
 
-1. Inicializar una instancia con el tipo de dato `gptimer_handle_t`. Esta instancia o (variable) contendrá la configuración y funcionalidades del *Timer*.
+1. Inicializar una instancia con el tipo de dato `gptimer_handle_t`. Esta instancia o (variable) contendrá la configuración y funcionalidades del *Timer* [[6]](#referencias).
 
 2. Instalar el driver para el *Timer*. Se requieren dos pasos:
-	1. Inicializar la estructura del tipo `gptimer_config_t`, la cual contiene los siguientes tipos de datos:
+	1. Inicializar la estructura del tipo `gptimer_config_t`, la cual contiene los siguientes tipos de datos [[6]](#referencias):
 		- `.clk_src`: seleccionar la señal de reloj. Por defecto usar: `GPTIMER_CLK_SRC_APB`
 		- `.direction`: seleccionar la dirección de conteo. Ascendente (`GPTIMER_COUNT_DOWN`) o descendente (`GPTIMER_COUNT_UP`). 
-		- `.resolution_hz`: seleccionar  la resolución del contador (frecuencia de trabajo) en Hz, por lo tanto, el tamaño del paso de cada tic de conteo es igual a 1/resolución_hz segundos.
+		- `.resolution_hz`: seleccionar  la resolución del contador (frecuencia de trabajo) en Hz, por lo tanto, el tamaño del paso de cada tic de conteo es igual a 1/resolución_hz segundos [[6]](#referencias).
 	2. Configurar el *Timer* con la función `gptimer_new_timer()`, la cual recibe dos parámetros:
-		- `config` – [in]. Es la dirección de memoria de la estructura que se creó en el paso 2.1. anterior.
-		- `ret_timer` – [out]. Es la dirección de memoria del *Handler* o instancia que se creó en el paso 1.
+		- `config` – [in]. Es la dirección de memoria de la estructura que se creó en el paso 2.1. anterior [[6]](#referencias).
+		- `ret_timer` – [out]. Es la dirección de memoria del *Handler* o instancia que se creó en el paso 1 [[6]](#referencias).
 		
 Aplicando lo anterior, se traduce en código como:
+
 
 ~~~
 
@@ -430,18 +431,20 @@ gptimer_config_t timer_config = {
 ESP_ERROR_CHECK(gptimer_new_timer(&timer_config, &gptimer));
 ~~~
 
+Código tomado de [[6]](#referencias).
+
 **Cambiar el valor de conteo de un temporizador**
 
-Cuando se crea el GPTimer, el contador interno se restablecerá a cero de forma predeterminada. El valor del contador se puede actualizar asincrónicamente por`gptimer_set_raw_count()`. Al actualizar el recuento bruto de un temporizador activo, este comenzará a contar inmediatamente a partir del nuevo valor, así:
+Cuando se crea el GPTimer, el contador interno se restablecerá a cero de forma predeterminada. El valor del contador se puede actualizar asincrónicamente por`gptimer_set_raw_count()`. Al actualizar el recuento bruto de un temporizador activo, este comenzará a contar inmediatamente a partir del nuevo valor, así [[6]](#referencias):
 
 `gptimer_set_raw_count([dir_memoria_timer_handle], [valor_nuevo])`
 
-En este caso, se necesita proporcionar como parámetros el GPTimer a cambiar y un valor el cual se reemplazará como valor conteo. 
+En este caso, se necesita proporcionar como parámetros el GPTimer a cambiar y un valor el cual se reemplazará como valor conteo [[6]](#referencias). 
 
 
 **Conteo máximo de un temporizador**
 
-El valor de conteo máximo depende del ancho de bits del temporizador de hardware, que se refleja en la macro SOC SOC_TIMER_GROUP_COUNTER_BIT_WIDTH. Normalmente este valor es 64 bits. Por lo tanto, el valor máximo de conteo es `2^64 = 18.446.744.073.709.551.616`
+El valor de conteo máximo depende del ancho de bits del temporizador de hardware, que se refleja en la macro SOC SOC_TIMER_GROUP_COUNTER_BIT_WIDTH. Normalmente este valor es 64 bits. Por lo tanto, el valor máximo de conteo es `2^64 = 18.446.744.073.709.551.616` [[6]](#referencias).
 
 **Leer el valor de conteo de un temporizador**
 
@@ -449,30 +452,30 @@ El valor de conteo puede ser leído por `gptimer_get_raw_count()` en cualquier m
 
 `gptimer_get_raw_count([dir_memoria_timer_handle], uint64_t *[variable])`
 
-En este caso, se necesita proporcionar como parámetros el GPTimer a consultar y un puntero a una variable para almacenar el valor leído en el temporizador; esta bariable debe ser del tipo uint64_t . 
+En este caso, se necesita proporcionar como parámetros el GPTimer a consultar y un puntero a una variable para almacenar el valor leído en el temporizador; esta bariable debe ser del tipo uint64_t [[6]](#referencias) . 
 
 **Habilitar o deshabilitar un temporizador**
 
-Antes de hacer operaciones con en el temporizador, primero debe habilitar, llamando a la función `gptimer_enable()`, así:
+Antes de hacer operaciones con en el temporizador, primero debe habilitar, llamando a la función `gptimer_enable()`, así [[6]](#referencias):
 
 `gptimer_enable([timer_handle])`
 
-Esta función permite:
+Esta función permite [[6]](#referencias):
 
 - Cambiar el estado del controlador del temporizador desde init a habilitar.
 
 - Habilite el servicio de interrupción si ha sido instalado de forma "débil" el `gptimer_register_event_callbacks()`.
 - Permite tomar un plan de energía según la fuente de reloj seleccionada.
 
-La función `gptimer_enable()` hace lo contrario. 
+La función `gptimer_enable()` hace lo contrario [[6]](#referencias). 
 
 `gptimer_enable([timer_handle])`
 
-Vaya a la práctica 2.5. 
+Vaya al *Ejercicio introductorio 1 de la práctica 2.5.* [Manejo del tiempo](2.5_practica_manejo_del_tiempo.md), donde encontrará un ejemplo de la implementación de lo aquí explicado. 
 
-### [Práctica 2.5. Manejo del tiempo]()
+### [Práctica 2.5. Manejo del tiempo](2.5_practica_manejo_del_tiempo.md)
 
-
+#### **Funciones de *call back***
 
 
 ## 2.6. Integración con visualizadores
