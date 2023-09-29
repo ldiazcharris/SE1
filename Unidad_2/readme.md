@@ -397,6 +397,8 @@ ESP32 utiliza dos temporizadores de hardware con el fin de mantener la hora del 
 
 - **Temporizador de alta resolución:** este temporizador no está disponible en los modos de suspensión y no persistirá durante un reinicio, pero tiene mayor precisión. El temporizador utiliza la fuente de reloj **APB_CLK** (normalmente 80 MHz), que tiene una desviación de frecuencia inferior a ±10 ppm. El tiempo se medirá con una resolución de 1 μs [[6]](#referencias).
 
+### Pasos para crear un temporizador
+
 Para crear un *Timer* con el *framework* ESP-IDF, es necesario realizar los siguientes pasos:
 
 1. Inicializar una instancia con el tipo de dato `gptimer_handle_t`. Esta instancia o (variable) contendrá la configuración y funcionalidades del *Timer* [[6]](#referencias).
@@ -433,7 +435,7 @@ ESP_ERROR_CHECK(gptimer_new_timer(&timer_config, &gptimer));
 
 Código tomado de [[6]](#referencias).
 
-**Cambiar el valor de conteo de un temporizador**
+### **Cambiar el valor de conteo de un temporizador**
 
 Cuando se crea el GPTimer, el contador interno se restablecerá a cero de forma predeterminada. El valor del contador se puede actualizar asincrónicamente por`gptimer_set_raw_count()`. Al actualizar el recuento bruto de un temporizador activo, este comenzará a contar inmediatamente a partir del nuevo valor, así [[6]](#referencias):
 
@@ -442,11 +444,11 @@ Cuando se crea el GPTimer, el contador interno se restablecerá a cero de forma 
 En este caso, se necesita proporcionar como parámetros el GPTimer a cambiar y un valor el cual se reemplazará como valor conteo [[6]](#referencias). 
 
 
-**Conteo máximo de un temporizador**
+### **Conteo máximo de un temporizador**
 
 El valor de conteo máximo depende del ancho de bits del temporizador de hardware, que se refleja en la macro SOC SOC_TIMER_GROUP_COUNTER_BIT_WIDTH. Normalmente este valor es 64 bits. Por lo tanto, el valor máximo de conteo es `2^64 = 18.446.744.073.709.551.616` [[6]](#referencias).
 
-**Leer el valor de conteo de un temporizador**
+### **Leer el valor de conteo de un temporizador**
 
 El valor de conteo puede ser leído por `gptimer_get_raw_count()` en cualquier momento. 
 
@@ -454,7 +456,7 @@ El valor de conteo puede ser leído por `gptimer_get_raw_count()` en cualquier m
 
 En este caso, se necesita proporcionar como parámetros el GPTimer a consultar y un puntero a una variable para almacenar el valor leído en el temporizador; esta bariable debe ser del tipo uint64_t [[6]](#referencias) . 
 
-**Habilitar o deshabilitar un temporizador**
+### **Habilitar o deshabilitar un temporizador**
 
 Antes de hacer operaciones con en el temporizador, primero debe habilitar, llamando a la función `gptimer_enable()`, así [[6]](#referencias):
 
@@ -475,7 +477,81 @@ Vaya al *Ejercicio introductorio 1 de la práctica 2.5.* [Manejo del tiempo](2.5
 
 ### [Práctica 2.5. Manejo del tiempo](2.5_practica_manejo_del_tiempo.md)
 
-#### **Funciones de *call back***
+#### **Funciones de *callback***
+
+Una función de *callback* es una función que se ejecuta cuando sucede un "evento" concreto, la cual es llamada a través de otra función. Tal es el caso que nos ocupa en este apartado relacionado con los temporizadores. 
+
+El temporizador se puede configurar para que "avise" cuando se cumple un tiempo determinado, lo cual en ESP-IDF se conoce como una "alarma". Esto se configura de la siguiente manera:
+
+1. Crear el temporizador, como se explicó en [Pasos para crear un temporizador](#pasos-para-crear-un-temporizador).
+
+2. Crear la estructura para configurar las "alarmas" para los eventos del temporizador, así: 
+
+	~~~
+	// Estructura para habilitar las alertas por eventos del temporizador
+	gptimer_alarm_config_t alarm_config = {
+		.reload_count = 0, // el contador se cargará con 0 en cada evento
+		.alarm_count = 1000000, // periodo = 1s, resolución de 1MHz
+		.flags.auto_reload_on_alarm = true, // habilita auto-carga
+	};
+
+	// Carga la configuración de alarma en el temporizador
+	ESP_ERROR_CHECK(gptimer_set_alarm_action(gptimer, &alarm_config));
+
+	// Se reserva un espacio de memoria eh en el heap para albergar la función de callback
+	call_baks = malloc(sizeof(gptimer_event_callbacks_t));
+	~~~
+
+3. Cargar la estructura de configuración definida anteriormente en el temporizador, usando la función: `gptimer_set_alarm_action(gptimer, &alarm_config)`.
+
+4. Se declara y se define la función que será llamada cuando ocurra un evento del temporizador:
+
+	~~~
+	static bool call_back_proof(gptimer_handle_t timer, gptimer_alarm_event_data_t *edata, void *User_data);
+	~~~ 
+	
+	A manera de ejemplo, a esta función se le dio el nombre de `call_back_proof`, pero esta puede tener el nombre que el programador le parezca mejor. Sin embargo, los parámetros de la función deben ser del mismo tipo de dato que éste, debido a la naturaleza de *puntero a  función* de las funciones de callback en el lenguaje C. En este sentido, sepa que la estructura `gptimer_event_callbacks_t`, es un puntero a función, que recibe como parámetros:
+		- `gptimer_handle_t timer`: que es el timer creado por el usuario.
+		- `gptimer_alarm_event_data_t *edata`: es una estructura interna creada por la propia función, que almacenan los datos del evento de alarma, los cuales son: 
+			- `uint64_t count_value`: valor de conteo actual.
+			- `uint64_t alarm_value`: valor de alarma actual.
+		- `void *User_data`: datos que se pueden pasar como parámetro a la función de callback creada por el usuario. 
+	
+	Debido a que la función `call_back_proof()`, se ejecutará en tiempo de interrupción, no es recomendable usar lógica compleja dentro de ella o usar funciones del tipo bloqueante, como delays, printf(), entre otras. Si se emplean funciones bloqueantes o lógicas que demoren el tiempo de interrupción, el sistema se reiniciará forzosamente. 
+
+
+5. Configurar la función de callback:
+	1. Crear un puntero a función para almacenar la estructura del tipo `gptimer_event_callbacks_t`, la cual es la función que llamará a la función de callback que se creará.
+	2. Luego reservar un espacio de memoria en el heap para evitar errores de espacio de memoria con la función malloc().
+	3. Luego, se carga el puntero a la función creada en el paso 4. 
+	4. Por último se carga la configuración de la estructura creada en el paso 5.1. en el temporizador. 
+	
+
+	~~~
+	// 5.1. Se crea un puntero del tipo gptimer_event_callbacks_t, que contendrá el llamado a función
+	gptimer_event_callbacks_t *call_baks;
+		
+	// 5.2 Se reserva un espacio de memoria en el heap para albergar la función de callback
+	call_baks = malloc(sizeof(gptimer_event_callbacks_t));
+	
+	// 5.3. Se asigna a la estructura call_baks creada anteriormente con el puntero a la función
+	// que deberá llamar. 
+    // la función que será llamada cuando ocurra el evento del temporizador.
+	call_baks->on_alarm = call_back_proof;
+	
+	// 5.4. Se carga la configuración del callback en el temporizador. 
+	gptimer_register_event_callbacks(gptimer, call_baks, NULL)
+	~~~
+
+6. Por último, se habilita y se inicia el temporizador.
+
+	~~~
+	// Habilita el temporizador
+    ESP_ERROR_CHECK(gptimer_enable(gptimer));
+    
+    // Inicia el conteo del temporizador
+    ESP_ERROR_CHECK(gptimer_start(gptimer));
+	~~~
 
 
 ## 2.6. Integración con visualizadores
