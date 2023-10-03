@@ -6,10 +6,10 @@
 - [2.2. Integración de sensores analógicos.](#22-integración-de-sensores-analógicos)
 - [2.3. Integración de sensores digitales.](#23-integración-de-sensores-digitales)
 - [2.4. Integración de diversos dispositivos de entrada/salida.](#integración-de-diversos-dispositivos-de-entradasalida)
-- [2.5. Manejo del tiempo.](#24-manejo-del-tiempo)
-- [2.6. Integración con visualizadores.](#25-integración-con-visualizadores)
-- [2.7. Integración con actuadores de control On-Off.](#26-integración-con-actuadores-de-control-on-off)
-- [2.8. Integración con actuadores de control continuo.](#27-integración-con-actuadores-de-control-continuo)
+- [2.5. Manejo del tiempo.](#25-manejo-del-tiempo)
+- [2.6. Integración con visualizadores.](#26-integración-con-visualizadores)
+- [2.7. Integración con actuadores de control On-Off.](#27-integración-con-actuadores-de-control-on-off)
+- [2.8. Integración con actuadores de control continuo.](#28-integración-con-actuadores-de-control-continuo)
 
 
 ## 2.1. Uso del periférico UART
@@ -415,23 +415,23 @@ Para crear un *Timer* con el *framework* ESP-IDF, es necesario realizar los sigu
 Aplicando lo anterior, se traduce en código como:
 
 
-~~~
+	~~~
 
-// Paso 1.
-gptimer_handle_t gptimer = NULL;
+	// Paso 1.
+	gptimer_handle_t gptimer = NULL;
 
-// Paso 2.1.
-gptimer_config_t timer_config = {
+	// Paso 2.1.
+	gptimer_config_t timer_config = {
 
-    .clk_src = GPTIMER_CLK_SRC_APB,
-    .direction = GPTIMER_COUNT_UP,
-    .resolution_hz = 1000000, // 1MHz, 1 tick = 1us
-	
-};
+		.clk_src = GPTIMER_CLK_SRC_APB,
+		.direction = GPTIMER_COUNT_UP,
+		.resolution_hz = 1000000, // 1MHz, 1 tick = 1us
+		
+	};
 
-// Paso 2.2.
-ESP_ERROR_CHECK(gptimer_new_timer(&timer_config, &gptimer));
-~~~
+	// Paso 2.2.
+	ESP_ERROR_CHECK(gptimer_new_timer(&timer_config, &gptimer));
+	~~~
 
 Código tomado de [[6]](#referencias).
 
