@@ -416,7 +416,6 @@ Aplicando lo anterior, se traduce en código como:
 
 
 	~~~
-
 	// Paso 1.
 	gptimer_handle_t gptimer = NULL;
 
@@ -474,8 +473,6 @@ La función `gptimer_enable()` hace lo contrario [[6]](#referencias).
 `gptimer_enable([timer_handle])`
 
 Vaya al *Ejercicio introductorio 1 de la práctica 2.5.* [Manejo del tiempo](2.5_practica_manejo_del_tiempo.md), donde encontrará un ejemplo de la implementación de lo aquí explicado. 
-
-### [Práctica 2.5. Manejo del tiempo](2.5_practica_manejo_del_tiempo.md)
 
 #### **Funciones de *callback***
 
@@ -553,6 +550,9 @@ El temporizador se puede configurar para que "avise" cuando se cumple un tiempo 
     ESP_ERROR_CHECK(gptimer_start(gptimer));
 	~~~
 
+Continue con la práctica 2.5. y vaya al apartado del ejercicio introductorio 2.
+
+### [Práctica 2.5. Manejo del tiempo](2.5_practica_manejo_del_tiempo.md)
 
 ## 2.6. Integración con visualizadores
 
