@@ -365,7 +365,7 @@ void app_main(void)
 
 Las configuraciones `pull-down` y `pull-up`, permiten que los pines GPIO de la ESP32 puedan tener el comportamietno electrónico que se muestra en la imagen a continuación:
 
-<img src="/Unidad_2/imagenes/2.4_Pull_down_up_resistors.png" width=300>
+<img src="/Unidad_2/imagenes/2.4_Pull_down_up_resistors.png" width=500>
 
 En la configuración `pull-down`, cuando se presiona el botón, se presentan 3.3 V en el pin GPIO conectado, lo que se entiende como un estado `HIGH` o `ALTO`; mientras el botón esté liberado, se presentará el valor de GND (0 V), lo que se entiende como un estado `LOW` o `BAJO`.
 
@@ -495,7 +495,7 @@ El temporizador se puede configurar para que "avise" cuando se cumple un tiempo 
 	// Carga la configuración de alarma en el temporizador
 	ESP_ERROR_CHECK(gptimer_set_alarm_action(gptimer, &alarm_config));
 
-	// Se reserva un espacio de memoria eh en el heap para albergar la función de callback
+	// Se reserva un espacio de memoria en el heap para albergar la función de callback
 	call_baks = malloc(sizeof(gptimer_event_callbacks_t));
 	~~~
 
