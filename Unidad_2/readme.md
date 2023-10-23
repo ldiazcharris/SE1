@@ -575,11 +575,11 @@ Existen dos tipos de Display 7 Segmentos según sus conexiones internas:
 
 LCD es el acrónimo inglés para *Liquid Crystal Display*, o en español: *Pantalla de Cristal Líquido*. 
 
-Las pantallas LCD están conformadas básicamente por dos placas de vidrio paralelas entre sí y separadas entre sí por algunos micrómetros, entre las cuales está presente un *cristal líquido*, el cual es un material que tiene propiedades físicas especiales y puede cambiar de aspecto en presencia de campos eléctricos o magnéticos. Entre las placas de vidrio se distribuyen electrodos que definen, con su forma, los símbolos o caracteres que se visualizarán [[7]](#referencias).
+Las pantallas LCD están conformadas básicamente por dos placas de vidrio paralelas y separadas entre sí por algunos micrómetros, entre las cuales está presente un *cristal líquido*, el cual es un material que tiene propiedades físicas especiales y puede cambiar de aspecto en presencia de campos eléctricos o magnéticos. Entre las placas de vidrio se distribuyen electrodos que definen, con su forma, los símbolos o caracteres que se visualizarán [[7]](#referencias).
 
 La superficie del vidrio que hace contacto con el líquido es tratada de manera que induzca la alineación de los cristales en dirección paralela a las placas. Esta alineación permite el paso de la luz sin ninguna alteración [[7]](#referencias).
 
-Cuando se aplica la polarización adecuada entre los electrodos, aparece un campo eléctrico entre estos electrodos (campo que es perpendicular a las placas) y esto causa que las moléculas del liquido se agrupen en sentido paralelo a este (el campo eléctrico) y cause que aparezca una zona oscura sobre un fondo claro (contraste positivo). De esta manera aparece la información que se desea mostrar [[7]](#referencias).
+Cuando se aplica la polarización adecuada entre los electrodos, aparece un campo eléctrico entre estos electrodos (perpendicular a las placas) y esto causa que las moléculas del liquido se agrupen en sentido paralelo al campo eléctrico y cause que aparezca una zona oscura sobre un fondo claro. Esto es útil para mostrar información [[7]](#referencias).
 
 A continuación, se muestran algunos ejemplos de displays LCD de pequeñas dimensiones.
 
@@ -587,7 +587,7 @@ A continuación, se muestran algunos ejemplos de displays LCD de pequeñas dimen
 
 <img src="imagenes/2.6_display_LCD_20x4.png" width=400>
 
-
+Vaya a la práctica [2.6. Integración con visualizadores](2.6_practica_2_4_visualizadores.md).
 
 ## 2.7. Integración con actuadores de control On-Off
 
