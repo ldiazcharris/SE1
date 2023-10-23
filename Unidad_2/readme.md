@@ -213,7 +213,7 @@ Un sensor digital es un sensor electrónico o electroquímico que integra ademá
 Algunos de los diferentes protocolos de comunicación digital que pueden ser usados se encuentran:
 
 - UART.
-- I2C.
+- $I^2C$.
 - SPI.
 - RS485.
 - RS232.
@@ -587,7 +587,9 @@ A continuación, se muestran algunos ejemplos de displays LCD de pequeñas dimen
 
 <img src="imagenes/2.6_display_LCD_20x4.png" width=400>
 
-Vaya a la práctica [2.6. Integración con visualizadores](2.6_practica_2_4_visualizadores.md).
+Vaya a la  [Práctica 2.6 Integración con visualizadores](2.6_practica_2_6_visualizadores.md).
+
+### [Práctica 2.6 Integración con visualizadores](2.6_practica_2_6_visualizadores.md)
 
 ## 2.7. Integración con actuadores de control On-Off
 
