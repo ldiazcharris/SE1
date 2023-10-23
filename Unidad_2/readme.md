@@ -11,7 +11,6 @@
 - [2.7. Integración con actuadores de control On-Off.](#27-integración-con-actuadores-de-control-on-off)
 - [2.8. Integración con actuadores de control continuo.](#28-integración-con-actuadores-de-control-continuo)
 
-
 ## 2.1. Uso del periférico UART
 
 Las siglas UART traducen: Universal Asynchronous Receiver/Transmitter (Transmisor/Receptor Asíncrono Universal). Este es un protocolo de comunicación serie entre dos dispositivos. Un ejemplo del uso de este protocolo es en la comunicación con interfaz RS-232. El protocolo UART utiliza dos líneas entre el transmisor y receptor para transmitir y recibir en ambas direcciones. La conexión se realiza de forma cruzada. Es decir, la línea de transmisión del primer dispositivo se conecta a la línea de transmisión del segundo y viceversa. La comunicación en el UART puede ser simplex, semidúplex, o full-dúplex. A continuación, se presenta un diagrama de conexión UART entre dos dispositivos:
@@ -36,10 +35,9 @@ Ya que el UART es asíncrono, el transmisor necesita indicar que los bits de dat
 
 Después de que se terminan los bits de datos, el bit de parada indica el fin de datos de usuario. El bit de parada es una transición de regreso al estado alto o Idle o permanece en el estado alto por un tiempo de bit adicional. Se puede configurar un segundo bit de parada (opcional), generalmente para darle tiempo al receptor de prepararse para la siguiente trama, pero esto no es común en la práctica.
 
-### Bits de datos 
+### Bits de datos
 
 Los bits de datos son los datos de usuario o bits “útiles” y vienen inmediatamente después del bit de inicio. Puede haber de 5 a 9 bits de datos de usuario, aunque de 7 o 8 bits es lo más común. Estos bits de datos normalmente se transmiten primero con el bit menos importante.
-
 
 ### Bit de paridad
 
@@ -70,21 +68,20 @@ Debido a que los dispositivos basados en tecnología digital como lo son los Mic
 Un sistema de procesamiento digital de señal tiene las siguietnes etapas básicas: 
 
 - Traduce primero una señal analógica que varía de manera continua a una serie de niveles discretos. Donde se modifica la señal analógica para obtener una aproximación de la misma en formato de "escalera". Este proceso se realiza mediante un circuito de muestreo y retención [[2]](#referencias).
-
-	<img src="imagenes/2.2_escalera_señal_senoidal.png" width=500>
-
-	*Figura 4. Señal senoidal con aproximación de escalera [Tomado de: [2]](#referencias).*
+  
+  <img src="imagenes/2.2_escalera_señal_senoidal.png" width=500>
+  
+    *Figura 4. Señal senoidal con aproximación de escalera [Tomado de: [2]](#referencias).*
 
 - Luego viene el proceso de cuantificación, que busca obtener una serie de códigos binarios que representan cada uno de los pasos discretos de esa aproximación, mediante un proceso denominado conversión analógico-digital (A/D). El circuito que realiza la conversión A/D se denomina convertidor analógico-digital (ADC, Analog-to-Digital Converter) [[2]](#referencias).
-
-	<img src="imagenes/2.2_cuantificacion.png" width=500>
-
-	*Figura 5. Muestreo, retención y cuantificación de una onda senoidal [Tomado de: [2]](#referencias).*
+  
+  <img src="imagenes/2.2_cuantificacion.png" width=500>
+  
+    *Figura 5. Muestreo, retención y cuantificación de una onda senoidal [Tomado de: [2]](#referencias).*
 
 - Luego de la conversión analógico-digital, se la aplica a un procesador digital de la señal (DSP, Digital Signal Proccesor). El DSP puede realizar diversas operaciones con los datos entrantes, como por ejemplo eliminar las interferencias no deseadas, aumentar la amplitud de ciertas frecuencias de la señal y reducir la de otras, codificar los datos para realizar una transmisión segura de los mismos y detectar y corregir errores en los códigos transmitidos [[2]](#referencias). 
 
 - Luego de este procesamiento digital, la señal debe convertirse nuevamente en analógica. Este paso se lleva a cabo mediante un convertidor digital-analógico (DAC, Digital-to-Analog Converter). 
-
 
 <img src="imagenes/2.2_bloques_proc_digital_señales.png" width=500>
 
@@ -100,6 +97,7 @@ Existen dos parámetros importantes para los ADC:
 - Tasa de transferencia: la frecuencia de muestreo que un ADC puede aceptar, en número de muestras por segundo.
 
 Existen diferentes tipos de circuitos capaces de realizar la conversión analógica-digital:
+
 - Convertidor analógico-digital por aproximaciones sucesivas *(SAR, Successive Approximation Register)*.
 - Convertidor analógico-digital sigma-delta (S-D).
 - Convertidor analógico-digital flash
@@ -113,10 +111,10 @@ El chip ESP32 integra dos convertidores analógico-digital por aproximaciones su
 
 - ADC1, con 8 pines, conectados a los GPIO 32 - 39 [[3]](#referencias).
 - ADC2, con 10 pines, conectados a los GPIO 0, 2, 4, 12 - 15 y 25 - 27, con las siguientes restricciones para crear aplicaciones [[3]](#referencias):
-	- El ADC2 es utilizado por el controlador Wi-Fi. Por lo tanto, la aplicación solo puede usar ADC2 cuando el controlador Wi-Fi no se ha iniciado [[3]](#referencias).
-	- Algunos de los pines ADC2 se usan como (strapping pins) (GPIO 0, 2, 15), por lo tanto, no se pueden usar libremente. Tal es el caso en los siguientes Kits oficiales de desarrollo:
-		- ESP32 DevKitC: GPIO 0 no se puede usar debido a circuitos externos de programas automáticos [[3]](#referencias).
-		- ESP-WROVER-KIT: GPIO 0, 2, 4 y 15 no se pueden usar debido a conexiones externas para diferentes propósitos [[3]](#referencias).
+  - El ADC2 es utilizado por el controlador Wi-Fi. Por lo tanto, la aplicación solo puede usar ADC2 cuando el controlador Wi-Fi no se ha iniciado [[3]](#referencias).
+  - Algunos de los pines ADC2 se usan como (strapping pins) (GPIO 0, 2, 15), por lo tanto, no se pueden usar libremente. Tal es el caso en los siguientes Kits oficiales de desarrollo:
+    - ESP32 DevKitC: GPIO 0 no se puede usar debido a circuitos externos de programas automáticos [[3]](#referencias).
+    - ESP-WROVER-KIT: GPIO 0, 2, 4 y 15 no se pueden usar debido a conexiones externas para diferentes propósitos [[3]](#referencias).
 
 ### Configuración y lectura ADC en el ESP32 con ESO-IDF
 
@@ -127,9 +125,9 @@ Cada unidad ADC admite dos modos de trabajo, ADC-RTC o modo ADC-DMA.
 
 El ADC debe configurarse antes de tomar la lectura. Para hacer uso de las funciones del ADC con el framwork ESP-IDF, es necesario incluir la biblioteca 
 
-~~~
+```
 #include "driver/adc.h"
-~~~ 
+```
 
 **Para ADC1**, configure la precisión y atenuación deseadas llamando a las funciones [[3]](#referencias)
 
@@ -139,63 +137,58 @@ Las opciones de resolución son:
 
 **Opciones de resolución en el ESP32-WROOM**
 
-|                  |                          |
-| ---------------  | -----------------------  |
-| ADC_WIDTH_BIT_9  | DC capture width is 9Bit. |
+|                  |                             |
+| ---------------- | --------------------------- |
+| ADC_WIDTH_BIT_9  | DC capture width is 9Bit.   |
 | ADC_WIDTH_BIT_10 | ADC capture width is 10Bit. |
 | ADC_WIDTH_BIT_11 | ADC capture width is 11Bit. |
 | ADC_WIDTH_BIT_12 | ADC capture width is 12Bit. |
 
 `adc1_config_channel_atten([canal ADC], [Atenuación])` Esta función permite configurar la atenuación que se usará para cada uno de los canales ADC1.
 
-
 **Canales del ADC1**
 
-| Macro de la biblioteca  | Canal ADC1     | GPIO Correspondiente | 
-| ----------------------- | -------------- | -------------------- |
-| ADC1_CHANNEL_0          | ADC1 channel 0 | GPIO36               |
-| ADC1_CHANNEL_1          | ADC1 channel 1 | GPIO37               |
-| ADC1_CHANNEL_2          | ADC1 channel 2 | GPIO38               |
-| ADC1_CHANNEL_3          | ADC1 channel 3 | GPIO39               |
-| ADC1_CHANNEL_4          | ADC1 channel 4 | GPIO32               | 
-| ADC1_CHANNEL_5          | ADC1 channel 5 | GPIO33               |
-| ADC1_CHANNEL_6          | ADC1 channel 6 | GPIO34               | 
-| ADC1_CHANNEL_7          | ADC1 channel 7 | GPIO35               |
-
+| Macro de la biblioteca | Canal ADC1     | GPIO Correspondiente |
+| ---------------------- | -------------- | -------------------- |
+| ADC1_CHANNEL_0         | ADC1 channel 0 | GPIO36               |
+| ADC1_CHANNEL_1         | ADC1 channel 1 | GPIO37               |
+| ADC1_CHANNEL_2         | ADC1 channel 2 | GPIO38               |
+| ADC1_CHANNEL_3         | ADC1 channel 3 | GPIO39               |
+| ADC1_CHANNEL_4         | ADC1 channel 4 | GPIO32               |
+| ADC1_CHANNEL_5         | ADC1 channel 5 | GPIO33               |
+| ADC1_CHANNEL_6         | ADC1 channel 6 | GPIO34               |
+| ADC1_CHANNEL_7         | ADC1 channel 7 | GPIO35               |
 
 **Opciones de atenuación en el ESP32-WROOM**
 
-
 |          | Atenuación  | Rango sugerido  | Macro De atenuación |
-| ------   | --------    | ---------       | ------------------- |
-|    SoC   |     (dB)    |      (mV)       | ------------------- |
-| -------- | ----------- | --------------- | ------------------  |
-|   ESP32  |       0     |    100 ~  950   | ADC_ATTEN_DB_0      |
-|   ESP32  |       2.5   |    100 ~ 1250   | ADC_ATTEN_DB_2_5    |
-|   ESP32  |       6     |    150 ~ 1750   | ADC_ATTEN_DB_6      |
-|   ESP32  |      11     |    150 ~ 2450   | ADC_ATTEN_DB_11     |
 | -------- | ----------- | --------------- | ------------------- |
-| ESP32-S2 |       0     |      0 ~  750   | ADC_ATTEN_DB_0      |
-| ESP32-S2 |       2.5   |      0 ~ 1050   | ADC_ATTEN_DB_2_5    |
-| ESP32-S2 |       6     |      0 ~ 1300   | ADC_ATTEN_DB_6      |
-| ESP32-S2 |      11     |      0 ~ 2500   | ADC_ATTEN_DB_11     |
-
+| SoC      | (dB)        | (mV)            | ------------------- |
+| -------- | ----------- | --------------- | ------------------  |
+| ESP32    | 0           | 100 ~  950      | ADC_ATTEN_DB_0      |
+| ESP32    | 2.5         | 100 ~ 1250      | ADC_ATTEN_DB_2_5    |
+| ESP32    | 6           | 150 ~ 1750      | ADC_ATTEN_DB_6      |
+| ESP32    | 11          | 150 ~ 2450      | ADC_ATTEN_DB_11     |
+| -------- | ----------- | --------------- | ------------------- |
+| ESP32-S2 | 0           | 0 ~  750        | ADC_ATTEN_DB_0      |
+| ESP32-S2 | 2.5         | 0 ~ 1050        | ADC_ATTEN_DB_2_5    |
+| ESP32-S2 | 6           | 0 ~ 1300        | ADC_ATTEN_DB_6      |
+| ESP32-S2 | 11          | 0 ~ 2500        | ADC_ATTEN_DB_11     |
 
 **Para ADC2**, configure la atenuación con `adc2_config_channel_atten([Canal ADC2], [Atenuación])` [[3]](#referencias)
 
-
-| Macro de la biblioteca  | Canal ADC1     | GPIO ESP32 | GPIO ESP32-S2 | 
-| ----------------------- | -------------- | ---------- | ------------- |
-| ADC2_CHANNEL_0          | ADC2 channel 0 | GPIO4      | GPIO11        |
-| ADC2_CHANNEL_1          | ADC2 channel 1 | GPIO0      | GPIO12        |
-| ADC2_CHANNEL_2          | ADC2 channel 2 | GPIO2      | GPIO13        |
-| ADC2_CHANNEL_3          | ADC2 channel 3 | GPIO15     | GPIO14        |
-| ADC2_CHANNEL_4          | ADC2 channel 4 | GPIO13     | GPIO15        |
-| ADC2_CHANNEL_5          | ADC2 channel 5 | GPIO12     | GPIO16        |
-| ADC2_CHANNEL_6          | ADC2 channel 6 | GPIO14     | GPIO17        |
-| ADC2_CHANNEL_7          | ADC2 channel 7 | GPIO27     | GPIO18        |
-| ADC2_CHANNEL_8          | ADC2 channel 8 | GPIO25     | GPIO19        |
-| ADC2_CHANNEL_9          | ADC2 channel 9 | GPIO26     | GPIO20        |
+| Macro de la biblioteca | Canal ADC1     | GPIO ESP32 | GPIO ESP32-S2 |
+| ---------------------- | -------------- | ---------- | ------------- |
+| ADC2_CHANNEL_0         | ADC2 channel 0 | GPIO4      | GPIO11        |
+| ADC2_CHANNEL_1         | ADC2 channel 1 | GPIO0      | GPIO12        |
+| ADC2_CHANNEL_2         | ADC2 channel 2 | GPIO2      | GPIO13        |
+| ADC2_CHANNEL_3         | ADC2 channel 3 | GPIO15     | GPIO14        |
+| ADC2_CHANNEL_4         | ADC2 channel 4 | GPIO13     | GPIO15        |
+| ADC2_CHANNEL_5         | ADC2 channel 5 | GPIO12     | GPIO16        |
+| ADC2_CHANNEL_6         | ADC2 channel 6 | GPIO14     | GPIO17        |
+| ADC2_CHANNEL_7         | ADC2 channel 7 | GPIO27     | GPIO18        |
+| ADC2_CHANNEL_8         | ADC2 channel 8 | GPIO25     | GPIO19        |
+| ADC2_CHANNEL_9         | ADC2 channel 9 | GPIO26     | GPIO20        |
 
 La resolución de lectura en el ADC2 se configura cada vez que toma la lectura [[3]](#referencias).
 
@@ -252,18 +245,18 @@ Este sistema es potencialmente realizable usando plataformas de prototipado de s
 
 Para facilitar el entendimiento de la lógica del sistema, se harán algunas "abstracciones" de los dispositivos que se pueden observar en el diagrama. 
 
-| Componente del sistema       | Abstracción  |
-| ---------------------        | -----------  |
-| Alarm	     			       | LED LD1      |
-| System blocked LED	       | LED LD2	  |
-| Incorrect code LED	       | LED LD3	  |
-| Alarm Off / Enter button     | Botón B1     |
-| Gas detector                 | Botón B1     |
-| Over temperature detector    | Botón B1     |
-| A button   			       | Botón B1     |
-| B button   			       | Botón B1     |
-| C button   			       | Botón B1     |
-| C button   			       | Botón B1     |
+| Componente del sistema    | Abstracción |
+| ------------------------- | ----------- |
+| Alarm                     | LED LD1     |
+| System blocked LED        | LED LD2     |
+| Incorrect code LED        | LED LD3     |
+| Alarm Off / Enter button  | Botón B1    |
+| Gas detector              | Botón B1    |
+| Over temperature detector | Botón B1    |
+| A button                  | Botón B1    |
+| B button                  | Botón B1    |
+| C button                  | Botón B1    |
+| C button                  | Botón B1    |
 
 Por lo tanto, se requerirán los siguientes algunos materiales de hardware:
 
@@ -283,20 +276,20 @@ Inicialmente, se considerará la entrada del detector de gas. Si el detector de 
 
 A continuación, se presenta una implementación posible para el problema planteado. 
 
-~~~
+```
 // Incluir bibliotecas standar de C 
 #include <stdio.h>   
 #include <string.h>  
 
 // Incluir biblioteca de control de pines GPIO del ESP-IDF
-#include "driver/gpio.h"        		
+#include "driver/gpio.h"                
 
 // Incluir biblioteca del sistema operativo FreeRTOS
 #include "freertos/FreeRTOS.h" 
-  
+
 // Incluir biblioteca para manejo de tareas del FreeRTOS
 #include "freertos/task.h" 
-                  
+
 
 /* Crea macro con el número del pin donde está el detector de gas. 
  * Este detector de gas se activará con un pulso positivo.
@@ -304,7 +297,7 @@ A continuación, se presenta una implementación posible para el problema plante
  * Pra evitar errores de lectura y activaciones inesperadas. 
 */
 #define DETECTOR_DE_GAS  2
- 
+
 /* Crea macro con el número del pin donde está la alarma. 
  * Esta alarma se activará con un pulso positivo.
  * Se debe hacer uso de la configuración Pull-Down de las entradas de la ESP32
@@ -321,29 +314,29 @@ A continuación, se presenta una implementación posible para el problema plante
 void app_main(void)
 {
     /* Reiniciar el pin del DETECTOR_DE_GAS para que 
-	 * esté en su estado predeterminado
-	 */
-	gpio_reset_pin(DETECTOR_DE_GAS);   
-		
-	// Configura el pin del DETECTOR_DE_GAS como entrada
-	gpio_set_direction(DETECTOR_DE_GAS, GPIO_MODE_INPUT);
+     * esté en su estado predeterminado
+     */
+    gpio_reset_pin(DETECTOR_DE_GAS);   
 
-	// Habilita la configuración Pull-Down en el pin del DETECTOR_DE_GAS
-	gpio_pulldown_en(DETECTOR_DE_GAS);
-		
-	/* Reiniciar el pin de la ALARMA para que 
-	 * esté en su estado predeterminado
-	 */ 
-		gpio_reset_pin(ALARMA);
+    // Configura el pin del DETECTOR_DE_GAS como entrada
+    gpio_set_direction(DETECTOR_DE_GAS, GPIO_MODE_INPUT);
 
-	// Configura el pin de la ALARMA como salida
-	gpio_set_direction(ALARMA, GPIO_MODE_OUTPUT);
+    // Habilita la configuración Pull-Down en el pin del DETECTOR_DE_GAS
+    gpio_pulldown_en(DETECTOR_DE_GAS);
+
+    /* Reiniciar el pin de la ALARMA para que 
+     * esté en su estado predeterminado
+     */ 
+        gpio_reset_pin(ALARMA);
+
+    // Configura el pin de la ALARMA como salida
+    gpio_set_direction(ALARMA, GPIO_MODE_OUTPUT);
 
     // Habilita la configuración Pull-Downen el pin de la alarma.
     gpio_pulldown_en(ALARMA);
-	
-	// Bucle infinito que permite que el programa se ejecute indefinidamente.
-	while(1)
+
+    // Bucle infinito que permite que el programa se ejecute indefinidamente.
+    while(1)
     {
         // Pregunta si el DETECTOR_DE_GAS está encendido
         if(DETECTOR_DE_GAS == ON)
@@ -357,11 +350,9 @@ void app_main(void)
             // Solo si es verdadero, entonces se apaga la ALARMA
             gpio_set_level(ALARMA, OFF);
         }
-	}
+    }
 }
-
-
-~~~
+```
 
 Las configuraciones `pull-down` y `pull-up`, permiten que los pines GPIO de la ESP32 puedan tener el comportamietno electrónico que se muestra en la imagen a continuación:
 
@@ -404,33 +395,33 @@ Para crear un *Timer* con el *framework* ESP-IDF, es necesario realizar los sigu
 1. Inicializar una instancia con el tipo de dato `gptimer_handle_t`. Esta instancia o (variable) contendrá la configuración y funcionalidades del *Timer* [[6]](#referencias).
 
 2. Instalar el driver para el *Timer*. Se requieren dos pasos:
-	1. Inicializar la estructura del tipo `gptimer_config_t`, la cual contiene los siguientes tipos de datos [[6]](#referencias):
-		- `.clk_src`: seleccionar la señal de reloj. Por defecto usar: `GPTIMER_CLK_SRC_APB`
-		- `.direction`: seleccionar la dirección de conteo. Ascendente (`GPTIMER_COUNT_DOWN`) o descendente (`GPTIMER_COUNT_UP`). 
-		- `.resolution_hz`: seleccionar  la resolución del contador (frecuencia de trabajo) en Hz, por lo tanto, el tamaño del paso de cada tic de conteo es igual a 1/resolución_hz segundos [[6]](#referencias).
-	2. Configurar el *Timer* con la función `gptimer_new_timer()`, la cual recibe dos parámetros:
-		- `config` – [in]. Es la dirección de memoria de la estructura que se creó en el paso 2.1. anterior [[6]](#referencias).
-		- `ret_timer` – [out]. Es la dirección de memoria del *Handler* o instancia que se creó en el paso 1 [[6]](#referencias).
-		
+   
+   1. Inicializar la estructura del tipo `gptimer_config_t`, la cual contiene los siguientes tipos de datos [[6]](#referencias):
+      - `.clk_src`: seleccionar la señal de reloj. Por defecto usar: `GPTIMER_CLK_SRC_APB`
+      - `.direction`: seleccionar la dirección de conteo. Ascendente (`GPTIMER_COUNT_DOWN`) o descendente (`GPTIMER_COUNT_UP`). 
+      - `.resolution_hz`: seleccionar  la resolución del contador (frecuencia de trabajo) en Hz, por lo tanto, el tamaño del paso de cada tic de conteo es igual a 1/resolución_hz segundos [[6]](#referencias).
+   2. Configurar el *Timer* con la función `gptimer_new_timer()`, la cual recibe dos parámetros:
+      - `config` – [in]. Es la dirección de memoria de la estructura que se creó en el paso 2.1. anterior [[6]](#referencias).
+      - `ret_timer` – [out]. Es la dirección de memoria del *Handler* o instancia que se creó en el paso 1 [[6]](#referencias).
+
 Aplicando lo anterior, se traduce en código como:
 
-
-	~~~
-	// Paso 1.
-	gptimer_handle_t gptimer = NULL;
-
-	// Paso 2.1.
-	gptimer_config_t timer_config = {
-
-		.clk_src = GPTIMER_CLK_SRC_APB,
-		.direction = GPTIMER_COUNT_UP,
-		.resolution_hz = 1000000, // 1MHz, 1 tick = 1us
-		
-	};
-
-	// Paso 2.2.
-	ESP_ERROR_CHECK(gptimer_new_timer(&timer_config, &gptimer));
-	~~~
+    ~~~
+    // Paso 1.
+    gptimer_handle_t gptimer = NULL;
+    
+    // Paso 2.1.
+    gptimer_config_t timer_config = {
+    
+        .clk_src = GPTIMER_CLK_SRC_APB,
+        .direction = GPTIMER_COUNT_UP,
+        .resolution_hz = 1000000, // 1MHz, 1 tick = 1us
+    
+    };
+    
+    // Paso 2.2.
+    ESP_ERROR_CHECK(gptimer_new_timer(&timer_config, &gptimer));
+    ~~~
 
 Código tomado de [[6]](#referencias).
 
@@ -441,7 +432,6 @@ Cuando se crea el GPTimer, el contador interno se restablecerá a cero de forma 
 `gptimer_set_raw_count([dir_memoria_timer_handle], [valor_nuevo])`
 
 En este caso, se necesita proporcionar como parámetros el GPTimer a cambiar y un valor el cual se reemplazará como valor conteo [[6]](#referencias). 
-
 
 ### **Conteo máximo de un temporizador**
 
@@ -466,6 +456,7 @@ Esta función permite [[6]](#referencias):
 - Cambiar el estado del controlador del temporizador desde init a habilitar.
 
 - Habilite el servicio de interrupción si ha sido instalado de forma "débil" el `gptimer_register_event_callbacks()`.
+
 - Permite tomar un plan de energía según la fuente de reloj seleccionada.
 
 La función `gptimer_enable()` hace lo contrario [[6]](#referencias). 
@@ -483,78 +474,120 @@ El temporizador se puede configurar para que "avise" cuando se cumple un tiempo 
 1. Crear el temporizador, como se explicó en [Pasos para crear un temporizador](#pasos-para-crear-un-temporizador).
 
 2. Crear la estructura para configurar las "alarmas" para los eventos del temporizador, así: 
-
-	~~~
-	// Estructura para habilitar las alertas por eventos del temporizador
-	gptimer_alarm_config_t alarm_config = {
-		.reload_count = 0, // el contador se cargará con 0 en cada evento
-		.alarm_count = 1000000, // periodo = 1s, resolución de 1MHz
-		.flags.auto_reload_on_alarm = true, // habilita auto-carga
-	};
-
-	// Carga la configuración de alarma en el temporizador
-	ESP_ERROR_CHECK(gptimer_set_alarm_action(gptimer, &alarm_config));
-
-	// Se reserva un espacio de memoria en el heap para albergar la función de callback
-	call_baks = malloc(sizeof(gptimer_event_callbacks_t));
-	~~~
+   
+   ```
+    // Estructura para habilitar las alertas por eventos del temporizador
+    gptimer_alarm_config_t alarm_config = {
+        .reload_count = 0, // el contador se cargará con 0 en cada evento
+        .alarm_count = 1000000, // periodo = 1s, resolución de 1MHz
+        .flags.auto_reload_on_alarm = true, // habilita auto-carga
+    };
+   
+    // Carga la configuración de alarma en el temporizador
+    ESP_ERROR_CHECK(gptimer_set_alarm_action(gptimer, &alarm_config));
+   
+    // Se reserva un espacio de memoria en el heap para albergar la función de callback
+    call_baks = malloc(sizeof(gptimer_event_callbacks_t));
+   ```
 
 3. Cargar la estructura de configuración definida anteriormente en el temporizador, usando la función: `gptimer_set_alarm_action(gptimer, &alarm_config)`.
 
 4. Se declara y se define la función que será llamada cuando ocurra un evento del temporizador:
-
-	~~~
-	static bool call_back_proof(gptimer_handle_t timer, gptimer_alarm_event_data_t *edata, void *User_data);
-	~~~ 
-	
-	A manera de ejemplo, a esta función se le dio el nombre de `call_back_proof`, pero esta puede tener el nombre que el programador le parezca mejor. Sin embargo, los parámetros de la función deben ser del mismo tipo de dato que éste, debido a la naturaleza de *puntero a  función* de las funciones de callback en el lenguaje C. En este sentido, sepa que la estructura `gptimer_event_callbacks_t`, es un puntero a función, que recibe como parámetros:
-		- `gptimer_handle_t timer`: que es el timer creado por el usuario.
-		- `gptimer_alarm_event_data_t *edata`: es una estructura interna creada por la propia función, que almacenan los datos del evento de alarma, los cuales son: 
-			- `uint64_t count_value`: valor de conteo actual.
-			- `uint64_t alarm_value`: valor de alarma actual.
-		- `void *User_data`: datos que se pueden pasar como parámetro a la función de callback creada por el usuario. 
-	
-	Debido a que la función `call_back_proof()`, se ejecutará en tiempo de interrupción, no es recomendable usar lógica compleja dentro de ella o usar funciones del tipo bloqueante, como delays, printf(), entre otras. Si se emplean funciones bloqueantes o lógicas que demoren el tiempo de interrupción, el sistema se reiniciará forzosamente. 
-
+   
+   ```
+    static bool call_back_proof(gptimer_handle_t timer, gptimer_alarm_event_data_t *edata, void *User_data);
+   ```
+   
+    A manera de ejemplo, a esta función se le dio el nombre de `call_back_proof`, pero esta puede tener el nombre que el programador le parezca mejor. Sin embargo, los parámetros de la función deben ser del mismo tipo de dato que éste, debido a la naturaleza de *puntero a  función* de las funciones de callback en el lenguaje C. En este sentido, sepa que la estructura `gptimer_event_callbacks_t`, es un puntero a función, que recibe como parámetros:
+   
+        - `gptimer_handle_t timer`: que es el timer creado por el usuario.
+        - `gptimer_alarm_event_data_t *edata`: es una estructura interna creada por la propia función, que almacenan los datos del evento de alarma, los cuales son: 
+            - `uint64_t count_value`: valor de conteo actual.
+            - `uint64_t alarm_value`: valor de alarma actual.
+        - `void *User_data`: datos que se pueden pasar como parámetro a la función de callback creada por el usuario. 
+   
+    Debido a que la función `call_back_proof()`, se ejecutará en tiempo de interrupción, no es recomendable usar lógica compleja dentro de ella o usar funciones del tipo bloqueante, como delays, printf(), entre otras. Si se emplean funciones bloqueantes o lógicas que demoren el tiempo de interrupción, el sistema se reiniciará forzosamente. 
 
 5. Configurar la función de callback:
-	1. Crear un puntero a función para almacenar la estructura del tipo `gptimer_event_callbacks_t`, la cual es la función que llamará a la función de callback que se creará.
-	2. Luego reservar un espacio de memoria en el heap para evitar errores de espacio de memoria con la función malloc().
-	3. Luego, se carga el puntero a la función creada en el paso 4. 
-	4. Por último se carga la configuración de la estructura creada en el paso 5.1. en el temporizador. 
-	
+   1. Crear un puntero a función para almacenar la estructura del tipo `gptimer_event_callbacks_t`, la cual es la función que llamará a la función de callback que se creará.
+   2. Luego reservar un espacio de memoria en el heap para evitar errores de espacio de memoria con la función malloc().
+   3. Luego, se carga el puntero a la función creada en el paso 4. 
+   4. Por último se carga la configuración de la estructura creada en el paso 5.1. en el temporizador. 
 
-	~~~
-	// 5.1. Se crea un puntero del tipo gptimer_event_callbacks_t, que contendrá el llamado a función
-	gptimer_event_callbacks_t *call_baks;
-		
-	// 5.2 Se reserva un espacio de memoria en el heap para albergar la función de callback
-	call_baks = malloc(sizeof(gptimer_event_callbacks_t));
-	
-	// 5.3. Se asigna a la estructura call_baks creada anteriormente con el puntero a la función
-	// que deberá llamar. 
+    ~~~
+    // 5.1. Se crea un puntero del tipo gptimer_event_callbacks_t, que contendrá el llamado a función
+    gptimer_event_callbacks_t *call_baks;
+    
+    // 5.2 Se reserva un espacio de memoria en el heap para albergar la función de callback
+    call_baks = malloc(sizeof(gptimer_event_callbacks_t));
+    
+    // 5.3. Se asigna a la estructura call_baks creada anteriormente con el puntero a la función
+    // que deberá llamar. 
     // la función que será llamada cuando ocurra el evento del temporizador.
-	call_baks->on_alarm = call_back_proof;
-	
-	// 5.4. Se carga la configuración del callback en el temporizador. 
-	gptimer_register_event_callbacks(gptimer, call_baks, NULL)
-	~~~
+    call_baks->on_alarm = call_back_proof;
+    
+    // 5.4. Se carga la configuración del callback en el temporizador. 
+    gptimer_register_event_callbacks(gptimer, call_baks, NULL)
+    ~~~
 
 6. Por último, se habilita y se inicia el temporizador.
-
-	~~~
-	// Habilita el temporizador
+   
+   ```
+    // Habilita el temporizador
     ESP_ERROR_CHECK(gptimer_enable(gptimer));
-    
+   
     // Inicia el conteo del temporizador
     ESP_ERROR_CHECK(gptimer_start(gptimer));
-	~~~
+   ```
 
 Continue con la práctica 2.5. y vaya al apartado del ejercicio introductorio 2.
 
 ### [Práctica 2.5. Manejo del tiempo](2.5_practica_manejo_del_tiempo.md)
 
 ## 2.6. Integración con visualizadores
+
+En el mundo de los sistemas embebidos, existen gran variedad de dispositivos que facilitan la visualización de datos. Estos dispositivos de visualización van desde simples pilotos (indicadores luminosos) hasta modernas pantallas OLED y touchscreens de alta resolución. 
+
+En este curso se tratarán dos tipos de visualizadores:
+
+1. Displays 7-segmentos.
+2. Displays LCD.
+
+### **Display 7-segmentos**
+
+Un display de segmentos (o visualizador) es un componente electrónico que se utiliza para representar de manera limitada símbolos alfanuméricos, pero principalmente números. Como su propio nombre indica y, como se puede observar en la imagen siguiente, el display está compuesto por 7 segmentos y uno adicional que representa un punto, los cuales se encenderán o apagarán en función del símbolo a representar.
+
+<img src="imagenes/2.6_display_7_segmentos.jpg" width=400>
+
+De forma interna, se asemeja a siete leds conectados estratégicamente formando el número 8, aunque externamente dicha semejanza no se observa. Cada uno de los segmentos que componen este display se denominan a, b, c, d, e, f y g, tal y como se muestra a continuación.
+
+<img src="imagenes/2.6_display_7_segmentos_schematic.png" width=400>
+
+De modo que para mostrar el número 0, se tendrían que encender al mismo tiempo los segmentos a, b, c, d, e y f. Para el número 2, se tendrían que encender a, b, g, e y d. Y de la misma forma para cualquier otro número.
+
+Existen dos tipos de Display 7 Segmentos según sus conexiones internas:
+
+1. Configuración cátodo común: este tipo de display tiene una configuración interna en la que todos los cátodos de los leds están conectados entre sí. 
+
+2. Configuración ánodo común: este tipo de display tiene una configuración interna en la que todos los ánodos de los leds están conectados entre sí.
+
+### **Display LCD**
+
+LCD es el acrónimo inglés para *Liquid Crystal Display*, o en español: *Pantalla de Cristal Líquido*. 
+
+Las pantallas LCD están conformadas básicamente por dos placas de vidrio paralelas entre sí y separadas entre sí por algunos micrómetros, entre las cuales está presente un *cristal líquido*, el cual es un material que tiene propiedades físicas especiales y puede cambiar de aspecto en presencia de campos eléctricos o magnéticos. Entre las placas de vidrio se distribuyen electrodos que definen, con su forma, los símbolos o caracteres que se visualizarán [[7]](#referencias).
+
+La superficie del vidrio que hace contacto con el líquido es tratada de manera que induzca la alineación de los cristales en dirección paralela a las placas. Esta alineación permite el paso de la luz sin ninguna alteración [[7]](#referencias).
+
+Cuando se aplica la polarización adecuada entre los electrodos, aparece un campo eléctrico entre estos electrodos (campo que es perpendicular a las placas) y esto causa que las moléculas del liquido se agrupen en sentido paralelo a este (el campo eléctrico) y cause que aparezca una zona oscura sobre un fondo claro (contraste positivo). De esta manera aparece la información que se desea mostrar [[7]](#referencias).
+
+A continuación, se muestran algunos ejemplos de displays LCD de pequeñas dimensiones.
+
+<img src="imagenes/2.6_display_LCD_16x2.png" width=400>
+
+<img src="imagenes/2.6_display_LCD_20x4.png" width=400>
+
+
 
 ## 2.7. Integración con actuadores de control On-Off
 
@@ -565,10 +598,10 @@ Continue con la práctica 2.5. y vaya al apartado del ejercicio introductorio 2.
 - [1] TOCCI, RONALD J., NEAL S. WIDMER, GREGORY L. MOSS. Sistemas digitales. Principios y aplicaciones. Décima edición. Pearson Educación, México, 2007. ISBN: 978-970-26-0970-4. Área: Ingeniería. 
 
 - [2] Thomas L. Floyd. FUNDAMENTOS DE SISTEMAS DIGITALES. PEARSON EDUCACIÓN S.A., Madrid, 2006. ISBN 10: 84-8322-085-7. ISBN 13: 978-84-832-2720-6.
-	13.1 FUNDAMENTOS DEL PROCESAMIENTO DIGITAL DE LA SEÑAL Pág. 854
-	Diagrama de bloques básico de un sistema típico de procesamiento digital de la señal Pág. 855
-	Conversión analógico-digital Pág. 859
-	13.3 MÉTODOS DE CONVERSIÓN ANALÓGICA-DIGITAL Pág. 862 
+    13.1 FUNDAMENTOS DEL PROCESAMIENTO DIGITAL DE LA SEÑAL Pág. 854
+    Diagrama de bloques básico de un sistema típico de procesamiento digital de la señal Pág. 855
+    Conversión analógico-digital Pág. 859
+    13.3 MÉTODOS DE CONVERSIÓN ANALÓGICA-DIGITAL Pág. 862 
 
 - [3] https://docs.espressif.com/projects/esp-idf/en/v4.2/esp32/api-reference/peripherals/adc.html
 
@@ -577,3 +610,4 @@ Continue con la práctica 2.5. y vaya al apartado del ejercicio introductorio 2.
 - [5] https://github.com/espressif/esp-idf/tree/v4.2/examples/peripherals/adc
 
 - [6] https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/system_time.html
+- [7] https://www.samsung.com/latin/support/tv-audio-video/how-does-the-lcd-display-work/#:~:text=El%20LCD%20modifica%20la%20luz,dispositivo%20como%20un%20segmento%20oscuro.
