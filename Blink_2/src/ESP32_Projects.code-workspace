@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"name": "Blink",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"random": "c",
+			"lcd_i2c.h": "c"
+		}
+	}
+}
