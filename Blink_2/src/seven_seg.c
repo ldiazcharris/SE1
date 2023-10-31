@@ -22,30 +22,40 @@ void seg_7_init(seg_7_handler_t *seg_7_handler,
     seg_7_handler->f = f; 
     seg_7_handler->g = g;
     seg_7_handler->p = p;
+
+    uint8_t seg_7_pins[8] = 
+	{
+		seg_7_handler->a,
+		seg_7_handler->b,
+		seg_7_handler->c,
+		seg_7_handler->d,
+		seg_7_handler->e,
+		seg_7_handler->f,
+		seg_7_handler->g,
+		seg_7_handler->p
+	};
     
-    gpio_set_direction(seg_7_handler->a, GPIO_MODE_OUTPUT);
-    gpio_set_direction(seg_7_handler->b, GPIO_MODE_OUTPUT);
-    gpio_set_direction(seg_7_handler->c, GPIO_MODE_OUTPUT);
-    gpio_set_direction(seg_7_handler->d, GPIO_MODE_OUTPUT);
-    gpio_set_direction(seg_7_handler->e, GPIO_MODE_OUTPUT);
-    gpio_set_direction(seg_7_handler->f, GPIO_MODE_OUTPUT);
-    gpio_set_direction(seg_7_handler->g, GPIO_MODE_OUTPUT);
-    gpio_set_direction(seg_7_handler->p, GPIO_MODE_OUTPUT);
+   
+    for (uint8_t i = 0; i < 8; i++)
+	{
+		gpio_set_direction(seg_7_pins[i], GPIO_MODE_OUTPUT);
+        
+	}
 
 }
 
-void seg_7_write(seg_7_handler_t *seg_t_handler, uint8_t * caracter)
+void seg_7_write(seg_7_handler_t *seg_7_handler, uint8_t * caracter)
 {
-      uint8_t pins[8] = 
+    uint8_t pins[8] = 
 	{
-		seg_t_handler->a,
-		seg_t_handler->b,
-		seg_t_handler->c,
-		seg_t_handler->d,
-		seg_t_handler->e,
-		seg_t_handler->f,
-		seg_t_handler->g,
-		seg_t_handler->p
+		seg_7_handler->a,
+		seg_7_handler->b,
+		seg_7_handler->c,
+		seg_7_handler->d,
+		seg_7_handler->e,
+		seg_7_handler->f,
+		seg_7_handler->g,
+		seg_7_handler->p
 	};
 
 	for (uint8_t i = 0; i < 8; i++)
