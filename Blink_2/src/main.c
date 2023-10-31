@@ -1,3 +1,115 @@
+
+/*
+// Incluir bibliotecas standar de C 
+#include <stdio.h>    
+#include <stdlib.h> // Requerida para usar la función malloc()
+
+// Incluir biblioteca de control de pines GPIO del ESP-IDF
+#include "driver/gpio.h"       
+
+// Incluir biblioteca de control de GPTimer del ESP-IDF
+#include "driver/gptimer.h"
+
+// Incluir biblioteca del sistema operativo FreeRTOS
+#include "freertos/FreeRTOS.h" 
+  
+// Incluir biblioteca para manejo de tareas del FreeRTOS
+#include "freertos/task.h" 
+
+// Inicializar una instancia del temporizador GPTimer
+gptimer_handle_t gptimer = NULL;
+
+// Inicializar la estructura para configurar el temporizador
+gptimer_config_t timer_config = {
+
+	.clk_src = GPTIMER_CLK_SRC_APB,
+	.direction = GPTIMER_COUNT_UP,
+	.resolution_hz = 1000000, // 1MHz, 1 tick = 1us
+	
+};
+
+// Se crea el prototipo de función que será llamada cuando se active la interrupción
+static bool call_back_proof(gptimer_handle_t timer, const gptimer_alarm_event_data_t *edata, void *user_ctx);
+
+// Se crea un puntero del tipo gptimer_event_callbacks_t, que contendrá el llamado a función
+gptimer_event_callbacks_t *call_baks;
+
+// Función principal
+int app_main()
+{
+	// Configurar el temporizador según a estructura "timer_config",
+	// creada anteriormente. 
+	ESP_ERROR_CHECK(gptimer_new_timer(&timer_config, &gptimer));
+
+	// Estructura para habilitar las alertas por eventos del temporizador
+	gptimer_alarm_config_t alarm_config = {
+		.reload_count = 0, // el contador se cargará con 0 en cada evento
+		.alarm_count = 1000000, // periodo = 1s, resolución de 1MHz
+		.flags.auto_reload_on_alarm = true, // habilita auto-carga
+	};
+
+	// Carga la configuración de alarma en el temporizador
+	ESP_ERROR_CHECK(gptimer_set_alarm_action(gptimer, &alarm_config));
+
+	// Se reserva un espacio de memoria eh en el heap para albergar la función de callback
+	call_baks = malloc(sizeof(gptimer_event_callbacks_t));
+
+	// Condicional que valida que se asignó correctamente la memoria. 
+	// Si malloc() falla, entonces devolverá NULL
+	// El programa no puede continuar, debido a que esto puede ocasionar
+	// una falla de pánico del sistema, y se reiniciará para fallar nuevamente.
+	// Por lo cual, no tiene sentido continuar el programa. 
+	if(call_baks == NULL)
+	{
+		printf("------**ERROR ASIGNANDO MEMORIA**------");
+		return -1;
+	}
+
+	// Se asigna a la estructura call_baks creada anteriormente 
+	// la función que será llamada cuando ocurra el evento del temporizador.
+	// la función call_back_proof(), se ejecutará en tiempo de interrupción,
+	// Por lo tanto, no es recomendable usar lógica compleja dentro de ella
+	// o usar funciones del tipo bloqueante como delays, printf(), entre otras. 
+	call_baks->on_alarm = call_back_proof; 
+
+	// Se carga el evento de callback con la función gptimer_register_event_callbacks()
+	// para que pueda ser usada realmente
+	ESP_ERROR_CHECK(gptimer_register_event_callbacks(gptimer, 
+													call_baks, NULL));
+	
+	// Habilita el temporizador
+	ESP_ERROR_CHECK(gptimer_enable(gptimer));
+	
+	// Inicia el conteo del temporizador
+	ESP_ERROR_CHECK(gptimer_start(gptimer));
+
+	// Si algo sale mal, 
+	// Se imprimirá por serial un mensaje 
+	// parecido a este: abort() was called at PC 0x40082dff on core 0
+
+	
+	// Se configura el GPIO_2 como entrada y salida
+	gpio_set_direction(GPIO_NUM_2, GPIO_MODE_INPUT_OUTPUT);
+
+	
+	return 0;
+}
+
+// Definición de la función que será llamada en cada evento del temporizador
+static bool call_back_proof(gptimer_handle_t timer, const gptimer_alarm_event_data_t *edata, void *user_ctx)
+{
+	// Se hace un "toggle" del pin GPIO_2
+	gpio_set_level(2, !gpio_get_level(2));
+
+	return true;
+	
+}
+
+
+
+*/
+
+/*
 #include <stdio.h>
 #include <string.h>
 #include "driver/gpio.h"
@@ -6,6 +118,7 @@
 #include "freertos/task.h"
 #include "esp_log.h"
 #include "lcd_i2c.h"  // Librería para el uso del LCD con modulo I2C PCF8574
+
 
 
 void app_main()
@@ -41,29 +154,14 @@ void app_main()
         vTaskDelay(3000/portTICK_PERIOD_MS);
     }
 }
+*/
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 7-Segmentoso excersice
+// 7-Segmentoso excersice
 
 #include <stdio.h>
 #include <string.h>
@@ -72,6 +170,7 @@ void app_main()
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "esp_log.h"
+#include "seven_seg.h"
 
 static const char* TAG = "7-segmentos";
 
@@ -173,4 +272,3 @@ void seg_7_write(seg_7_handler_t *seg_t_handler, uint8_t * caracter)
 
 }
 
-*/

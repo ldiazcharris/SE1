@@ -55,14 +55,14 @@ void lcd_init()
 
 	// inicialización de 4 bits
 	usleep(50000);  // wait for >40ms
-	lcd_send_cmd (0x30);
-	usleep(4500);  // wait for >4.1ms
-	lcd_send_cmd (0x30);
-	usleep(200);  // wait for >100us
-	lcd_send_cmd (0x30);
-	usleep(200);
-	lcd_send_cmd (0x20);  // 4bit mode
-	usleep(200);
+    lcd_send_cmd (0x30);
+    usleep(5000);  // wait for >4.1ms
+    lcd_send_cmd (0x30);
+    usleep(200);  // wait for >100us
+    lcd_send_cmd (0x30);
+    usleep(10000);
+    lcd_send_cmd (0x20);  // 4bit mode
+    usleep(10000);
 
   // dislay initialisation
 	lcd_send_cmd (0x28); // Function set --> DL=0 (4 bit mode), N = 1 (2 line display) F = 0 (5x8 characters)
