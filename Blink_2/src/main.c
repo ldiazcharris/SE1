@@ -109,7 +109,7 @@ static bool call_back_proof(gptimer_handle_t timer, const gptimer_alarm_event_da
 
 */
 
-/*
+
 #include <stdio.h>
 #include <string.h>
 #include "driver/gpio.h"
@@ -154,10 +154,10 @@ void app_main()
         vTaskDelay(3000/portTICK_PERIOD_MS);
     }
 }
-*/
 
 
 
+/*
 
 
 
@@ -272,3 +272,4 @@ void seg_7_write(seg_7_handler_t *seg_t_handler, uint8_t * caracter)
 
 }
 
+*/
