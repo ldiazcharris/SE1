@@ -20,7 +20,7 @@
 #define I2C_LCD_PORT I2C_NUM_0
 #define I2C_LCD_SLAVE_ADDRESS 0x4E // para la pantalla Grove 0x3E
 
-static const char* TAG = "LIB_LCD_I2C";
+
 
 void lcd_init ();
 void lcd_send_cmd(char cmd);

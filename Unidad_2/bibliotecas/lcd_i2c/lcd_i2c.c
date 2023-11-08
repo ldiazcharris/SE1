@@ -9,12 +9,12 @@
 */
 
 #include "lcd_i2c.h"
-
-#define portTICK_PERIOD_US              ( ( TickType_t ) 1000000 / configTICK_RATE_HZ )
-
+#include "unistd.h"
+//#define portTICK_PERIOD_US              ( ( TickType_t ) 1000000 / configTICK_RATE_HZ )
+static const char* TAG = "LIB_LCD_I2C";
 
 static esp_err_t i2c_chanell_init();
-static void usleep(int value);
+//static void usleep(uint32_t value);
 
 void lcd_send_cmd(char cmd)
 {
@@ -79,7 +79,7 @@ void lcd_init()
 }
 
 
-/*
+
 
 void lcd_cursor(uint8_t row, uint8_t column) {
     uint8_t address;
@@ -97,9 +97,9 @@ void lcd_cursor(uint8_t row, uint8_t column) {
     lcd_send_cmd(0x80 | address);
 }
 
-*/
 
 
+/*
 void lcd_cursor(uint8_t row, uint8_t col)
 {
     switch (row)
@@ -114,6 +114,8 @@ void lcd_cursor(uint8_t row, uint8_t col)
     lcd_send_cmd(col);
 }
 
+
+*/
 void lcd_write_string(char *str)
 {
 	while(*str) 
@@ -142,7 +144,9 @@ static esp_err_t i2c_chanell_init()
     return i2c_driver_install(I2C_NUM_0, conf.mode, 0, 0, 0);
 }
 
-static void usleep(int value)
+/*
+static void usleep(uint32_t value)
 {
-	vTaskDelay(value/portTICK_PERIOD_US);
+	vTaskDelay(value/portTICK_PERIOD_US); //portTICK_PERIOD_US
 }
+*/
