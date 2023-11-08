@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "gpio.h": "c",
+        "freertos.h": "c",
+        "uart.h": "c",
+        "adc.h": "c",
+        "task.h": "c",
+        "string.h": "c",
+        "stdlib.h": "c",
+        "timers.h": "c"
+    }
+}
