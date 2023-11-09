@@ -110,6 +110,8 @@ static bool call_back_proof(gptimer_handle_t timer, const gptimer_alarm_event_da
 */
 
 
+
+/*
 #include <stdio.h>
 #include <string.h>
 #include "driver/gpio.h"
@@ -155,11 +157,11 @@ void app_main()
     }
 }
 
+*/
+
 
 
 /*
-
-
 
 // 7-Segmentoso excersice
 
@@ -273,3 +275,105 @@ void seg_7_write(seg_7_handler_t *seg_t_handler, uint8_t * caracter)
 }
 
 */
+
+
+
+#include <stdio.h>
+#include <unistd.h>
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "driver/gpio.h"
+
+
+#define GPIO_SERVO 18 // Puedes utilizar cualquier pin GPIO de la ESP32
+
+void app_main() {
+    // Configurar el pin GPIO para controlar el servo
+    /*
+    gpio_config_t io_conf;
+    io_conf.intr_type = GPIO_INTR_DISABLE;
+    io_conf.mode = GPIO_MODE_OUTPUT;
+    io_conf.pin_bit_mask = (1ULL << GPIO_SERVO);
+    io_conf.pull_down_en = 0;
+    io_conf.pull_up_en = 0;
+    gpio_config(&io_conf);
+    */
+   gpio_set_direction(GPIO_SERVO, GPIO_MODE_OUTPUT);
+   gpio_set_pull_mode(GPIO_SERVO, GPIO_PULLDOWN_ONLY);
+
+    uint16_t grades; 
+    float dutyCicle;
+
+    while (1) {
+
+        grades = 0;
+	
+        for (int hz = 1; hz <= 50; hz++){
+            dutyCicle = (grades*2000.0/180.0)+500;
+            gpio_set_level(GPIO_SERVO, 1);
+            usleep(dutyCicle);
+            gpio_set_level(GPIO_SERVO, 0);
+            usleep(20000 - dutyCicle);
+        }
+        usleep(2000000);
+        grades = 90;
+        for (int hz = 1; hz <= 50; hz++){
+            dutyCicle = (grades*2000.0/180.0)+500;
+            gpio_set_level(GPIO_SERVO, 1);
+            usleep(dutyCicle);
+            gpio_set_level(GPIO_SERVO, 0);
+            usleep(20000 - dutyCicle);
+        }
+        usleep(2000000);
+        grades = 180;
+        for (int hz = 1; hz <= 50; hz++){
+            dutyCicle = (grades*2000.0/180.0)+500;
+            gpio_set_level(GPIO_SERVO, 1);
+            usleep(dutyCicle);
+            gpio_set_level(GPIO_SERVO, 0);
+            usleep(20000 - dutyCicle);
+        }
+        usleep(2000000);
+
+        grades = 90;
+        for (int hz = 1; hz <= 50; hz++){
+            dutyCicle = (grades*2000.0/180.0)+500;
+            gpio_set_level(GPIO_SERVO, 1);
+            usleep(dutyCicle);
+            gpio_set_level(GPIO_SERVO, 0);
+            usleep(20000 - dutyCicle);
+        }
+        usleep(2000000);
+
+        grades = 0;
+        for (int hz = 1; hz <= 50; hz++){
+            dutyCicle = (grades*2000.0/180.0)+500;
+            gpio_set_level(GPIO_SERVO, 1);
+            usleep(dutyCicle);
+            gpio_set_level(GPIO_SERVO, 0);
+            usleep(20000 - dutyCicle);
+        }
+        usleep(2000000);
+
+    }
+    /*
+        // Mover el servo a 0 grados
+        gpio_set_level(GPIO_SERVO, 1);
+        vTaskDelay(20); // Tiempo para el pulso
+        gpio_set_level(GPIO_SERVO, 0);
+        vTaskDelay(1980); // Tiempo total de pulso 2000ms (20ms - 2ms = 18ms para 0 grados)
+
+        vTaskDelay(2000); // Espera 2 segundos
+
+        // Mover el servo a 180 grados
+        gpio_set_level(GPIO_SERVO, 1);
+        vTaskDelay(70); // Tiempo para el pulso
+        gpio_set_level(GPIO_SERVO, 0);
+        vTaskDelay(1930); // Tiempo total de pulso 2000ms (70ms - 2ms = 68ms para 180 grados)
+        
+        vTaskDelay(2000); // Espera 2 segundos
+    
+
+    */
+   
+}
