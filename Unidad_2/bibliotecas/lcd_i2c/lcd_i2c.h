@@ -1,10 +1,7 @@
 
 /**
  * 
- * Librería adaptada de: https://controllerstech.com/i2c-in-esp32-esp-idf-lcd-1602/ y 
- * https://controllerstech.com/i2c-lcd-in-stm32/, para el control de pantalla LCD con 
- * El módulo I2C de referencia: PCF8574 
- * Autor: ControllersTech Shop & Learn. 
+
  * 
 */
 
