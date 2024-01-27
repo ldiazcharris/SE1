@@ -32,18 +32,19 @@ Para organizarnos adecuadamente, se necesitará que se agrupen en parejas, estas
  
 ### Materiales (por pareja):
 
-- 1 Placa de desarrollo ESP-32, con cable de programación y antena wifi incorporada. 
-- Jumpers o cables dupont (mínimo 15)
-- LED's (mínimo 4)
-- 2 Potenciómetro de 10 kΩ
-- 4 Pulsadores 
-- Resistencias de: 220 Ω, 330 Ω y10 kΩ (6 de cada una).
-- 1 Display 7 segmentos 
-- 1 Display LCD de 16x2 (con módulo I2C integrado)
-- 1 Servomotor SG90
-- 1 Módulo USB-UART CP210x
-- 1 módulo de Relé con 5 V 
-- 2 optoacoplador PC8817C o equivalente
+- 1 Placa de desarrollo ESP-32, con cable de programación y antena wifi incorporada. [Imagen de referencia](img/esp32_devkit.jpg).
+- Jumpers o cables dupont (mínimo 15).
+- LED's (mínimo 4).
+- 2 Potenciómetro de 10 kΩ.
+- 4 Pulsadores.
+- Resistencias de: 220 Ω, 330 Ω y 10 kΩ (6 de cada una).
+- 1 Display 7 segmentos.
+- 1 Display LCD de 16x2 (con módulo I2C integrado). [Imagen de referencia](img/LCD_16x2_I2C.png).
+- 1 Servomotor SG90. [Imagen de referencia](img/servo_sg90.jpg).
+- 1 Módulo USB-UART CP210x. [Imagen de referencia](img/CP210.jpg).
+- 1 Modulo convertidor de nivel de 4 canales 5 V a 3.3 V bidireccional (level shifter). [Imagen de referencia](img/level_shifter.jpg).
+- 1 módulo de Relé.
+- 2 optoacoplador PC8817C o equivalente.
 
 ### Herramientas (por pareja):
 
