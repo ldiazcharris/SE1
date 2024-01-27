@@ -28,7 +28,7 @@ Saludos.
 
 ## Materiales
 
-Para organizarnos adecuadamente, se necesitará que se agrupen en parejas, estas parejas podrán compartir los materiales y herramientas. Es decir, que los listados que proporciono serán responsabilidad de cada pareja, por lo tanto no es necesario que cada estudiante los tenga de forma individual. Por supuesto, si alguno quiere hacerlo de forma individual es totalmente libre y sería aún más beneficioso para el aprendizaje y para el desarrollo de la clase.
+Para organizarnos adecuadamente se necesitará que se agrupen en parejas. Estas parejas podrán compartir los materiales y herramientas; es decir, que los listados que proporciono a continuación, serán responsabilidad de cada pareja. Por lo tanto, no es necesario que cada estudiante los tenga de forma individual. Por supuesto, si alguno quiere hacerlo de forma individual, es totalmente libre y sería aún más beneficioso para el aprendizaje y para el desarrollo de la clase.
  
 ### Materiales (por pareja):
 
