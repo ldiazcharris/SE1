@@ -58,4 +58,4 @@ Para organizarnos adecuadamente se necesitará que se agrupen en parejas. Estas 
 - Visual Studio Code + Extensión PlatformIO
 - [Dirver USB-UART CP210x](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers?tab=downloads) 
 
-    **Nota:** [Revisar la guía de instalación de las herramientas del curso](#guía-de-instalación-de-las-herramientas-del-curso).
+    **Nota:** [Revisar la guía de instalación de las herramientas del curso](Unidad_1/1.9_guia_instal_tools.md).
