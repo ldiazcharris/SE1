@@ -593,6 +593,147 @@ Vaya a la  [Práctica 2.6 Integración con visualizadores](2.6_practica_2_6_visu
 
 ## 2.7. Integración con actuadores de control On-Off
 
+Los actuadores de control On-Off, son parte de sistemas de control de dos posiciones o simplemente encendido y apagado. Debido a que el control de dos posiciones es relativamente simple y barato, su uso es extendido en sistemas industriales y domésticos [[8]](#referencias).
+
+Para una señal de salida de un controlador denominada u(t), donde existe también una señal de error denominada e(t); en el control on-off, u(t) permanece en un valor constante ya sea máximo o mínimo, dependiendo de si la señal de error es positiva o negativa, y cambiará cuando e(t) cambie. 
+
+A continuación, se muestran los diagramas de bloques para dos controladores de tipo On-Off. En la parte *(b)* de la figura, se señala una brecha diferencial. Tal brecha hace que la salida del controlador u(t) conserve su valor presente hasta que la señal de error se haya desplazado ligeramente más allá del valor de error cero e(t) = 0 [[8]](#referencias).
+
+<img src="imagenes/2.7_diagrama_bloques_control_on_off.png" width=400>
+
+*Figura tomada de [[8]](#referencias).*
+
+Típicamente los controladores on-off son dispositivos eléctricos. Aunque también existen de tipo neumático. Para el caso de este curso, se tratarán los controladores de tipo eléctrico. A continuación, se listan tres tipos de dispositivos eléctricos que corresponden a controladores on-off. 
+
+### Relé
+
+Un relé es un dispositivo electromecánico que funciona como un interruptor. Este interruptor es accionado eléctricamente, lo que permite aislar circuitos eléctricos de baja potencia de circuitos de potencia superior. 
+
+Los relés más sencillos tienen una estructura como la que se muestra en la figura a continuación. 
+
+<img src="imagenes/2.7_diag_rele.jpg" width=400>
+
+*Figura tomada de [areatecnologia.com](https://www.areatecnologia.com/electricidad/rele.html)*
+
+Se puede observar que el relé cuenta con dos circuitos eléctricamente aislados: 
+
+1. El circuito de control, que es el que permite activar la bobina.
+2. El circuito secundario o de carga, que es el que permite activar los elementos de carga, los cuales pueden ser motores, bombillas o cualquier otro tipo de carga eléctrica. 
+
+Además, tiene cuenta con cinco contactos:
+
+1. C: **contacto común**. Corresponde al contacto que realiza el relevo de posición.
+2. NC: **contacto normalmente cerrado**. Este contacto es el que en la posición de reposo del relé (bobina desenergizada) se mantiene conectado con el contacto común. Al activarse el relé, se desconectan.
+3. NO: **contacto normalmente abierto**. Este contacto es el que en la posición de reposo del relé (bobina desenergizada) se mantiene desconectado del contacto común. Al activarse el relé, se conectan.
+4. B1 y B2: **contactos de control** que son los que permiten la activación de la bobina del relé.
+
+A través de un relé es posible aislar eléctricamente dos circuitos de potencias distintas. Es decir, se pueden controlar cargas en el orden de los cientos de voltios con sistemas de control que operan en el orden de un par de decenas de voltios. 
+
+<img src="imagenes/2.7_diag_rele_2.jpg" width=400>
+
+*Figura tomada de [areatecnologia.com](https://www.areatecnologia.com/electricidad/rele.html)*
+
+### El Transistor como interruptor
+
+Un transistor es un componente electrónico semiconductor. Existen dos tipos básicos de transistores: los transistores de unión bipolar (BJT) y los transistores de efecto de campo (FET). Para simplificar la extensión del capítulo, y debido a que el objetivo de este no es repasar la electrónica básica, se tratará únicamente con el transistor BJT y el JFET. 
+
+#### **Transistor BJT**
+
+El BJT (transistor de unión bipolar) se construye con tres regiones semiconductoras separadas por dos uniones pn. Este dispositivo tiene tres terminales a saber: base (B), colector (B) y emisor (E).
+
+<img src="imagenes/2.7_transistor_BJT.png" width=400>
+
+*Figura tomada de [[9]](#referencias).*
+
+que tiene tres áreas de funcionamiento, dependiendo del tipo de configuración y la necesidad de aplicación:
+
+– **Amplificador**: si el transistor está en el área activa, permite la circulación de corriente entre el emisor y el colector, con el control proporcional a la corriente que circula entre la base y el emisor. 
+
+<img src="imagenes/2.7_bjt_amplificador.png" width=400>
+
+*Figura tomada de [[9]](#referencias).*
+
+- **Corte**: cuando el transistor está en corte, no hay circulación de corriente entre la base y el emisor, lo que causa que no haya flujo de corriente entre el emisor y colector. 
+
+<img src="imagenes/2.7_transistor_corte.png" width=400>
+
+*Figura tomada de [[9]](#referencias).*
+
+– **Saturación**: cuando circula la máxima corriente entre la base y el emisor, el transistor permite el flujo máximo de corriente permitido por el componente entre el emisor y el colector.
+
+<img src="imagenes/2.7_transistor_saturacion.png" width=400>
+
+*Figura tomada de [[9]](#referencias).*
+
+En la figura que se muestra a continuación, se presenta la comparación de los dos estados: corte y saturación, representando un interruptor. 
+
+<img src="imagenes/2.7_bjt_interruptor.png" width=400>
+
+*Figura tomada de [[9]](#referencias).*
+
+#### **Transistor FET**
+
+El **transistor de efecto de campo (FET)** se puede categorizar en dos tipos: JFET y MOSFET. Este dispositivo posee tres terminales a saber: gate (G), drain (D) y source (S) (puerta, drenaje y fuente). Es capaz de controlar la corriente que circula a través de las terminales D y S a través de una tensión en la terminal G. Los transistores FET son mayormente empleado en aplicaciones de "switching" rápido. 
+
+El transistor **JFET** (transistor de efecto de campo de unión) posee una unión *pn* polarizada en inversa para controlar corriente en un canal. Los JFET se dividen en dos categorías: JFET de canal n o JFET de canal p, como se muestra a continuación [[9]](#referencias). 
+
+<img src="imagenes/2.7_JFET.png" width=400>
+
+*Figura tomada de [[9]](#referencias).*
+
+<img src="imagenes/2.7_jfet_esquematico.png" width=400>
+
+*Figura tomada de [[9]](#referencias).*
+
+Los transistores JFET siempre se usan polarizando la puerta (G) en inversa, como se muestra a continuación: 
+
+<img src="imagenes/2.7_jfet_polarizacion.png" width=400>
+
+*Figura tomada de [[9]](#referencias).*
+
+Para el caso de un JFET de unión *pn* el transistor conducirá mientras la tensión puerta-fuente (VGS) sea cero. Cuando VGS sea más grande, la corriente drenaje-fuente (ID) ser reducirá. Para una tensión VGS dada, dejará de circular ID [[9]](#referencias). 
+
+<img src="imagenes/2.7_jfet_curva_caracteristica.png" width=400>
+
+*Figura tomada de [[9]](#referencias).*
+
+<img src="imagenes/2.7_jfet_corte.png" width=400>
+
+*Figura tomada de [[9]](#referencias).*
+
+
+### TRIAC
+
+El Triodo para corriente alterna **TRIAC** es un dispositivo semiconductor de tres terminales que permite controlar el flujo de corriente alterna que circula a través de sus terminales. Está diseñado para conducir corriente de forma bidireccional. A continuación se presenta el esquemático de un TRIAC.
+
+<img src="imagenes/2.7_TRIAC_Esquematico.png" width=400>
+
+Para activar la conducción entre las terminales A1 y A2, se debe aplicar una corriente al terminal G, lo cual "dispara" el TRIAC. La corriente de disparo puede ser positiva o negativa. 
+
+### Optoacoplados
+
+#### **Fototransistor y fotodiodo**
+
+Un optoacoplador utiliza un LED acoplado óptimamente a un fotodiodo o un fototransistor en un solo encapsulado.  Los optoacopladores sirven para aislar circuitos que son incompatibles en cuanto a sus requerimientos de nivel de tensión o corriente; o aislar circuitos de control de baja potencia de circuitos de suministro de potencia ruidosos, o de circuitos de máquinas y motores de alta intensidad de corriente [[9]](#referencias). 
+
+<img src="imagenes/2.7_optoacoplador_basico.png" width=400>
+
+*Figura tomada de [[9]](#referencias).*
+
+
+#### **FotoTRIAC** 
+Es un tipo de optoacoplador, que usa un TRIAC en vez de un transistor.
+
+<img src="imagenes/2.7_foto_TRIAC.png" width=400>
+
+#### **Circuitos de referencia**
+
+**fotoTRIAC + TRIAC**
+
+<img src="imagenes/2.7_foto_triac_reference_circuit.png" width=400>
+
+*Circuito de referencia fotoTRIAC MOC3021 [[10]](#referencias).*
+
 ## 2.8. Integración con actuadores de control continuo
 
 ## Referencias
@@ -613,3 +754,9 @@ Vaya a la  [Práctica 2.6 Integración con visualizadores](2.6_practica_2_6_visu
 
 - [6] https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/system_time.html
 - [7] https://www.samsung.com/latin/support/tv-audio-video/how-does-the-lcd-display-work/#:~:text=El%20LCD%20modifica%20la%20luz,dispositivo%20como%20un%20segmento%20oscuro.
+
+- [8] Katsuhiko Ogata. *INGENIERÍA DE CONTROL MODERNA*. PEARSON EDUCACIÓN, S.A., Madrid, 2010. ISBN: 978-84-8322-660-5
+
+- [9] FLOYD, THOMAS L. *Dispositivos electrónicos. Octava edición*. PEARSON EDUCACIÓN, México, 2008 ISBN: 978-970-26-1193-6
+
+- [10] FAIRCHILD Semiconductor. *Datasheet MOC3021, MOC3022, MOC3023*. https://www.farnell.com/datasheets/97984.pdf. Pág. 7.
