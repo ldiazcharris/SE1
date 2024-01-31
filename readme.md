@@ -16,7 +16,7 @@ Cordial saludo.
  
 Espero que estén muy bien.
  
-Les extiendo la bienvenida al curso de Sistemas Embebidos I para este período académico 2023-2. Tenemos una temática interesante y de mucha relevancia a nivel académico, y por su puesto más importante, a nivel laboral. 
+Les extiendo la bienvenida al curso de Sistemas Embebidos I para este período académico. Tenemos una temática interesante y de mucha relevancia a nivel académico, y por su puesto más importante, a nivel laboral. 
  
 En este curso trataremos temas de programación de microcontroladores, aplicaremos los conocimientos aprendidos en programación de semestres anteriores y lo combinaremos con lo que más nos gusta a los electrónicos: la electrónica. 
  

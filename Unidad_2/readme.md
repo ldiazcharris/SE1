@@ -736,7 +736,13 @@ Es un tipo de optoacoplador, que usa un TRIAC en vez de un transistor.
 
 ## 2.8. Integración con actuadores de control continuo
 
-## Referencias
+### Modulación por ancho de pulsos (PWM)
+
+
+
+### 
+
+## **Referencias**
 
 - [1] TOCCI, RONALD J., NEAL S. WIDMER, GREGORY L. MOSS. Sistemas digitales. Principios y aplicaciones. Décima edición. Pearson Educación, México, 2007. ISBN: 978-970-26-0970-4. Área: Ingeniería. 
 
