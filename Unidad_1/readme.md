@@ -10,9 +10,35 @@
 - [1.6. El concepto de Hardware Abstraction Layer](#16-el-concepto-de-hardware-abstraction-layer)
 - [1.7. El concepto del lenguaje ensamblador](#17-el-concepto-del-lenguaje-ensamblador)
 - [1.8. Proceso de compilación de lenguajes de alto nivel](#18-proceso-de-compilación-de-lenguajes-de-alto-nivel)
-- [1.9. Introducción al lenguaje C/C++](#19-introducción-al-lenguaje-cc)
-- [1.9. Introducción al lenguaje C/C++ Práctica 1](#191-introducción-al-lenguaje-cc-práctica-1)
-- [1.9. Introducción al lenguaje C/C++ Práctica 2](#192-introducción-al-lenguaje-cc-práctica-2)
+- [1.9. Introducción al lenguaje C](#19-introducción-al-lenguaje-cc)
+- [Fundamentos de la sintaxis de C](#fundamentos-de-la-sintaxis-de-c)
+	- [El primer programa en C](#el-primer-programa-en-c)
+	- [Variables](#variables)
+	- [Tipos de datos](#tipos-de-datos)
+	- [Operadores básicos de C](#operadores-básicos-de-c)
+	- [Funciones](#funciones)
+	- [Sentencias de control](#sentencias-de-control)
+		- [Condicionales simple: *if*](#if)
+			- [if-else](#if-else)
+		- [Encadenamiento de condicionales](#encadenamiento-de-condicionales)
+		- [Anidamiento de condicionales](#anidamiento-de-condicionales)
+	- [Ramificación: *switch-case*](#switch-case)
+	- [Bucles](#bucles)
+		- [*while*](#while)
+		- [*for*](#for)
+		- [Bucles infinitos](#bucles-infinitos)
+	- [Algunas funciones útiles](#algunas-funciones-útiles)
+		- [*printf()*](#printf)
+		- [*scanf()*](#scanf)
+	- [Macros](#macros)
+	- [Estructuras de datos en C](#estructuras-de-datos-en-c)
+		- [Arreglos](#arreglos-o-arrays)
+		- [Vectores](#vectores)
+		- [Matrices](#matrices)
+		- [Inicialización de arreglos en C](#inicialización-de-arreglos-en-c)
+		- [Acceso](#acceso)
+- [1.9. Introducción al lenguaje C Práctica 1](#191-introducción-al-lenguaje-cc-práctica-1)
+- [1.9. Introducción al lenguaje C Práctica 2](#192-introducción-al-lenguaje-cc-práctica-2)
 - [1.10. Algoritmos y ejercicios de programación](#110-algoritmos-y-ejercicios-de-programación)
 - [1.10. Algoritmos y ejercicios Práctica 1](#1101-algoritmos-y-ejercicios-práctica-1)
 - [1.10. Algoritmos y ejercicios Práctica 2](#1102-algoritmos-y-ejercicios-práctica-2)
@@ -787,7 +813,9 @@ void main()
 }
 ~~~
 
-**Encadenamiento:** Las sentencias if se suelen encadenar [[8]](#referencias).
+### **Encadenamiento de condicionales** 
+
+Las sentencias if se suelen encadenar [[8]](#referencias).
 
 ~~~c
 #include <stdio.h>
@@ -815,7 +843,9 @@ void main()
 }
 ~~~
 
-**Anidamiento:** Las sentencias if se suelen anidar [[8]](#referencias).
+### **Anidamiento de condicionales** 
+
+Las sentencias if se suelen anidar [[8]](#referencias).
 
 Ejemplo:
 Resolución de una ecuación de primer grado ax+b = 0.
@@ -845,7 +875,11 @@ void main()
 }
 ~~~
 
-### ***Switch-case***
+### ***Ramificación: Switch-case***
+
+
+
+Es una estructura de control en C que se utiliza para tomar decisiones basadas en el valor de una expresión. Proporciona una forma de ejecutar diferentes bloques de código dependiendo del valor de una variable o expresión.
 
 Permite seleccionar entre varias alternativas posibles [[8]](#referencias).
 
@@ -1169,7 +1203,7 @@ Es importante tener en cuenta algunas consideraciones al trabajar con macros en 
 
 ### **Estructuras de datos en C**
 
-***Arreglos*** o ***Arrays***
+### ***Arreglos*** o ***Arrays***
 
 Son estructuras de datos que permiten almacenar otros datos. Es decir, es un contenedor que permite tener varios datos al mismo tiempo almacenados. Los arreglos también son conocidos por su nombre en inglés como "arrays". Los datos almacenados se almacenan en forma consecutiva en memoria.
 
@@ -1177,7 +1211,7 @@ Son estructuras de datos que permiten almacenar otros datos. Es decir, es un con
 
 *Figura 27. Representación de un arreglo.*
 
-***Vectores***
+### ***Vectores***
 
 Son un tipo de arreglo que es unidimensional, formado de un número "i" de _variables simples del mismo tipo_ que son denominadas componentes o elementos del vector. El número de componentes "i" es representa la dimensión del arreglo.
 
@@ -1196,7 +1230,7 @@ Donde:
 
 \<componentes\>: Número de elementos del vector. - Puede ser un literal o una constante de tipo entero. - Nunca será una variable.
 
-***Matrices***
+### ***Matrices***
 
 Son un tipo de arreglo que es bidimensional o tridimensional, formado de un número "i, j" (bidimensional) o "i, j, k" (tridimensional) de _variables simples del mismo tipo_ que son denominadas componentes o elementos del vector. El número de componentes "i, j, k" es representan las dimensión del arreglo.
 
@@ -1210,7 +1244,7 @@ En C, a forma de declarar un vector es [[15]](#referencias):
 <identificador>[<índice1>][<índice2>]
 ~~~
 
-***Inicialización de arreglos en C***
+### ***Inicialización de arreglos en C***
 
 En C es posible declarar un vector o matriz de la siguiente manera:
 
@@ -1233,7 +1267,7 @@ En C es posible declarar y definir un vector o matriz de la siguiente manera:
 	int vector[] = {1, 2, 3, 5, 7};
 	~~~
 
-***Acceso***
+### ***Acceso***
 
 Par los arreglos en C, hay que tener las siguientes consideraciones.
  
