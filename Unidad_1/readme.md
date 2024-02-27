@@ -211,7 +211,7 @@ En la arquitectura Harvard los buses de datos y programa son totalmente independ
 
 ## 1.5. Tipos de set de instrucciones: RISC y CISC
 
-**¿Qué es un set de insturcciones?**
+**¿Qué es un set de instrucciones?**
 
 El *instruction set architecture* o en español set de instrucciones de la arquitectura es una especificación que define las instrucciones que "reconoce" y es capaz de ejecutar un microprocesador específico. Cada microprocesador, según su fabricante y según su arquitectura, tiene distintos tipos de instrucciones. Incluso, microprocesadores de las mismas familias pueden contener distintos sets de instrucciones. Estos sets de instrucciones, a menudo, especifican lo siguiente:
 - Las instrucciones.
@@ -351,7 +351,7 @@ Un programa en C consta de funciones y variables. Una función contiene sentenci
 Se puede decir que en en la sintaxis de C existen 5 grandes grupos de elementos:
 
 1. **Comentarios:** Permiten generar documentación del código sobre el propio código fuente. Los comentarios inician después de repetir dos veces el símbolo *--slash--*, que es este: **//**. Los comentarios son ignorados por el preprocesador, por lo tanto sólo tendrá validez para el programador en cuanto a guía u orientación. Ejemplo. 
-    ~~~
+    ~~~c
         // Esto es un comentario en el lenguaje C.
         int a = 3;  // Esto es otro comentario. 
     ~~~
@@ -372,7 +372,7 @@ Se puede decir que en en la sintaxis de C existen 5 grandes grupos de elementos:
     1. [#undef](https://learn.microsoft.com/es-es/cpp/preprocessor/hash-undef-directive-c-cpp?view=msvc-170)
 
     Por ejemplo, una línea que aparece al principio de muchos archivos fuente de C, usa la directiva 
-    ~~~
+    ~~~c
     #include <stdio.h> 
     ~~~
     indica al compilador que debe incluir información acerca de la biblioteca estándar de entrada/salida [[6]](#referencias).
@@ -380,14 +380,14 @@ Se puede decir que en en la sintaxis de C existen 5 grandes grupos de elementos:
 2. **Sentencias:** Son las instrucciones que el programador define y son las que indican la funcionalidad de un programa. Existen tres tipos de sentencias en C:
     1. **Sentencias de expresión:** Consiste en una expresión acabada con un punto y coma (;), la ejecución de esta hace que se evalúe la expresión [[7]](#referencias).
         Ejemplo:
-        ~~~
+        ~~~c
         int a;                  // Declaración de variable a
         a = 3;                    // Asignación de un valor a la variable a
         c = x + y;                  // Operación suma x + y, asigna el resultado a c
         printf("Suma=%d", c);    // Imprime por consola el resultado.
         ~~~
     1. **Sentencias compuestas:** Están formadas por varias sentencias individuales encerradas entre dos llaves({...}). Las sentencias individuales pueden ser a su vez sentencias de expresión, sentencias compuestas o sentencias de control. A diferencia de una sentencia de expresión, las compuestas no acaban con un punto y coma. Las sentencias compuestas hacen posible incluir unas sentencias dentro de otras [[7]](#referencias). Ejemplo:
-        ~~~
+        ~~~c
         {
             pi = 3.14;
             c = x + y;
@@ -397,7 +397,7 @@ Se puede decir que en en la sintaxis de C existen 5 grandes grupos de elementos:
     1. **Sentencias de control:** se utilizan cuando deseamos conseguir ciertas acciones especiales en los programas, comprobaciones lógicas (como if-else), bucles (como while o for) y ramificaciones (como switch-case). Muchas sentencias de control necesitan que las otras modalidades de sentencias que tenemos, estén presentes dentro de ellas [[7]](#referencias). Para ampliar, diríjase a la sección [Sentencias de control](#sentencias-de-control))
 
 3. **Funciones:** Son secciones de código que se ejecutan para una tarea determinada. Las proposiciones de una función están encerradas entre llaves { }. Ejemplo:
-    ~~~
+    ~~~c
     void main()
     {
         printf("hola, mundo\n");
@@ -418,7 +418,7 @@ Se puede decir que en en la sintaxis de C existen 5 grandes grupos de elementos:
 
 En C, el program a para escribir "hola, mundo" es [[6]](#referencias):
 
-~~~
+~~~c
 #include <stdio.h>
 
 void main()
@@ -433,11 +433,13 @@ La forma de ejecutar este program a epende del sistema operativo que se esté ut
 
 Una variable es un espacio de memoria RAM (u otra), separado y etiquetado con un nombre. Las variables pueden ser globales o locales. 
 
+En C, las variables deben ser declaradas antes de ser utilizadas. La declaración de una variable especifica su tipo y su nombre. La definición de una variable asigna un espacio de memoria para esa variable y opcionalmente le da un valor inicial.
+
 Una **variable global** es aquella que es "reconocida" en todo el programa, es decir aquella que es posible usar dentro de todo el programa. Como buena práctica, las variables globales deberían declararse antes de la función main. De esta forma, la variable será reconocida en todo el programa. Así mismo, par que todas las funciones reconozcan la existencia de una variable local, también debería declararse dicha variable antes de la función. 
 
 En el ejemplo de a continuación, se declaran como globales las variables *a* y *b*.
 
-~~~
+~~~c
 #include <stdio.h>
 
 int a = 1;
@@ -458,7 +460,7 @@ void main()
 
 Una **variable local** son aquellas que sólo son reconocidas en el ámbito de una función. En el ejemplo anterior, los parámetros *x* e *y* de la función *suma()*, son variables que sólo "existen" para esta función. Sin embargo, para ser más explícitos pero menos eficientes, se podría escribir el siguiente código, el cual tiene el mis comportamiento que el anterior.
 
-~~~
+~~~c
 #include <stdio.h>
 
 int a = 1;
@@ -484,6 +486,201 @@ Si se intentara llamar a las variables x, y o z desde la función main, el compi
 main.c:22:25: error: ‘x’ undeclared (first use in this function) 
 ~~~
 
+
+
+### **Tipos de datos**
+
+En C, los tipos de datos definen el tipo de valor que una variable puede contener y las operaciones que se pueden realizar en ese valor. Los tipos de datos en C se pueden dividir en varios grupos, que incluyen tipos básicos, tipos derivados y tipos enumerados. Aquí hay una descripción general de los tipos de datos más comunes en C:
+
+1. **Tipos de datos básicos:**
+   - **int:** Representa números enteros, por ejemplo, 1, 2, -5, etc.
+   - **float:** Representa números de punto flotante (números reales), por ejemplo, 3.14, -0.5, etc.
+   - **double:** Similar a float pero con mayor precisión, se utiliza para representar números de punto flotante de doble precisión.
+   - **char:** Representa caracteres individuales, como 'a', 'b', '1', '@', etc.
+   - **_Bool:** Representa valores booleanos, que pueden ser verdaderos (1) o falsos (0).
+   - **void:** Es un tipo especial que indica la ausencia de tipo. Se utiliza principalmente en funciones que no devuelven ningún valor.
+
+2. **Tipos de datos derivados:**
+   - **Array:** Representa una colección de elementos del mismo tipo. Por ejemplo, `int numeros[5]` declara un array de enteros con 5 elementos.
+   - **Pointer:** Almacena la dirección de memoria de otra variable. Por ejemplo, `int *ptr` declara un puntero a un entero.
+   - **Struct:** Permite crear un tipo de dato compuesto que puede contener varios miembros de diferentes tipos.
+   - **Union:** Similar a struct pero todos los miembros comparten la misma ubicación de memoria. Solo uno de los miembros puede contener un valor en un momento dado.
+
+3. **Tipos enumerados (enum):**
+   - **Enum:** Permite definir un conjunto de constantes enteras con nombres simbólicos. Por ejemplo, `enum semana {LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO, DOMINGO};` define un nuevo tipo enum llamado `semana` con los valores `LUNES`, `MARTES`, etc.
+
+
+### **Tamaño de los tipos de datos**
+
+En C, el tamaño de los tipos de datos básicos puede variar de una plataforma a otra. Esta característica está detrás de buena parte de las críticas que recibe este lenguaje, pues de ella se derivan problemas de compatibilidad (una aplicación se comporta de forma diferente cuando se ejecuta en plataformas diferentes) [[13]](#referencias)..
+
+A modo de ejemplo, en la siguiente tabla se incluyen los tamaños de los tipos de datos para las plataformas Linux/Intel i686.
+
+| TIPO DE DATOS  | SE ESCRIBE | MEMORIA REQUERIDA\* | RANGO ORIENTATIVO\*        | EQUIVALENCIA EN PSEUDOCÓDIGO | OBSERVACIONES                                 |
+|----------------|------------|---------------------|----------------------------|------------------------------|-----------------------------------------------|
+| Entero         | int        | 2 bytes             | \- 32768 a 32767           | Entero                       | Uso en contadores, control de bucles etc\.    |
+| Entero largo   | long       | 4 bytes             | \- 2147483648 a 2147483647 | Entero                       | Igual que int pero admite un rango más amplio |
+| Decimal simple | float      | 4 bytes             | \- 3,4·1038 a 3,4·1038     | Real                         | Hasta 6 decimales\. También admite enteros    |
+| Decimal doble  | double     | 8 bytes             | \- 1,79·10308 a 1,79·10308 | Real                         | Hasta 14 decimales\. También admite enteros   |
+| Carácter       | char       | 1 bytes             | 0 a 255                    | Alfanumérica                 | Carácter, independiente o parte de una cadena |
+
+
+
+### **Conversión de tipos de datos en C**
+
+La conversión de un tipo de datos en otro se conoce como conversión de tipos o conversión de tipos (type casting). Por ejemplo, si desea almacenar un valor *'long'* en un número entero simple, se puede escribir *cast 'long' a 'int'¨*. Puede convertir los valores de un tipo a otro explícitamente usando el operador de conversión de la siguiente manera [[14]](#referencias):
+
+~~~c
+(nombre_del_tipo) expresión
+~~~
+
+Considere el siguiente ejemplo donde el operador de conversión hace que la división de una variable entera por otra se realice como una operación de punto flotante [[14]](#referencias):
+
+~~~c
+#include <stdio.h>
+
+main() {
+
+   int sum = 17, count = 5;
+   double mean;
+
+   mean = (double) sum / count;
+   printf("Value of mean : %f\n", mean );
+}
+~~~
+
+*Código tomado de: [[14]](#referencias)*+
+
+
+### **Operadores básicos de C**
+
+Los operadores en C son símbolos especiales que se utilizan para realizar operaciones en variables y valores. Categorizan y especifican cómo se deben realizar ciertas acciones dentro de una expresión. Estas operaciones pueden ser aritméticas, de comparación, lógicas, de asignación, entre otras. Aquí hay una descripción de los tipos de operadores más comunes en C:
+
+| Símbolo | Descripción
+| --- | --- |
+| * | Multiplicación |
+| / | División |
+| %	| Módulo |
+| + | Suma |
+| -	| Resta |
+
+| --- | Operadores de desplazamiento bit a bit |
+| --- | --- |
+| << | Desplazamiento a la izquierda |
+| >> | Desplazamiento a la derecha |
+
+| --- | Operadores relacionales |
+| --- | --- |
+| < | Menor que |
+| > | Mayor que |
+| <= | Menor o igual que |
+| >= | Mayor o igual que |
+| == | Igual que |
+| != | Diferente de |
+
+| --- | Operadores bit a bit |
+| --- | --- |
+| & | Operador AND bit a bit |
+| ^	| Operador XOR bit a bit |
+| &#124; | Operador OR bit a bit |
+
+| --- | Operadores lógicos |
+| --- | --- |
+| && | Operador AND lógico. Genera el valor 1 si ambos operandos tienen valores distintos de cero.
+| &#124;&#124; | El resultado es 0 si ambos operandos tienen valores 0. |
+
+
+
+### **Funciones**
+
+Una función en C es un bloque de código que realiza una tarea específica. Las funciones son fundamentales en C porque permiten organizar el código de manera modular y reutilizable. Cada función tiene un nombre único y puede recibir parámetros de entrada y devolver un valor de salida (aunque esto último no es obligatorio).
+
+Una función en C se distingue sólo por su nombre. Dos funciones con igual nombre y con diferente número y tipo de parámetros se considera una definición múltiple, y por tanto un error [[12]](#referencias). 
+
+Las funciones suelen encapsular una operación más o menos compleja de la que se deriva un resultado. Para ejecutar esta operación, las funciones pueden precisar la invocación de otras funciones (o incluso de ellas mismas como es el caso de las funciones recursivas) [[12]](#referencias).
+
+Las funciones en un programa son entidades que reciben parámetros (datos de entrada), realizan una tarea específica y se espera de ellas un resultado. Lo idóneo es dividir tareas complejas en porciones más simples que se implementan como funciones. La división y agrupación de tareas en funciones es uno de los aspectos más importantes en el diseño de un programa [[12]](#referencias).
+
+Las funciones en C tienen el siguiente formato:
+
+~~~c
+tipo_del_resultado NOMBRE(tipo_param1 param1, tipo_param2 param2, ... ) 
+{
+    /* Cuerpo de la función */
+}
+~~~
+
+*Tomado de: [[12]](#referencias).*
+
+**Ejemplo: **
+
+~~~c
+// Declaración de la función
+int suma(int a, int b);
+
+// Función principal
+int main() {
+    int resultado = suma(3, 5); // Llamada a la función
+    printf("El resultado de la suma es: %d\n", resultado);
+    return 0;
+}
+
+// Definición de la función
+int suma(int a, int b) {
+    return a + b;
+}
+~~~
+
+En este ejemplo, suma es el nombre de la función. Toma dos parámetros de tipo `int` y devuelve un valor de tipo `int`. La llamada a la función se realiza dentro de la función `main`, donde se asigna el resultado a la variable resultado.
+
+### **Declaración de funciones**
+
+En C, las funciones generalmente deben ser declaradas antes de ser utilizadas, especialmente si son invocadas desde otras funciones o antes de la función `main`. Esto se debe a que el compilador C sigue un flujo de arriba hacia abajo al procesar un archivo fuente. Cuando encuentra una función que aún no ha sido declarada o definida, necesita saber cómo se ve esa función para poder compilar correctamente las llamadas a esa función.
+
+Al declarar una función antes de usarla, el compilador obtiene información crucial sobre la firma de la función, es decir, el tipo de retorno de la función y los tipos de sus argumentos. Esto permite al compilador verificar si las llamadas a esa función son correctas en términos de tipos de datos y cantidad de argumentos.
+
+
+### **Invocación de funciones**
+
+Cuando se invoca una función se asignan valores a sus parámetros y comienza a ejecutar el cuerpo hasta que se llega al final o se encuentra la instrucción *return*. Si la función devuelve un resultado, esta instrucción debe ir seguida del dato a devolver [[12]](#referencias). Por ejemplo:
+
+~~~c
+int search(int table[], int size) 
+{
+    int i, j;
+    if (size == 0) 
+    {
+        return 0;
+    }
+    j = 0;
+    for (i = 0; i < size; i++) 
+    {
+        j += table[i];
+    }
+    return j;
+}
+~~~
+
+*Código tomado de: [[12]](#referencias).*
+
+La llamada a una función se codifica con su nombre seguido de los valores de los parámetros separados por comas y rodeados por paréntesis. Si la función devuelve un resultado, la llamada se reemplaza por su resultado en la expresión en la que se incluye. Por ejemplo:
+
+~~~c
+int addition(int a, int b) 
+{
+    return (a + b);
+}
+int main() 
+{
+    int c;
+    c = c * addition(12, 32);
+}
+~~~
+
+*Código tomado de: [[12]](#referencias).*
+
+
+
 ### **Sentencias de control**
 
 ### **Condicionales**
@@ -501,13 +698,13 @@ La sentencia *if* nos permite elegir si se ejecuta o no un bloque de instruccion
 **Sintaxis:**
 
 Forma 1:
-~~~
+~~~c
 if (condición)
 	sentencia;
 ~~~
 
 Forma 2:
-~~~
+~~~c
 if (condición) {
 	bloque
 }
@@ -522,7 +719,7 @@ if (condición) {
 - El fragmento de código afectado por la condición del if debe sangrarse para que visualmente se interprete correctamente el ámbito de la sentencia if.
 
 Ejemplo: Decir si un número es positivo [[8]](#referencias).
-~~~
+~~~c
 #include <stdio.h>
 void main()
 {
@@ -550,7 +747,7 @@ Una sentencia *if*, cuando incluye la cláusula *else*, permite ejecutar un bloq
 
 Forma 1:
 
-~~~
+~~~c
 if (condición)
 	sentencia1;
 else
@@ -559,7 +756,7 @@ else
 
 Forma 2:
 
-~~~
+~~~c
 if (condición) 
 {
 	bloque1
@@ -572,7 +769,7 @@ else
 
 Ejemplo: Decir si un número es positivo o negativo [[8]](#referencias).
 
-~~~
+~~~c
 #include <stdio.h>
 void main()
 {
@@ -592,7 +789,7 @@ void main()
 
 **Encadenamiento:** Las sentencias if se suelen encadenar [[8]](#referencias).
 
-~~~
+~~~c
 #include <stdio.h>
 void main()
 {
@@ -623,7 +820,7 @@ void main()
 Ejemplo:
 Resolución de una ecuación de primer grado ax+b = 0.
 
-~~~
+~~~c
 #include <stdio.h>
 void main()
 {
@@ -665,7 +862,7 @@ Permite seleccionar entre varias alternativas posibles [[8]](#referencias).
 - En C, se ejecutan todas las sentencias incluidas a partir del caso correspondiente, salvo que explícitamente usemos *break*:
 
 **Sintaxis:**
-~~~
+~~~c
 switch(expresión) 
 {
 	case expr_cte1:
@@ -682,7 +879,7 @@ switch(expresión)
 
 Ejemplo [[8]](#referencias):
 
-~~~
+~~~c
 #include <stdio.h>
 void main()
 {
@@ -737,13 +934,13 @@ El bucle *while* permite repetir un conjunto de operaciones mientras se cumpla u
 **Sintaxis:**
 
 Forma 1:
-~~~
+~~~c
 while(condición)
 	sentencia;
 ~~~
 
 Forma 2:
-~~~	
+~~~c	
 while(condición) 
 {
 	bloque
@@ -758,7 +955,7 @@ En el cuerpo del bucle debe existir algo que haga variar el valor asociado a la 
 
 Ejemplo 1: Tabla de multiplicar de un número.
 
-~~~
+~~~c
 #include <stdio.h>
 void main()
 {
@@ -776,7 +973,7 @@ void main()
 
 Ejemplo 2: Divisores de un número [[8]](#referencias).
 
-~~~
+~~~c
 #include <stdio.h>
 void main ()
 {
@@ -805,7 +1002,7 @@ Se usa cuando se conoce el número de iteraciones que hay que realizar [[8]](#re
 
 **Sintaxis:**
 
-~~~
+~~~c
 for (exp1; exp2; exp3) 
 {
 	bloque;
@@ -816,7 +1013,7 @@ La primera expresión, *expr1*, suele contener inicializaciones de variables sep
 
 Ejemplo: Cálculo del factorial de un número [[8]](#referencias).
 
-~~~
+~~~c
 #include <stdio.h>
 void main()
 {
@@ -836,7 +1033,7 @@ void main()
 
 Un bucle infinito es un bucle que se repite "infinitas" veces, sin control alguno. Para parar estos bucles, se necesita que exista algún condicional que induzca a la instrucción *break*, para poder romper el bucle, de lo contrario, todo el código dentro del bucle se ejecutará constantemente hasta que se bloquee el procesador u ocurra algún evento externo al dispositivo, como un reinicio o la pérdida de energía de alimentación.
 
-~~~
+~~~c
 for (;;) /*bucle infinito*/
 while (1) /*bucle infinito*/
 ~~~
@@ -851,7 +1048,7 @@ La función printf (que deriva su nombre de "print formatted") imprime un mensaj
 
 *printf()* recibe varios parámetros parámetros. El primer parámetro es fijo y corresponde a la cadena de formato. Esta cadena es el texto a imprimir literalmente y marcas (formaters) que permiten reemplazarse por texto que se obtiene de los parámetros adicionales de la función. Por tanto, *printf()* se llama con tantos parámetros como marcas haya en la cadena de formato más uno (la propia cadena de formato). El siguiente ejemplo muestra cómo se imprime el valor de la variable contador [[9]](#referencias).
 
-~~~
+~~~c
 printf("El valor es %d.\n", contador);
 ~~~
 
@@ -883,7 +1080,7 @@ Algunos de los tipos de marcas que se pueden usar en la función *printf()* son:
 
 La función *scanf()* permite leer varios tipos de datos de una sola vez, tales como enteros, números decimales o cadenas de caracteres [[10]](#referencias).
 
-~~~
+~~~c
 int scanf(const char *format,...);
 ~~~
 
@@ -897,7 +1094,7 @@ A diferencia de *printf*, para usar *scanf* hay que pasar punteros a los argumen
 
 El siguiente programa muestra el uso de scanf para distintos especificadores de formato.
 
-~~~
+~~~c
 #include <stdio.h>
 #define TAM_MAXIMO 80
 
@@ -921,160 +1118,54 @@ int main(void)
 
 *Código tomado de: [[10]](#referencias).*
 
-### **Operadores básicos de C**
-
-| Símbolo | Descripción
-| --- | --- |
-| * | Multiplicación |
-| / | División |
-| %	| Módulo |
-| + | Suma |
-| -	| Resta |
-
-| --- | Operadores de desplazamiento bit a bit |
-| --- | --- |
-| << | Desplazamiento a la izquierda |
-| >> | Desplazamiento a la derecha |
-
-| --- | Operadores relacionales |
-| --- | --- |
-| < | Menor que |
-| > | Mayor que |
-| <= | Menor o igual que |
-| >= | Mayor o igual que |
-| == | Igual que |
-| != | Diferente de |
-
-| --- | Operadores bit a bit |
-| --- | --- |
-| & | Operador AND bit a bit |
-| ^	| Operador XOR bit a bit |
-| &#124; | Operador OR bit a bit |
-
-| --- | Operadores lógicos |
-| --- | --- |
-| && | Operador AND lógico. Genera el valor 1 si ambos operandos tienen valores distintos de cero.
-| &#124;&#124; | El resultado es 0 si ambos operandos tienen valores 0. |
-
-### **Funciones en C**
-
-El código de un programa escrito en C se divide en funciones. Una función en C se distingue sólo por su nombre. Dos funciones con igual nombre y con diferente número y tipo de parámetros se considera una definición múltiple, y por tanto un error [[12]](#referencias). 
-
-Las funciones suelen encapsular una operación más o menos compleja de la que se deriva un resultado. Para ejecutar esta operación, las funciones pueden precisar la invocación de otras funciones (o incluso de ellas mismas como es el caso de las funciones recursivas) [[12]](#referencias).
-
-Las funciones en un programa son entidades que reciben parámetros (datos de entrada), realizan una tarea específica y se espera de ellas un resultado. Lo idóneo es dividir tareas complejas en porciones más simples que se implementan como funciones. La división y agrupación de tareas en funciones es uno de los aspectos más importantes en el diseño de un programa [[12]](#referencias).
-
-Las funciones en C tienen el siguiente formato:
-
-~~~
-tipo_del_resultado NOMBRE(tipo_param1 param1, tipo_param2 param2, ... ) 
-{
-    /* Cuerpo de la función */
-}
-~~~
-
-*Tomado de: [[12]](#referencias).*
-
-Cuando se invoca una función se asignan valores a sus parámetros y comienza a ejecutar el cuerpo hasta que se llega al final o se encuentra la instrucción *return*. Si la función devuelve un resultado, esta instrucción debe ir seguida del dato a devolver [[12]](#referencias). Por ejemplo:
-
-~~~
-int search(int table[], int size) 
-{
-    int i, j;
-    if (size == 0) 
-    {
-        return 0;
-    }
-    j = 0;
-    for (i = 0; i < size; i++) 
-    {
-        j += table[i];
-    }
-    return j;
-}
-~~~
-
-*Código tomado de: [[12]](#referencias).*
-
-La llamada a una función se codifica con su nombre seguido de los valores de los parámetros separados por comas y rodeados por paréntesis. Si la función devuelve un resultado, la llamada se reemplaza por su resultado en la expresión en la que se incluye. Por ejemplo:
-
-~~~
-int addition(int a, int b) 
-{
-    return (a + b);
-}
-int main() 
-{
-    int c;
-    c = c * addition(12, 32);
-}
-~~~
-
-*Código tomado de: [[12]](#referencias).*
-
-### **Tipos de datos básicos en C**
-
-En el lenguaje C existen tres tipos de datos básicos [[13]](#referencias).:
-
-- Números enteros definidos con la palabra clave *int*.
-- Letras o caracteres definidos con la palabra clave *char*.
-- Números reales o en coma flotante definidos con las palabras claves *float* o *double*.
-
-### **Tamaño de los tipos de datos**
-
-En C, el tamaño de los tipos de datos básicos puede variar de una plataforma a otra. Esta característica está detrás de buena parte de las críticas que recibe este lenguaje, pues de ella se derivan problemas de compatibilidad (una aplicación se comporta de forma diferente cuando se ejecuta en plataformas diferentes) [[13]](#referencias)..
-
-A modo de ejemplo, en la siguiente tabla se incluyen los tamaños de los tipos de datos para las plataformas Linux/Intel i686 [[13]](#referencias)..
-
-| Tipo | Tamaño (en bytes) | 
-| --- | :---: |
-| char, unsigned char | 1 |
-| short int, unsigned short int | 2 |
-| int, unsigned int, long int, unsigned long int | 4 |
-| float	| 4 |
-| double | 8 |
-| long double | 12 |
-
-*Tabla tomada de: [[13]](#referencias).*
-
-### **Conversión de tipos de datos en C**
-
-La conversión de un tipo de datos en otro se conoce como conversión de tipos o conversión de tipos (type casting). Por ejemplo, si desea almacenar un valor *'long'* en un número entero simple, se puede escribir *cast 'long' a 'int'¨*. Puede convertir los valores de un tipo a otro explícitamente usando el operador de conversión de la siguiente manera [[14]](#referencias):
-
-~~~
-(nombre_del_tipo) expresión
-~~~
-
-Considere el siguiente ejemplo donde el operador de conversión hace que la división de una variable entera por otra se realice como una operación de punto flotante [[14]](#referencias):
-
-~~~
-#include <stdio.h>
-
-main() {
-
-   int sum = 17, count = 5;
-   double mean;
-
-   mean = (double) sum / count;
-   printf("Value of mean : %f\n", mean );
-}
-~~~
-
-*Código tomado de: [[14]](#referencias)*+
-
 ### **Macros**
 
-La directiva *#define* crea una macro, que es la asociación de un identificador o identificador con parámetros con una cadena de token. Una vez definida la macro, el compilador puede sustituir la cadena de token para cada aparición del identificador del archivo de código fuente.
+Las macros en C son una característica del lenguaje C que permite definir abreviaturas de código y realizar sustituciones de texto **durante el preprocesamiento del código fuente**. 
 
-***Sintaxis***
-~~~
-#defineidentifiertoken-stringopt
-#defineidentifier(identifieropt, ... ,identifieropt)token-stringopt
-~~~
+Una macro, es una plantilla o meta-expresión que define un patrón de sustitución. El patrón define unas variables libres y unas expresiones textuales. Cuando usamos la macro, le damos un valor a las variables libres. La macro se expande, aplicando el patrón a los variables y generando código en el lenguaje de programación de la macro.
 
-Es una plantilla o meta-expresión que define un patrón de sustitución. El patrón define unas variables libres y unas expresiones textuales. Cuando usamos la macro, le damos un valor a las variables libres. La macro se expande, aplicando el patrón a los variables y generando código en el lenguaje de programación de la macro.
+Es una técnica de generación de código. En el caso de lenguajes compilados **la expansión de la macro se realiza en la fase de preprocesamiento**, antes de la compilación. En el caso de lenguajes interpretados, la expansión de la macro se realiza al antes de llamar al evaluador. Primero se expande la macro y después se evalúa la expresión resultante.
 
-Es una técnica de generación de código. En el caso de lenguajes compilados la expansión de la macro se realiza en la fase de preprocesamiento, antes de la compilación. En el caso de lenguajes interpretados, la expansión de la macro se realiza al antes de llamar al evaluador. Primero se expande la macro y después se evalúa la expresión resultante.
+
+1. **Creación de macros:**
+   En C, las macros se crean utilizando la directiva `#define`. Una macro se define con un nombre y un cuerpo de sustitución. Cuando el preprocesador encuentra una referencia a esa macro en el código, la reemplaza con el cuerpo de la macro.
+
+   ```c
+   #define PI 3.1416
+   ```
+
+   En este ejemplo, la macro `PI` se define como `3.1416`.
+
+2. **Uso de macros para definir funciones:**
+   Las macros también se pueden utilizar para definir funciones pequeñas y simples. Sin embargo, es importante tener en cuenta que las macros no son funciones reales, sino sustituciones de texto.
+
+   ```c
+   #define CUADRADO(x) ((x) * (x))
+   ```
+
+   Esta macro `CUADRADO` calcula el cuadrado de un número `x`.
+
+3. **Uso de macros para llamar funciones:**
+   Puedes usar macros para llamar funciones, pero debes tener en cuenta que esto no es lo mismo que llamar a una función real. Cuando llamas a una macro que representa una función, el preprocesador simplemente realiza una sustitución de texto.
+
+   ```c
+   #define MAX(x, y) ((x) > (y) ? (x) : (y))
+
+   int a = 5, b = 10;
+   int maximo = MAX(a, b);
+   ```
+
+   Aquí, la macro `MAX` se utiliza para calcular el máximo entre dos números `a` y `b`.
+
+Es importante tener en cuenta algunas consideraciones al trabajar con macros en C:
+
+- Las macros son sustituciones de texto y no funciones reales. Esto significa que no tienen un ámbito o tipo, y pueden ser propensas a errores si no se utilizan correctamente.
+- Los nombres de las macros suelen estar en mayúsculas por convención para distinguirlos de las variables y funciones.
+- Es común encerrar los argumentos de la macro entre paréntesis para evitar problemas con precedencia de operadores.
+- Las macros pueden ser útiles para mejorar la legibilidad del código y reducir la repetición de código, pero deben usarse con precaución para evitar efectos no deseados.
+
+
+
 
 ### **Estructuras de datos en C**
 
@@ -1124,7 +1215,7 @@ En C, a forma de declarar un vector es [[15]](#referencias):
 En C es posible declarar un vector o matriz de la siguiente manera:
 
 Solamente asignando las dimensiones:
-~~~
+~~~c
 char vector[3];
 int matriz[2][3];
 ~~~
@@ -1132,13 +1223,13 @@ int matriz[2][3];
 En C es posible declarar y definir un vector o matriz de la siguiente manera:
 
 1. Asignarle un valor inicial a los elementos:
-	~~~
+	~~~c
 	char vector[3] = {'a', 'b', 'c'};
 	int matriz[2][3] = { {1,2,3}, {4,5,6} };
 	~~~
 
 1. El compilador puede deducir las dimensiones:
-	~~~
+	~~~c
 	int vector[] = {1, 2, 3, 5, 7};
 	~~~
 
@@ -1153,13 +1244,13 @@ Par acceder al valor guardado en una de las posiciones del vector, es posible ha
 
 Dado un vector:
 
-~~~
+~~~c
 char vector[3] = {'a', 'b', 'c'};
 ~~~
 
 Se puede acceder al valor *'a'* del vector, de la siguiente manera:
 
-~~~
+~~~c
 vector[0];
 ~~~
 
@@ -1167,7 +1258,7 @@ Esto, debido a que el valor *'a'* se encuentra en la posición *0* del vector.
 
 A continuación, programas de ejemplo del uso del vector:
 
-~~~
+~~~c
 #include <stdio.h>
 
 void main()
@@ -1184,7 +1275,7 @@ void main()
 
 Para el acceso a los valores de una matriz, se sigue la misma lógica. Sin embargo, en este caso hay que considerar que las matrices tienen más dimensiones, por lo tanto hay que acceder de acuerdo con esto:
 
-~~~
+~~~c
 #include <stdio.h>
 
 void main()
@@ -1436,7 +1527,7 @@ De lado izquierdo dentro de la carpeta ‘src’ está el archivo ‘main.c’ q
 
 Se puede escribir el siguiente programa que es el *blink* de un led. Este primer programa se conoce como el *"Hola, Mundo"* de los sistemas embebidos.
 
-~~~
+~~~c
 // Librerías necesarias
 #include "driver/gpio.h"
 #include "freertos/FreeRTOS.h"
