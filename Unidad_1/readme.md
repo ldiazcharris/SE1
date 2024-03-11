@@ -1182,12 +1182,12 @@ Es una técnica de generación de código. En el caso de lenguajes compilados **
 3. **Uso de macros para llamar funciones:**
    Puedes usar macros para llamar funciones, pero debes tener en cuenta que esto no es lo mismo que llamar a una función real. Cuando llamas a una macro que representa una función, el preprocesador simplemente realiza una sustitución de texto.
 
-   ```c
+   ~~~c
    #define MAX(x, y) ((x) > (y) ? (x) : (y))
 
    int a = 5, b = 10;
    int maximo = MAX(a, b);
-   ```
+   ~~~
 
    Aquí, la macro `MAX` se utiliza para calcular el máximo entre dos números `a` y `b`.
 

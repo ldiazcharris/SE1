@@ -406,7 +406,7 @@ Para crear un *Timer* con el *framework* ESP-IDF, es necesario realizar los sigu
 
 Aplicando lo anterior, se traduce en código como:
 
-    ~~~
+    ~~~c
     // Paso 1.
     gptimer_handle_t gptimer = NULL;
     
@@ -514,7 +514,7 @@ El temporizador se puede configurar para que "avise" cuando se cumple un tiempo 
    3. Luego, se carga el puntero a la función creada en el paso 4. 
    4. Por último se carga la configuración de la estructura creada en el paso 5.1. en el temporizador. 
 
-    ~~~
+    ~~~c
     // 5.1. Se crea un puntero del tipo gptimer_event_callbacks_t, que contendrá el llamado a función
     gptimer_event_callbacks_t *call_baks;
     
