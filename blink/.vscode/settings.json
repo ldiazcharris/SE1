@@ -7,6 +7,8 @@
         "task.h": "c",
         "string.h": "c",
         "stdlib.h": "c",
-        "timers.h": "c"
+        "timers.h": "c",
+        "time.h": "c",
+        "uart_struct.h": "c"
     }
 }

@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "gptimer.h": "c"
+        "gptimer.h": "c",
+        "i2c.h": "c",
+        "task.h": "c",
+        "string.h": "c"
     }
 }

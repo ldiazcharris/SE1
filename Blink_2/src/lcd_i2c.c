@@ -21,12 +21,12 @@ void lcd_send_cmd(char cmd)
 	esp_err_t err;
 	char data_h, data_l;
 	uint8_t data_t[4];
-	data_h = (cmd&0xf0);
-	data_l = ((cmd<<4)&0xf0);
-	data_t[0] = data_h|0x0C;  //en = 1, rs = 0
-	data_t[1] = data_h|0x08;  //en = 0, rs = 0
-	data_t[2] = data_l|0x0C;  //en = 1, rs  =0
-	data_t[3] = data_l|0x08;  //en = 0, rs = 0
+	data_h = (cmd&0xf0); // Elimina los 4 bits menos significativos
+	data_l = ((cmd<<4)&0xf0); // Mueve los 4 menos significativos hacia arriba en el char y enmascara
+	data_t[0] = data_h|0x0C;  //en = 1, rs = 0     data_h | 00001100
+	data_t[1] = data_h|0x08;  //en = 0, rs = 0     data_h | 00001000
+	data_t[2] = data_l|0x0C;  //en = 1, rs = 0     data_l | 00001100
+	data_t[3] = data_l|0x08;  //en = 0, rs = 0     data_l | 00001000
 
 	err= i2c_master_write_to_device(I2C_LCD_PORT, I2C_LCD_SLAVE_ADDRESS, data_t, 4, 1000);
 	if (err != 0) ESP_LOGI(TAG, "Error no. %d in command", err);
@@ -39,10 +39,10 @@ void lcd_write_data(char data)
 	uint8_t data_t[4];
 	data_h = (data&0xf0);
 	data_l = ((data<<4)&0xf0);
-	data_t[0] = data_h|0x0D; // en = 1, rs = 0
-	data_t[1] = data_h|0x09; // en = 0, rs = 0
-	data_t[2] = data_l|0x0D; // en = 1, rs = 0
-	data_t[3] = data_l|0x09; // en = 0, rs = 0
+	data_t[0] = data_h|0x0D; // en = 1, rs = 0     data_h | 00001101
+	data_t[1] = data_h|0x09; // en = 0, rs = 0     data_h | 00001001
+	data_t[2] = data_l|0x0D; // en = 1, rs = 0     data_l | 00001101
+	data_t[3] = data_l|0x09; // en = 0, rs = 0     data_l | 00001001
 	err = i2c_master_write_to_device(I2C_LCD_PORT, I2C_LCD_SLAVE_ADDRESS, data_t, 4, 1000);
 	if (err != 0) ESP_LOGI(TAG, "Error no. %d in command", err);
 }
@@ -64,7 +64,7 @@ void lcd_init()
     lcd_send_cmd (0x20);  // 4bit mode
     usleep(10000);
 
-  // dislay initialisation
+  // display initialisation
 	lcd_send_cmd (0x28); // Function set --> DL=0 (4 bit mode), N = 1 (2 line display) F = 0 (5x8 characters)
 	usleep(1000);
 	lcd_send_cmd (0x08); //Display on/off control --> D=0,C=0, B=0  ---> display off
@@ -144,9 +144,4 @@ static esp_err_t i2c_chanell_init()
     return i2c_driver_install(I2C_NUM_0, conf.mode, 0, 0, 0);
 }
 
-/*
-static void usleep(uint32_t value)
-{
-	vTaskDelay(value/portTICK_PERIOD_US); //portTICK_PERIOD_US
-}
-*/
+

@@ -1,4 +1,122 @@
 
+
+//*
+// I2C Practica SE_2
+
+// *************** Código para el MASTER*********************************** //
+
+#include <stdio.h>
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "driver/i2c.h"
+
+// Parámetros de configuración para la comunicación I2C
+#define SLAVE_ADDR          0x32   
+#define MASTER_PORT         I2C_NUM_0 
+#define MASTER_SDA          21   
+#define MASTER_SCL          22         
+#define MASTER_FREQ_HZ      100000     
+     
+// Función de inicialización del controlador I2C para modo Master
+void i2c_master_init() {
+
+    i2c_config_t i2c_master_config = {
+
+    .mode = I2C_MODE_MASTER,
+    .sda_io_num = MASTER_SDA,
+    .scl_io_num = MASTER_SCL,
+    .sda_pullup_en = GPIO_PULLUP_ENABLE,
+    .scl_pullup_en = GPIO_PULLUP_ENABLE,
+    .master.clk_speed = MASTER_FREQ_HZ,
+    };
+	
+    ESP_ERROR_CHECK(i2c_param_config(MASTER_PORT, &i2c_master_config));
+    ESP_ERROR_CHECK(i2c_driver_install(MASTER_PORT, i2c_master_config.mode, 0, 0, 0));
+}
+
+void app_main() {
+
+    i2c_master_init();
+                        //    'H'  'O'   'L',   'A'
+    const uint8_t data[4] = {0x48, 0x4F, 0x4C, 0x41}; 
+    
+    while(1) {
+
+        // Se transmite la información al SLAVE
+        // Parámetros que recibe la función i2c_master_write_to_device()
+        //                        (i2c_num, device_address, *write_buffer, write_size, ticks_to_wait)
+        i2c_master_write_to_device(MASTER_PORT, SLAVE_ADDR, data, (size_t)sizeof(data), 100/portTICK_PERIOD_MS);
+        
+        vTaskDelay(1000 / portTICK_PERIOD_MS);
+
+    }
+}
+//*/
+
+
+/*
+
+
+// *************** Código para el SLAVE*********************************** //
+
+#include <stdio.h>
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "driver/i2c.h"
+#include <stdlib.h>
+#include <string.h>
+
+// Parámetros de configuración para la comunicación I2C
+#define SLAVE_RX_BUF        1024
+#define SLAVE_ADDR          0x32
+#define SLAVE_SCL           22
+#define SLAVE_SDA           21
+
+
+// Función de inicialización del controlador I2C para modo Slave
+void i2c_slave_init() {
+
+    i2c_config_t i2c_slave_config = {
+
+    .mode = I2C_MODE_SLAVE,
+    .sda_io_num = SLAVE_SDA,
+    .sda_pullup_en = GPIO_PULLUP_ENABLE,
+    .scl_io_num = SLAVE_SCL,
+    .scl_pullup_en = GPIO_PULLUP_ENABLE,
+    .slave.addr_10bit_en = 0,
+    .slave.slave_addr = SLAVE_ADDR,
+    };
+
+    ESP_ERROR_CHECK(i2c_param_config(I2C_NUM_0, &i2c_slave_config));
+    ESP_ERROR_CHECK(i2c_driver_install(I2C_NUM_0, i2c_slave_config.mode, SLAVE_RX_BUF*2, 0, 0));
+}
+
+void app_main() {
+
+    i2c_slave_init();
+    
+    size_t size = 4;
+    uint8_t data[4];
+    int len = 0;
+
+    bzero(data, size);
+    
+    while(1) {
+        
+        // Se recibe eternamente información del Master
+        len = i2c_slave_read_buffer(I2C_NUM_0, data, size, portMAX_DELAY);
+        if(len > 0)
+            printf("Received data: %c, %c, %c, %c\n", data[0], data[1], data[2], data[3]);
+        
+    }
+    
+}
+
+*/
+
+
+
+
 /*
 // Incluir bibliotecas standar de C 
 #include <stdio.h>    
@@ -276,7 +394,7 @@ void seg_7_write(seg_7_handler_t *seg_t_handler, uint8_t * caracter)
 
 */
 
-
+/*
 
 #include <stdio.h>
 #include <unistd.h>
@@ -289,91 +407,116 @@ void seg_7_write(seg_7_handler_t *seg_t_handler, uint8_t * caracter)
 
 void app_main() {
     // Configurar el pin GPIO para controlar el servo
-    /*
-    gpio_config_t io_conf;
-    io_conf.intr_type = GPIO_INTR_DISABLE;
-    io_conf.mode = GPIO_MODE_OUTPUT;
-    io_conf.pin_bit_mask = (1ULL << GPIO_SERVO);
-    io_conf.pull_down_en = 0;
-    io_conf.pull_up_en = 0;
-    gpio_config(&io_conf);
-    */
+   
    gpio_set_direction(GPIO_SERVO, GPIO_MODE_OUTPUT);
    gpio_set_pull_mode(GPIO_SERVO, GPIO_PULLDOWN_ONLY);
 
     uint16_t grades; 
     float dutyCicle;
-
+    const int tMaxGrades = 180;
+    const int tMinGrades = 500;
+    const float period = 2000.0;
+    uint8_t hz;
+    int time;
+    int cont;
     while (1) {
 
         grades = 0;
+        time = 15000;
+        cont = 1;
 	
-        for (int hz = 1; hz <= 50; hz++){
-            dutyCicle = (grades*2000.0/180.0)+500;
+        for (hz = 1; hz <= 50; hz++){
+            dutyCicle = (grades*(period/(const float)tMaxGrades))+tMinGrades;
+            printf("%i - %i - %i\n", (int)dutyCicle, (int)(period - dutyCicle), cont);
             gpio_set_level(GPIO_SERVO, 1);
             usleep(dutyCicle);
             gpio_set_level(GPIO_SERVO, 0);
-            usleep(20000 - dutyCicle);
+            usleep(2000 - dutyCicle);
+            cont++;
         }
-        usleep(2000000);
+        sleep(2);
+
+        grades = 180;
+        
+	
+        for (hz = 1; hz <= 50; hz++){
+            dutyCicle = (grades*(period/(const float)tMaxGrades))+tMinGrades;
+            printf("%i - %i - %i\n", (int)dutyCicle, (int)(period - dutyCicle), cont);
+            gpio_set_level(GPIO_SERVO, 1);
+            usleep(dutyCicle);
+            gpio_set_level(GPIO_SERVO, 0);
+            usleep(2000 - dutyCicle);
+            cont++;
+        }
+        sleep(2);
+        */
+        
+/*
+
+
         grades = 90;
         for (int hz = 1; hz <= 50; hz++){
-            dutyCicle = (grades*2000.0/180.0)+500;
+            dutyCicle = (grades*(2000.0/(const float)tMaxGrades))+tMinGrades;
+            printf("%i - %i\n", (int)dutyCicle, (int)(period - dutyCicle));
             gpio_set_level(GPIO_SERVO, 1);
-            usleep(dutyCicle);
+            usleep((int)dutyCicle);
             gpio_set_level(GPIO_SERVO, 0);
-            usleep(20000 - dutyCicle);
+            usleep((int)(period - dutyCicle));
         }
-        usleep(2000000);
+        sleep(2);
         grades = 180;
         for (int hz = 1; hz <= 50; hz++){
-            dutyCicle = (grades*2000.0/180.0)+500;
+            dutyCicle = (grades*period/tMaxGrades)+tMinGrades;
+            printf("%f\n", dutyCicle);
             gpio_set_level(GPIO_SERVO, 1);
-            usleep(dutyCicle);
+            usleep((int)dutyCicle);
             gpio_set_level(GPIO_SERVO, 0);
-            usleep(20000 - dutyCicle);
+            usleep((int)(period - dutyCicle));
         }
-        usleep(2000000);
+        sleep(2);
 
         grades = 90;
         for (int hz = 1; hz <= 50; hz++){
-            dutyCicle = (grades*2000.0/180.0)+500;
+            dutyCicle = (grades*period/tMaxGrades)+tMinGrades;
+            printf("%f\n", dutyCicle);
             gpio_set_level(GPIO_SERVO, 1);
-            usleep(dutyCicle);
+            usleep((int)dutyCicle);
             gpio_set_level(GPIO_SERVO, 0);
-            usleep(20000 - dutyCicle);
+            usleep((int)(period - dutyCicle));
         }
-        usleep(2000000);
-
-        grades = 0;
-        for (int hz = 1; hz <= 50; hz++){
-            dutyCicle = (grades*2000.0/180.0)+500;
-            gpio_set_level(GPIO_SERVO, 1);
-            usleep(dutyCicle);
-            gpio_set_level(GPIO_SERVO, 0);
-            usleep(20000 - dutyCicle);
-        }
-        usleep(2000000);
-
-    }
-    /*
-        // Mover el servo a 0 grados
-        gpio_set_level(GPIO_SERVO, 1);
-        vTaskDelay(20); // Tiempo para el pulso
-        gpio_set_level(GPIO_SERVO, 0);
-        vTaskDelay(1980); // Tiempo total de pulso 2000ms (20ms - 2ms = 18ms para 0 grados)
-
-        vTaskDelay(2000); // Espera 2 segundos
-
-        // Mover el servo a 180 grados
-        gpio_set_level(GPIO_SERVO, 1);
-        vTaskDelay(70); // Tiempo para el pulso
-        gpio_set_level(GPIO_SERVO, 0);
-        vTaskDelay(1930); // Tiempo total de pulso 2000ms (70ms - 2ms = 68ms para 180 grados)
+        sleep(2);
         
-        vTaskDelay(2000); // Espera 2 segundos
+    }   
     
-
-    */
-   
+    
 }
+*/
+
+/*
+#include <stdio.h>
+#include "driver/uart.h"
+
+void uart_init() {
+    uart_config_t uart_config = {
+        .baud_rate = 115200,
+        .data_bits = UART_DATA_8_BITS,
+        .parity    = UART_PARITY_DISABLE,
+        .stop_bits = UART_STOP_BITS_1,
+        .flow_ctrl = UART_HW_FLOWCTRL_DISABLE
+    };
+    uart_param_config(UART_NUM_1, &uart_config);
+    uart_set_pin(UART_NUM_1, TX_PIN, RX_PIN, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
+    uart_driver_install(UART_NUM_1, 256, 0, 0, NULL, 0);
+}
+
+void send_at_command(const char *command) {
+    uart_write_bytes(UART_NUM_1, command, strlen(command));
+    uart_write_bytes(UART_NUM_1, "\r", 1);
+}
+
+void app_main() {
+    uart_init();
+    send_at_command("AT");
+}
+
+*/
