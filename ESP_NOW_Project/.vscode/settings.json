@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "esp_wifi.h": "c",
+        "esp_now.h": "c"
+    }
+}

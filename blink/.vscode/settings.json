@@ -9,6 +9,10 @@
         "stdlib.h": "c",
         "timers.h": "c",
         "time.h": "c",
-        "uart_struct.h": "c"
+        "uart_struct.h": "c",
+        "stdio.h": "c",
+        "esp_log.h": "c",
+        "utilities.h": "c",
+        "queue.h": "c"
     }
 }

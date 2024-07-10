@@ -48,7 +48,7 @@ void uart_receive(uart_port_t uart_num, void *buf, uint32_t length)
 
 void delay(const TickType_t delay_ms)
 {
-    vTaskDelay( delay_ms / portTICK_PERIOD_MS);
+    vTaskDelay( pdMS_TO_TICKS(delay_ms) );
 }
 
 /**
