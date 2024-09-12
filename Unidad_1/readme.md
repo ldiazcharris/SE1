@@ -1572,7 +1572,7 @@ Se puede escribir el siguiente programa que es el *blink* de un led. Este primer
 void app_main(void)
 {
 
-    gpio_reset_pin(led);
+    gpio_reset_pin(LED);
     gpio_set_direction(LED, GPIO_MODE_OUTPUT);
 
     while(1){
