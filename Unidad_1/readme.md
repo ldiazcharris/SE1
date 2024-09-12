@@ -1567,18 +1567,18 @@ Se puede escribir el siguiente programa que es el *blink* de un led. Este primer
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
-#define led 1
+#define LED 2
 
 void app_main(void)
 {
 
     gpio_reset_pin(led);
-    gpio_set_direction(led, GPIO_MODE_OUTPUT);
+    gpio_set_direction(LED, GPIO_MODE_OUTPUT);
 
     while(1){
-        gpio_set_level(led, 0);
+        gpio_set_level(LED, 0);
         vTaskDelay( 1000 / portTICK_PERIOD_MS);
-        gpio_set_level(led, 1);
+        gpio_set_level(LED, 1);
         vTaskDelay( 1000 / portTICK_PERIOD_MS);
     }
 }
