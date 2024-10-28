@@ -1,6 +1,6 @@
 
 
-//*
+/*
 // I2C Practica SE_2
 
 // *************** Código para el MASTER*********************************** //
@@ -51,7 +51,7 @@ void app_main() {
 
     }
 }
-//*/
+*/
 
 
 /*
@@ -520,3 +520,55 @@ void app_main() {
 }
 
 */
+
+/*
+// Librerías necesarias
+#include "driver/gpio.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+
+#define LED 2
+
+void app_main(void)
+{
+
+    gpio_reset_pin(LED);
+    gpio_set_direction(LED, GPIO_MODE_OUTPUT);
+
+    while(1){
+        gpio_set_level(LED, 0);
+        vTaskDelay( 1000 / portTICK_PERIOD_MS);
+        gpio_set_level(LED, 1);
+        vTaskDelay( 1000 / portTICK_PERIOD_MS);
+    }
+}
+*/
+
+//CODIGO MAIN.C
+#include <stdio.h>
+#include "driver/gpio.h"
+#include "driver/adc.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "driver/uart.h"
+#include "lm35jbs.h"
+
+#define DELAY 2000
+
+
+void app_main(void)
+{
+    lm35jbs_inicia(ADC1_CHANNEL_4, ADC_ATTEN_DB_11);
+    
+    while(1)
+    {
+        float temp1 = lm35jbs_leer(ADC1_CHANNEL_4);
+        
+        printf("Temperatura del Sensor 1 (ADC_0): %.2f °C\n", temp1);
+
+        vTaskDelay(DELAY / portTICK_PERIOD_MS);
+    }
+}
+
+
+
