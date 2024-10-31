@@ -25,6 +25,7 @@
 #include "esp_log.h"
 #include "nvs_flash.h"
 #include "driver/adc.h"
+#include "driver/gpio.h"
 
 #include "esp_bt.h"
 #include "esp_gap_ble_api.h"
@@ -181,7 +182,6 @@ typedef struct {
 static prepare_type_env_t a_prepare_write_env;
 static prepare_type_env_t b_prepare_write_env;
 
-void example_write_event_env(esp_gatt_if_t gatts_if, prepare_type_env_t *prepare_write_env, esp_ble_gatts_cb_param_t *param);
 void example_exec_write_event_env(prepare_type_env_t *prepare_write_env, esp_ble_gatts_cb_param_t *param);
 
 static void gap_event_handler(esp_gap_ble_cb_event_t event, esp_ble_gap_cb_param_t *param);
@@ -306,7 +306,9 @@ void app_main()
         ESP_LOGE(GATTS_TAG, "set local  MTU failed, error code = %x", local_mtu_ret);
     }
 
-
+    gpio_reset_pin(2);
+    gpio_set_direction(2, GPIO_MODE_OUTPUT);
+    gpio_set_level(2, 1);
 
     return;
 }
@@ -493,24 +495,37 @@ static void gatts_profile_a_event_handler(esp_gatts_cb_event_t event, esp_gatt_i
     }
     case ESP_GATTS_WRITE_EVT: {
         ESP_LOGI(GATTS_TAG, "GATT_WRITE_EVT, conn_id %d, trans_id %" PRIu32 ", handle %d", param->write.conn_id, param->write.trans_id, param->write.handle);
+        
         if (!param->write.is_prep){
+
             ESP_LOGI(GATTS_TAG, "GATT_WRITE_EVT, value len %d, value :", param->write.len);
             esp_log_buffer_hex(GATTS_TAG, param->write.value, param->write.len);
-            if (gl_profile_tab[PROFILE_A_APP_ID].descr_handle == param->write.handle && param->write.len == 2){
+            ESP_LOGI("Recibi: ", "%s", param->write.value);
+
+            if (gl_profile_tab[PROFILE_A_APP_ID].descr_handle == param->write.handle && param->write.len == 2)
+            {
                 uint16_t descr_value = param->write.value[1]<<8 | param->write.value[0];
-                if (descr_value == 0x0001){
-                    if (a_property & ESP_GATT_CHAR_PROP_BIT_NOTIFY){
+                
+                if (descr_value == 0x0001)
+                {
+                    if (a_property & ESP_GATT_CHAR_PROP_BIT_NOTIFY)
+                    {
                         ESP_LOGI(GATTS_TAG, "notify enable");
-                        uint8_t notify_data[15];
+                        uint8_t notify_data[15] = "Hola ESP";
+                        /*
                         for (int i = 0; i < sizeof(notify_data); ++i)
                         {
                             notify_data[i] = i%0xff;
                         }
+                        */
+                       
                         //the size of notify_data[] need less than MTU size
                         esp_ble_gatts_send_indicate(gatts_if, param->write.conn_id, gl_profile_tab[PROFILE_A_APP_ID].char_handle,
                                                 sizeof(notify_data), notify_data, false);
                     }
-                }else if (descr_value == 0x0002){
+                }
+                else if (descr_value == 0x0002)
+                {
                     if (a_property & ESP_GATT_CHAR_PROP_BIT_INDICATE){
                         ESP_LOGI(GATTS_TAG, "indicate enable");
                         uint8_t indicate_data[15];

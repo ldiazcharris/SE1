@@ -166,9 +166,6 @@ void app_main(void)
 }
 
 
-
-
-
 static void gattc_profile_event_handler(esp_gattc_cb_event_t event, esp_gatt_if_t gattc_if, esp_ble_gattc_cb_param_t *param)
 {
     esp_ble_gattc_cb_param_t *p_data = (esp_ble_gattc_cb_param_t *)param;
@@ -354,19 +351,25 @@ static void gattc_profile_event_handler(esp_gattc_cb_event_t event, esp_gatt_if_
         }else{
             ESP_LOGI(GATTC_TAG, "ESP_GATTC_NOTIFY_EVT, receive indicate value:");
         }
-        esp_log_buffer_hex(GATTC_TAG, p_data->notify.value, p_data->notify.value_len);
+        //esp_log_buffer_hex(GATTC_TAG, p_data->notify.value, p_data->notify.value_len);
+        ESP_LOGI("Rercibi", "%s", p_data->notify.value);
         break;
     case ESP_GATTC_WRITE_DESCR_EVT:
-        if (p_data->write.status != ESP_GATT_OK){
+        if (p_data->write.status != ESP_GATT_OK)
+        {
             ESP_LOGE(GATTC_TAG, "write descr failed, error status = %x", p_data->write.status);
             break;
         }
+
         ESP_LOGI(GATTC_TAG, "write descr success ");
-        uint8_t write_char_data[35];
+
+        uint8_t write_char_data[35] = "Hola mundo";
+/*
         for (int i = 0; i < sizeof(write_char_data); ++i)
         {
             write_char_data[i] = i % 256;
         }
+*/
         esp_ble_gattc_write_char( gattc_if,
                                   gl_profile_tab[PROFILE_A_APP_ID].conn_id,
                                   gl_profile_tab[PROFILE_A_APP_ID].char_handle,
@@ -375,6 +378,8 @@ static void gattc_profile_event_handler(esp_gattc_cb_event_t event, esp_gatt_if_
                                   ESP_GATT_WRITE_TYPE_RSP,
                                   ESP_GATT_AUTH_REQ_NONE);
         break;
+
+
     case ESP_GATTC_SRVC_CHG_EVT: {
         esp_bd_addr_t bda;
         memcpy(bda, p_data->srvc_chg.remote_bda, sizeof(esp_bd_addr_t));
